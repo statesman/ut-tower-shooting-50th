@@ -29,14 +29,14 @@ module.exports = function(type) {
     // Make sure all required fields are present
     if(!_.has(el, 'title')) {
       err('The navLinks helper requires name for each object in the nav array.');
-      return
+      return;
     }
 
     var linktext = '';
     if(type === 'super') {
       linktext = '<strong>' + el.title + '</strong><br />';
       if(_.has(el, 'subtitle')) {
-        linktext += el.subtitle
+        linktext += el.subtitle;
       }
     }
     else {

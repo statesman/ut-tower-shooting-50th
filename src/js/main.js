@@ -4,6 +4,10 @@
 
   $(function() {
 
+    // populate footer with copyright year
+    var d = new Date();
+    $("#current-year").html(d.getFullYear());
+
     // Open Twitter links in a new window
     $('.sider-twitter').on('click', 'a', function(e) {
       e.preventDefault();

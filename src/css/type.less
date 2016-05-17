@@ -1,3 +1,20 @@
+header {
+    text-align:center;
+    > h1 {
+        font-family: @font-family-sans-serif;
+        text-transform: uppercase;
+        font-weight: 800;
+        font-size: 55px;
+    }
+    > h2 {
+        font-style: italic;
+        font-size:25px
+    }
+    > p {
+        font-size: 16px;
+    }
+}
+
 h1 {
   @media (max-width: @screen-md) {
     font-size: 32px;
@@ -75,7 +92,7 @@ hr {
   border-color: @gray-lighter;
   margin-top: @line-height-computed * 1.5;
   margin-bottom: @line-height-computed * 1.5;
-  max-width: 3em;
+  max-width: 50%;
 }
 
 .panel {
