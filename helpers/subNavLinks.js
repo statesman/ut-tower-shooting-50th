@@ -60,7 +60,7 @@ module.exports = function(type) {
       // Make sure all required fields are present
       if(!_.has(child, 'title')) {
         err('The subNavLinks helper requires title for each object in the children array.');
-        return
+        return;
       }
 
       links += '<li' + (child.file === this.name ? ' class="active"' : '') + '><a href="' + child.file + '.html">' + child.title + '</a></li>';
