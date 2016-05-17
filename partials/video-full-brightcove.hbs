@@ -1,0 +1,21 @@
+<div class="photo-full">
+  <div class="embed-responsive embed-responsive-16by9">
+        <script language="JavaScript" type="text/javascript" src="http://admin.brightcove.com/js/BrightcoveExperiences.js"></script>
+    <object id="myExperience{{bctid}}" class="BrightcoveExperience embed-responsive-item">
+      <param name="bgcolor" value="#FFFFFF" />
+      <param name="width" value="750" />
+      <param name="height" value="422" />
+      <param name="playerID" value="{{bcpid}}" />
+      <param name="playerKey" value="{{bckey}}" />
+      <param name="isVid" value="true" />
+      <param name="isUI" value="true" />
+      <param name="dynamicStreaming" value="true" />
+      <param name="@videoPlayer" value="{{bctid}}" />
+      {{!-- Enable SmartPlayer API --}}
+      <param name="includeAPI" value="true" />
+      <param name="templateLoadHandler" value="analytics.bcoveAddPlayer" />
+      <param name="templateReadyHandler" value="analytics.bcovePlayerReady" />
+    </object>
+    <script type="text/javascript">brightcove.createExperiences();</script>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+{
+  "name": "ut-tower-shooting-package",
+  "version": "0.0.0",
+  "authors": [
+    "Cody Winchester <cjwinchester@gmail.com>"
+  ],
+  "main": "index.html",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.6",
+    "font-awesome": "^4.6.3",
+    "Slides": "nathansearles/Slides#SlidesJS-3",
+    "scrollmagic": "^2.0.5",
+    "underscore": "^1.8.3",
+    "imagesloaded": "^4.1.0"
+  }
+}
