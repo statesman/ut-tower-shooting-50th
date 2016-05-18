@@ -28,6 +28,16 @@
   "videoOverview": {
     "ytsrc": "https://www.youtube.com/embed/sggsXaCZNMs"
   },
+  "characters": {
+      "title": "Character cards",
+      "people": [
+        {
+            "name": "John Doe",
+            "video_link": "",
+            "img": ""
+        }
+      ]
+  },
   "editorial": {
     "title": "Follow-up stories",
     "links": [{
@@ -46,8 +56,6 @@
 }
 ---
 
-
-
 <div class="container">
     <header>
         <h1>A new kind of madness</h1>
@@ -56,10 +64,11 @@
         <p>A couple of sentences here about this whole shebang</p>
     </header>
 
-
   <div class="row">
-    <div id="main" class="col-xs-12">
+    <div id="main" class="col-xs-12" style="padding:0; margin-bottom:30px;">
       {{> video-full-youtube page.videoOverview}}
+    </div>
+    </div>
         <div class="row">
           <div class="col-sm-4">
             {{> indextease page.indexteaseMain}}
@@ -71,13 +80,11 @@
             {{> indextease page.indexteaseHistory}}
           </div>
         </div>
+
         <div class="row">
           <div class="col-sm-12">
             {{> related-list page.editorial}}
           </div>
         </div>
-
-
-    </div>
   </div>
 </div>

@@ -72,6 +72,8 @@ module.exports = function(grunt) {
           'public/dist/scripts.js': [
             'bower_components/jquery/dist/jquery.js',
             'bower_components/underscore/underscore.js',
+            'bower_components/d3/d3.js',
+            'bower_components/topojson/topojson.js',
             'bower_components/imagesloaded/imagesloaded.pkgd.js',
             'bower_components/Slides/source/jquery.slides.js',
             'src/js/slider.js',
@@ -138,47 +140,19 @@ module.exports = function(grunt) {
           base: 'http://projects.statesman.com/news/tower-shooting/',
           nav: [
             {
-              title: "Index",
-              subtitle: "Overview",
+              title: "Introduction",
+              subtitle: "A new kind of madness",
               file: "index",
-              children: [
-                {
-                  title: "Sub-story 1",
-                  subtitle: "Explaining story 1",
-                  file: "page1"
-                },
-                {
-                  title: "Sub-story 2",
-                  subtitle: "More on story 2",
-                  file: "page2"
-                },
-                {
-                  title: "Sub-story 3",
-                  subtitle: "And this is story 3",
-                  file: "page3"
-                }
-              ]
             },
             {
-              title: "Story 1",
-              subtitle: "More on story 1",
-              file: "page1"
+              title: "Mass shootings in the U.S.",
+              subtitle: "Explore the data",
+              file: "shooting-data"
             },
             {
-              title: "Story 2",
-              subtitle: "More on story 2",
+              title: "Coverage and documents",
+              subtitle: "Browse the archives",
               file: "page2"
-            },
-            {
-              title: "Story 3",
-              subtitle: "And this is story 3",
-              file: "page3",
-              children: [
-                {
-                  title: "Sub-story 4",
-                  file: "page4"
-                }
-              ]
             }
           ]
         }

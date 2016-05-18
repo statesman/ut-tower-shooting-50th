@@ -64,7 +64,13 @@
         }
       }
     }
-
+    > li.active {
+        border-bottom:5px #BF5700 solid;
+        @media (max-width: @grid-float-breakpoint-max) {
+            border-bottom: none;
+            background: #BF5700;
+        }
+    }
     > li > a,
     > li.active > a,
     > li.active:hover > a {
