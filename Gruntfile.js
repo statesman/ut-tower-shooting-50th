@@ -73,6 +73,7 @@ module.exports = function(grunt) {
             'bower_components/jquery/dist/jquery.js',
             'bower_components/underscore/underscore.js',
             'bower_components/d3/d3.js',
+            'bower_components/d3-queue/d3-queue.js',
             'bower_components/topojson/topojson.js',
             'bower_components/imagesloaded/imagesloaded.pkgd.js',
             'bower_components/Slides/source/jquery.slides.js',
@@ -145,8 +146,8 @@ module.exports = function(grunt) {
               file: "index",
             },
             {
-              title: "Mass shootings in the U.S.",
-              subtitle: "Explore the data",
+              title: "Mass shootings",
+              subtitle: "Explore U.S. data",
               file: "shooting-data"
             },
             {

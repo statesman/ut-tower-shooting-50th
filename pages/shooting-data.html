@@ -9,35 +9,33 @@
 ---
 
 <div class="container">
-  <div class="row">
-    <article id="main" class="col-xs-12">
+    <article>
       <h6>OVERLINE</h6>
       <h1>Data: 50 years of mass shootings in America</h1>
       <h2>And a related subhed that's a little chatty and almost a little summary-like ... it could even be the length of a long sentence.</h2>
       <p class="author">By Cody Winchester / Published {{ page.publish-date }}</p>
 
-      <p class="lead">bloggers in their mother's basement information overload Article Skimmer the audience knows more than I do dingbat collaboration circulation David Cohn TBD, information wants to be free Nick Denton nonprofit bot dying WaPo scoop twitterati, newspaper What Would Google Do vast wasteland.</p>
+      <p class="lead">Intro text here. The data, <a href="http://www.motherjones.com/politics/2012/12/mass-shootings-mother-jones-full-data" target="_blank">from Mother Jones</a>, include public shootings from 1982-2016 in which four or more victims were killed &mdash; <span id="incident_count" style="font-family: inherit; font-weight: inherit;"></span> in all, and <span id="fatality_count" style="font-family: inherit; font-weight: inherit;"></span> victims dead. We also added five earlier incidents that fit these criteria, including the UT Tower shooting, using <a href="https://library.stanford.edu/projects/mass-shootings-america" target="_blank">data from Stanford University</a>.</p>
+      <p class="lead">Click on XXXXXX</p>
+  </article>
 
-      <style>
-        .land {
-          fill: #000;
-          stroke: #fafafa;
-        }
-
-        .dot {
-            fill: red;
-            cursor: pointer;
-        }
-
-        .state-boundary {
-          fill: none;
-          stroke: #fff;
-          stroke-linejoin: round;
-          stroke-linecap: round;
-        }
-      </style>
-      <div id="map"></div>
-
-    </article>
+  <div class="map-wrap">
+      <div id="timeline" class="timeline"></div>
+      <div class="clearfix"></div>
+      <div class="row">
+          <div class="col-sm-9">
+              <h2 id="victim_total" class="victim_hed centered"></h2>
+              <div id="map"></div>
+          </div>
+          <div class="col-sm-3">
+              <div id="details"></div>
+          </div>
+      </div>
   </div>
 </div>
+
+<script type="text/html" id="details_template">
+    <%= template_data.place %>
+
+
+</script>

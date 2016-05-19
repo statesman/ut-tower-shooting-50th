@@ -65,10 +65,10 @@
       }
     }
     > li.active {
-        border-bottom:5px #BF5700 solid;
+        border-bottom:5px @burnt-orange solid;
         @media (max-width: @grid-float-breakpoint-max) {
             border-bottom: none;
-            background: #BF5700;
+            background: @burnt-orange;
         }
     }
     > li > a,
@@ -155,11 +155,13 @@
     margin-right: -15px;
     border-top: 1px solid @gray-lighter;
     border-bottom: 1px solid @gray-lighter;
-    a {
-      color: @gray;
-      font-size: 12px;
-      text-transform: uppercase;
-    }
+    color: @gray;
+    font-size: 12px;
+    font-family: @font-family-sans-serif;
+    text-transform: uppercase;
+  }
+  .navbar-expand:hover {
+    background-color: #eee;
   }
 }
 // This is formatting for the expand button for times when the navbar is
