@@ -35,7 +35,9 @@
 </div>
 
 <script type="text/html" id="details_template">
-    <%= template_data.place %>
-
-
+        <h3 class="detail-hed"><%= template_data.city %>, <%= template_data.state %>: <% if (+template_data.fatalities > 0) { %><%= template_data.fatalities %> dead<% }; %><% if (+template_data.fatalities > 0 && +template_data.wounded > 0) { %>, <% }; %><% if (+template_data.wounded > 0) { %><%= template_data.wounded %> wounded<% }; %></h3>
+        <p class="victim-deets">
+                <%= template_data.date %>
+        </p>
+        <p class="detail-summary"><%= template_data.description %></p>
 </script>

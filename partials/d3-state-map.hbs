@@ -1,4 +1,8 @@
 <script>
+// set up underscore template
+_.templateSettings.variable = "template_data";
+var sidebar_template = _.template($("#details_template").html());
+
 // helper function to sum a list of numbers
 var sum = function(ls) {
     return _.reduce(ls, function(memo, num){ return memo + num; }, 0);
@@ -7,6 +11,7 @@ var sum = function(ls) {
 // cache DOM elements
 var $victim_total = $('#victim_total');
 var $timeline = $('#timeline');
+var $details = $('#details');
 var el = d3.select('#map');
 
 // set the aspect ratio for the map
@@ -35,18 +40,25 @@ var svg = el.append("svg")
 // load the data (async)
 d3_queue.queue()
     .defer(d3.json, '/data/us.json')
-    .defer(d3.csv, '/data/shootings.csv')
+    .defer(d3.tsv, '/data/shooting-data.tsv')
 .await(ready);
 
 // main function to draw the map
 function ready(error, us, csv) {
+
     // a helper function to nab victim totals
     var get_victim_total = function(data) {
         var v_count = sum(
             _.map(
-                _.pluck(data, "victims"), function(d) {
+                _.pluck(data, "fatalities"), function(d) {
                     return +d;
                 }
+            ).concat(
+                _.map(
+                    _.pluck(data, "wounded"), function(d) {
+                        return +d;
+                    }
+                )
             )
         );
         return v_count;
@@ -114,10 +126,11 @@ function ready(error, us, csv) {
 
     // set the bubble size scale
     // scale * variable = radius in px
-    var scale = 0.8;
+    var scale = width / 1000;
 
     // function to draw bubbles
     function populate_map(year) {
+        $details.html('');
         $bars.css("background", "#ddd");
         $("#" + year).css("background", "red");
 
@@ -127,7 +140,12 @@ function ready(error, us, csv) {
 
         victim_total_this_year = get_victim_total(incidents_this_year);
 
-        $victim_total.html(year + ": " + victim_total_this_year + " victims");
+        $victim_total.html([
+            year,
+            ": ",
+            victim_total_this_year,
+            " victims"
+        ].join(""));
 
         svg.selectAll("circle").remove();
 
@@ -138,11 +156,14 @@ function ready(error, us, csv) {
     		.attr("cx", function (d) { return projection([d.lng, d.lat])[0]; })
     		.attr("cy", function (d) { return projection([d.lng, d.lat])[1]; })
     		.attr("class", "dot")
-            .attr("r",  function(d) { return +d.victims * scale; })
+            .attr("r",  function(d) { return (+d.fatalities + +d.wounded) * scale; })
             .on("click", function(d) {
-                console.log(d);
-            })
-
+                $details.html(sidebar_template(d));
+                svg.selectAll("circle")
+                   .classed("dot", true)
+                   .classed("highlighted", false);
+                d3.select(this).classed("highlighted", true);
+            });
     }
 
     // handle resize
@@ -152,6 +173,10 @@ function ready(error, us, csv) {
     function resize() {
         var width = el.node().getBoundingClientRect().width;
         var height = width / aspect;
+
+        // set the bubble size scale
+        // scale * variable = radius in px
+        var scale = width / 1000;
 
         svg
             .attr('width', width)
@@ -170,10 +195,10 @@ function ready(error, us, csv) {
         d3.selectAll('.dot')
     		.attr("cx", function (d) { return projection([d.lng, d.lat])[0]; })
     		.attr("cy", function (d) { return projection([d.lng, d.lat])[1]; })
-
+            .attr("r",  function(d) { return (+d.fatalities + +d.wounded) * scale; });
     }
 
-    populate_map("1972");
+    populate_map(max_year);
 
     $bars.on("click", function() {
         var yr = this.id;
