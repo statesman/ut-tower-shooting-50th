@@ -1,0 +1,210 @@
+<script>
+// set up underscore template
+_.templateSettings.variable = "template_data";
+var sidebar_template = _.template($("#details_template").html());
+
+// helper function to sum a list of numbers
+var sum = function(ls) {
+    return _.reduce(ls, function(memo, num){ return memo + num; }, 0);
+};
+
+// cache DOM elements
+var $victim_total = $('#victim_total');
+var $timeline = $('#timeline');
+var $details = $('#details');
+var el = d3.select('#map');
+
+// set the aspect ratio for the map
+var aspect = 960 / 500;
+
+// set the width
+var width = el.node().getBoundingClientRect().width;
+
+// calculate the height
+var height = width / aspect;
+
+// set the projection
+var projection = d3.geo.albersUsa()
+    .scale(width)
+    .translate([width / 2, height / 2]);
+
+// and the path
+var path = d3.geo.path()
+    .projection(projection);
+
+// and append the SVG
+var svg = el.append("svg")
+    .attr("width", width)
+    .attr("height", height);
+
+// load the data (async)
+d3_queue.queue()
+    .defer(d3.json, '/data/us.json')
+    .defer(d3.tsv, '/data/shooting-data.tsv')
+.await(ready);
+
+// main function to draw the map
+function ready(error, us, csv) {
+
+    // a helper function to nab victim totals
+    var get_victim_total = function(data) {
+        var v_count = sum(
+            _.map(
+                _.pluck(data, "fatalities"), function(d) {
+                    return +d;
+                }
+            ).concat(
+                _.map(
+                    _.pluck(data, "wounded"), function(d) {
+                        return +d;
+                    }
+                )
+            )
+        );
+        return v_count;
+    };
+
+    // populate the placeholder elements
+    $("#incident_count").html(csv.length);
+    $("#fatality_count").html(get_victim_total(csv));
+
+    // draw the U.S. shape
+    svg.insert('path', '.graticule')
+        .datum(topojson.feature(us, us.objects.land))
+        .attr('class', 'land')
+        .attr('d', path);
+
+    // draw the state boundaries
+    svg.insert('path', '.graticule')
+        .datum(topojson.mesh(us, us.objects.states, function(a, b) { return a !== b; }))
+        .attr('class', 'state-boundary')
+        .attr('d', path);
+
+    // do up the timeline
+    var uniq_years = _.uniq(
+        _.pluck(csv, "year")
+    );
+
+    var min_year = _.min(uniq_years);
+    var max_year = _.max(uniq_years);
+
+    var bottom_line = [
+        "<div class='bottomline'>",
+        "<span class='pull-left'>",
+        min_year,
+        "</span>",
+        "<span class='pull-right'>",
+        max_year,
+        "</span>",
+         "</div>"].join("");
+
+    var year_range = _.range(+min_year, +max_year+1);
+
+    var bar_width = 100 / year_range.length;
+
+    var timeline_string = '';
+    _.each(year_range, function(d, i) {
+        var incidents_this_year = _.filter(csv, function(x) {
+            return +x.year === d;
+        });
+
+        var multiplier = 1.5;
+
+        if (incidents_this_year.length > 0) {
+            victim_count = get_victim_total(incidents_this_year);
+        } else {
+            victim_count = 0;
+        }
+
+        timeline_string += "<div class='timeline-bar' id='" + d + "' style='height:" + (victim_count*multiplier) + "px; width:" + bar_width + "%;'></div>";
+    });
+
+    $timeline.html(timeline_string + "<div class='clearfix'></div>")
+             .append(bottom_line);
+
+    var $bars = $(".timeline-bar");
+
+    // set the bubble size scale
+    // scale * variable = radius in px
+    var scale = width / 1000;
+
+    // function to draw bubbles
+    function populate_map(year) {
+        $details.html('');
+        $bars.css("background", "#ddd");
+        $("#" + year).css("background", "red");
+
+        var incidents_this_year = _.filter(csv, function(d) {
+            return d.year === year;
+        });
+
+        victim_total_this_year = get_victim_total(incidents_this_year);
+
+        $victim_total.html([
+            year,
+            ": ",
+            victim_total_this_year,
+            " victims"
+        ].join(""));
+
+        svg.selectAll("circle").remove();
+
+        svg.selectAll("circle")
+            .data(incidents_this_year)
+            .enter()
+            .append("circle")
+    		.attr("cx", function (d) { return projection([d.lng, d.lat])[0]; })
+    		.attr("cy", function (d) { return projection([d.lng, d.lat])[1]; })
+    		.attr("class", "dot")
+            .attr("r",  function(d) { return (+d.fatalities + +d.wounded) * scale; })
+            .on("click", function(d) {
+                $details.html(sidebar_template(d));
+                svg.selectAll("circle")
+                   .classed("dot", true)
+                   .classed("highlighted", false);
+                d3.select(this).classed("highlighted", true);
+            });
+    }
+
+    // handle resize
+    d3.select(window)
+        .on("resize", _.debounce(resize, 500));
+
+    function resize() {
+        var width = el.node().getBoundingClientRect().width;
+        var height = width / aspect;
+
+        // set the bubble size scale
+        // scale * variable = radius in px
+        var scale = width / 1000;
+
+        svg
+            .attr('width', width)
+            .attr('height', height);
+
+        projection
+            .scale(width)
+            .translate([width / 2, height / 2]);
+
+        d3.select('.state-boundary')
+            .attr('d', path);
+
+        d3.selectAll('.land')
+            .attr('d', path);
+
+        d3.selectAll('.dot')
+    		.attr("cx", function (d) { return projection([d.lng, d.lat])[0]; })
+    		.attr("cy", function (d) { return projection([d.lng, d.lat])[1]; })
+            .attr("r",  function(d) { return (+d.fatalities + +d.wounded) * scale; });
+    }
+
+    populate_map(max_year);
+
+    $bars.on("click", function() {
+        var yr = this.id;
+        populate_map(yr);
+    })
+
+}
+
+</script>

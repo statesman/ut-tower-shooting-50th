@@ -19,6 +19,9 @@
     "Slides": "nathansearles/Slides#SlidesJS-3",
     "scrollmagic": "^2.0.5",
     "underscore": "^1.8.3",
-    "imagesloaded": "^4.1.0"
+    "imagesloaded": "^4.1.0",
+    "d3": "^3.5.17",
+    "topojson": "^1.6.26",
+    "d3-queue": "^2.0.3"
   }
 }
