@@ -36,7 +36,7 @@ div.dollar {
 
 .timeline {
     margin-top: 30px;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid #eee;
 }
 
 .bottomline {
@@ -46,14 +46,19 @@ div.dollar {
 
 .timeline-bar {
     display: inline-block;
-    background: #bbb;
+    background: #ddd;
     cursor: pointer;
     margin-bottom:-8px;
     border-left: 1px solid #fff;
 }
 
-.centered {
-    text-align:center;
+.player-button {
+    cursor: pointer;
+}
+
+.player-controls {
+    background: #eee;
+    padding:7px;
 }
 
 .bold {
@@ -69,23 +74,25 @@ div.dollar {
 }
 
 .land {
-  fill: #000;
-  stroke: #fff;
+  fill: #eee;
+  stroke: #bbb;
 }
 
 .dot {
-    fill: #c6d3e2;
+    fill: red;
     cursor: pointer;
-    stroke: #000;
+    stroke: #bbb;
 }
 
+.dot:hover,
 .highlighted {
-    fill: red;
+    stroke: #000;
+    stroke-width: 2px;
 }
 
 .state-boundary {
   fill: none;
-  stroke: #aaa;
+  stroke: #bbb;
   stroke-linejoin: round;
   stroke-linecap: round;
 }
@@ -96,15 +103,19 @@ div.dollar {
     font-weight: bold;
     margin-bottom:0;
     @media (min-width: @screen-sm) {
-        margin-top:100px;
+        margin-top:50px;
     }
 }
 
-.victim-deets {
+.gray-text {
     font-family: @font-family-sans-serif;
     color: @gray;
     font-size: 0.9em;
-    padding-left:0;
+}
+
+.thumbs {
+    display: inline-block;
+    margin: 30px;
 }
 
 .detail-summary {

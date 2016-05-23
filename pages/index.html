@@ -4,6 +4,7 @@
   "description": "Fifty years after Charles Whitman's shooting spree ...",
   "keywords": "Austin, Austin news,",
   "thumbnail": "assets/share.png",
+  "docs": true,
   "indexteaseMain": {
     "title": "",
     "storyUrl": "page1.html",
@@ -52,7 +53,44 @@
       "name": "Headline",
       "url": "#"
     }]
-  }
+  },
+  "documents": [
+    {
+        "date": "Aug. 1, 1966",
+        "id1": "2841372",
+        "id2": "Statesman-tower-coverage-Aug-1-1966"
+    },
+    {
+        "date": "Aug. 2, 1966",
+        "id1": "2841373",
+        "id2": "Statesman-tower-coverage-Aug-2-1966"
+    },
+    {
+        "date": "Aug. 3, 1966",
+        "id1": "2841374",
+        "id2": "Statesman-tower-coverage-Aug-3-1966"
+    },
+    {
+        "date": "Aug. 4, 1966",
+        "id1": "2841375",
+        "id2": "Statesman-tower-coverage-Aug-4-1966"
+    },
+    {
+        "date": "Aug. 5, 1966",
+        "id1": "2841376",
+        "id2": "Statesman-tower-coverage-Aug-5-1966"
+    },
+    {
+        "date": "Aug. 6, 1966",
+        "id1": "2841377",
+        "id2": "Statesman-tower-coverage-Aug-6-1966"
+    },
+    {
+        "date": "Aug. 7, 1966",
+        "id1": "2841378",
+        "id2": "Statesman-tower-coverage-Aug-7-1966"
+    }
+  ]
 }
 ---
 
@@ -60,8 +98,8 @@
     <div class="dollar">
         <h1>A new kind of madness</h1>
         <h2>The UT Tower mass shooting, 50 years later</h2>
-        <img src="/assets/whitman-dollar-top.jpg" class="dollar-strip" />
-        <img src="/assets/whitman-dollar-side.jpg" class="dollar-strip" />
+        <img src="/assets/whitman-dollar-top.jpg" class="dollar-strip" /><br>
+        <img src="/assets/whitman-dollar-side.jpg" class="dollar-strip" style="height:25px;" /><br>
         <img src="/assets/whitman-dollar-bottom.jpg" class="dollar-strip" />
         <p>A couple of sentences here about this whole shebang</p>
         <p>A couple of sentences here about this whole shebang</p>
@@ -89,5 +127,24 @@
             {{> related-list page.editorial}}
           </div>
         </div>
+
+        <div class="row">
+          <div class="col-sm-12">
+              <h2>Statesman coverage: The first week</h2>
+              <p>PDF XXXXXX</p>
+      {{#each page.documents}}
+          <div class="thumbs gray-text text-center">
+          <a href="https://www.documentcloud.org/documents/{{id1}}-{{id2}}.html" target="_blank">
+            <img src="https://assets.documentcloud.org/documents/{{id1}}/pages/{{id2}}-p1-thumbnail.gif" style="border: 1px solid #ccc;" />
+          </a>
+            <p>
+              {{date}}
+          </p>
+          </div>
+      {{/each}}
+
+          </div>
+        </div>
+
   </div>
 </div>

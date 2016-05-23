@@ -1,6 +1,5 @@
 <script>
 // set up underscore template
-_.templateSettings.variable = "template_data";
 var sidebar_template = _.template($("#details_template").html());
 
 // helper function to sum a list of numbers
@@ -8,10 +7,19 @@ var sum = function(ls) {
     return _.reduce(ls, function(memo, num){ return memo + num; }, 0);
 };
 
+// helper function to add intcommas
+// http://stackoverflow.com/a/2901298
+var intComma = function(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+};
+
 // cache DOM elements
 var $victim_total = $('#victim_total');
 var $timeline = $('#timeline');
 var $details = $('#details');
+var $playpause = $("#player-play-pause-button");
+var $previous = $("#player-previous-button");
+var $next = $("#player-next-button");
 var el = d3.select('#map');
 
 // set the aspect ratio for the map
@@ -43,6 +51,9 @@ d3_queue.queue()
     .defer(d3.tsv, '/data/shooting-data.tsv')
 .await(ready);
 
+// set default text for map when nothing is clicked on
+var default_text = "<h3 class='detail-hed'>Click on the bubbles to show details about each mass shooting.</h3>";
+
 // main function to draw the map
 function ready(error, us, csv) {
 
@@ -66,7 +77,11 @@ function ready(error, us, csv) {
 
     // populate the placeholder elements
     $("#incident_count").html(csv.length);
-    $("#fatality_count").html(get_victim_total(csv));
+    $("#fatality_count").html(
+        intComma(get_victim_total(csv))
+    );
+
+    $details.html(default_text);
 
     // draw the U.S. shape
     svg.insert('path', '.graticule')
@@ -80,11 +95,12 @@ function ready(error, us, csv) {
         .attr('class', 'state-boundary')
         .attr('d', path);
 
-    // do up the timeline
+    // do up 'at timeline
     var uniq_years = _.uniq(
         _.pluck(csv, "year")
     );
 
+    // get min/max years
     var min_year = _.min(uniq_years);
     var max_year = _.max(uniq_years);
 
@@ -125,13 +141,13 @@ function ready(error, us, csv) {
     var $bars = $(".timeline-bar");
 
     // set the bubble size scale
-    // scale * variable = radius in px
+    // scale (radius in px) = width / variable
     var scale = width / 1000;
 
     // function to draw bubbles
     function populate_map(year) {
-        $details.html('');
-        $bars.css("background", "#ddd");
+        $details.html(default_text);
+        $bars.css("background", "#eee");
         $("#" + year).css("background", "red");
 
         var incidents_this_year = _.filter(csv, function(d) {
@@ -166,6 +182,13 @@ function ready(error, us, csv) {
             });
     }
 
+    $playpause.on('click', function(d) {
+        var playing = $(this).find("i").hasClass("fa-play");
+        if (playing) {
+            // handle here
+        }
+    });
+
     // handle resize
     d3.select(window)
         .on("resize", _.debounce(resize, 500));
@@ -175,7 +198,7 @@ function ready(error, us, csv) {
         var height = width / aspect;
 
         // set the bubble size scale
-        // scale * variable = radius in px
+        // scale (radius in px) = width / variable
         var scale = width / 1000;
 
         svg

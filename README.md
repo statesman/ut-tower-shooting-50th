@@ -6,7 +6,7 @@ UT tower shooting 50th anniversary package using our immersive template.
 * Map (PNG or JS) of the tower/surroundings
 * Video interviews with survivors
 * Drone video?
-* PDFs: Archival coverage (maybe do [tearsheet-y images teasing to actual files](http://i.imgur.com/vxzdG21.png))
+* PDFs: The first week of coverage (have in DC, collected ID data to generate URLs, etc.)
 * Story text, or links to stories
 * Photos of survivors, case files, cop armament then and now
 * Tweet stream from new Twitter account

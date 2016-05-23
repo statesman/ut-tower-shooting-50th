@@ -15,7 +15,7 @@
       <h2>And a related subhed that's a little chatty and almost a little summary-like ... it could even be the length of a long sentence.</h2>
       <p class="author">By Cody Winchester / Published {{ page.publish-date }}</p>
 
-      <p class="lead">Intro text here. The data, <a href="http://www.motherjones.com/politics/2012/12/mass-shootings-mother-jones-full-data" target="_blank">from Mother Jones</a>, include public shootings from 1982-2016 in which four or more victims were killed &mdash; <span id="incident_count" style="font-family: inherit; font-weight: inherit;"></span> in all, and <span id="fatality_count" style="font-family: inherit; font-weight: inherit;"></span> victims dead. We also added five earlier incidents that fit these criteria, including the UT Tower shooting, using <a href="https://library.stanford.edu/projects/mass-shootings-america" target="_blank">data from Stanford University</a>.</p>
+      <p class="lead">Intro text here. The data, <a href="http://www.motherjones.com/politics/2012/12/mass-shootings-mother-jones-full-data" target="_blank">from Mother Jones</a>, include public shootings from 1982-2016 in which four or more victims were killed &mdash; <span id="incident_count" style="font-family: inherit; font-weight: inherit;"></span> incidents in all, <span id="fatality_count" style="font-family: inherit; font-weight: inherit;"></span> victims. We also added five earlier incidents that fit these criteria, including the UT Tower shooting, using <a href="https://library.stanford.edu/projects/mass-shootings-america" target="_blank">data from Stanford University</a>.</p>
       <p class="lead">Click on XXXXXX</p>
   </article>
 
@@ -24,10 +24,23 @@
       <div class="clearfix"></div>
       <div class="row">
           <div class="col-sm-9">
-              <h2 id="victim_total" class="victim_hed centered"></h2>
+              <h2 id="victim_total" class="victim_hed text-center"></h2>
               <div id="map"></div>
           </div>
           <div class="col-sm-3">
+              <div id="player" class="text-center">
+                  <h3 class="player-controls">
+                      <span id="player-previous-button" class="pull-left">
+                          <i class="fa fa-arrow-left player-button"></i>
+                      </span>
+                      <span id="player-play-pause-button">
+                          <i class="fa fa-play player-button"></i>
+                      </span>
+                      <span id="player-next-button" class="pull-right">
+                          <i class="fa fa-arrow-right player-button"></i>
+                      </span>
+                  </h3>
+              </div>
               <div id="details"></div>
           </div>
       </div>
@@ -36,7 +49,7 @@
 
 <script type="text/html" id="details_template">
         <h3 class="detail-hed"><%= template_data.city %>, <%= template_data.state %>: <% if (+template_data.fatalities > 0) { %><%= template_data.fatalities %> dead<% }; %><% if (+template_data.fatalities > 0 && +template_data.wounded > 0) { %>, <% }; %><% if (+template_data.wounded > 0) { %><%= template_data.wounded %> wounded<% }; %></h3>
-        <p class="victim-deets">
+        <p class="gray-text">
                 <%= template_data.date %>
         </p>
         <p class="detail-summary"><%= template_data.description %></p>
