@@ -265,7 +265,10 @@ var a=[].slice.call(arguments,2);return f(function(){c instanceof Function?c.app
         // helper function to clear timer
         var clear_timer = function() {
             clearTimeout(timer);
-            $playpause.find("i").removeClass("fa-pause").addClass("fa-play");
+            $playpause.find("i")
+                .removeClass("fa-pause")
+                .addClass("fa-play")
+                .attr("data-original-title", "Play");
         }
 
         // helper functions to get current/next/previous years
@@ -304,8 +307,11 @@ var a=[].slice.call(arguments,2);return f(function(){c instanceof Function?c.app
             var play_icon = $(this).find("i").hasClass("fa-play");
             var starting_year = get_current_year();
             if (play_icon) {
-                // swap out icon
-                $(this).find("i").removeClass("fa-play").addClass("fa-pause");
+                // swap out icon/tooltip
+                $(this).find("i")
+                    .removeClass("fa-play")
+                    .addClass("fa-pause")
+                    .attr("data-original-title", "Pause");
 
                 // start playing
                 cycle_through_data(starting_year);
@@ -328,8 +334,24 @@ var a=[].slice.call(arguments,2);return f(function(){c instanceof Function?c.app
             populate_map(next);
         });
 
-        // set initial view
-        populate_map(max_year);
+        $(document).ready(function() {
+            // set initial view
+            populate_map(max_year);
+            // set up left/right arrow events
+            this.onkeydown = function(e) {
+                e = e || window.event;
+                if (+e.which === 37) {
+                    clear_timer();
+                    var previous = get_previous_year();
+                    populate_map(previous);
+                } else if (+e.which === 39) {
+                    clear_timer();
+                    var next = get_next_year();
+                    populate_map(next);
+                }
+            }
+        });
+
 
     } // end ready function
 })(jQuery, _);

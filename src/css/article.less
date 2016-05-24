@@ -1,20 +1,9 @@
-article {
-  > * {
-    @media (max-width: @screen-xs-max) {
-      margin-left: 12px;
-      margin-right: 12px;
-    }
-    @media (min-width: @screen-sm-min) {
-      margin-left: 10%;
-      width: 60%;
-    }
-  }
-
   blockquote {
     margin-top: @line-height-computed;
     margin-bottom: @line-height-computed;
     padding-top: @line-height-computed / 2;
     padding-bottom: @line-height-computed / 2;
+    line-height: 1.3em;
     i.fa {
       color: @gray-light;
       font-size: 13px;
@@ -26,6 +15,18 @@ article {
       &.fa-quote-right {
         margin-left: 8px;
       }
+    }
+  }
+
+article {
+  > * {
+    @media (max-width: @screen-xs-max) {
+      margin-left: 12px;
+      margin-right: 12px;
+    }
+    @media (min-width: @screen-sm-min) {
+      margin-left: 10%;
+      width: 60%;
     }
   }
 
