@@ -75,9 +75,7 @@ module.exports = function(grunt) {
             'bower_components/d3/d3.js',
             'bower_components/d3-queue/d3-queue.js',
             'bower_components/topojson/topojson.js',
-            'bower_components/imagesloaded/imagesloaded.pkgd.js',
-            'bower_components/Slides/source/jquery.slides.js',
-            'src/js/slider.js',
+            'bower_components/bootstrap/js/tooltip.js',
             'src/js/main.js'
           ]
         }

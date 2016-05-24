@@ -8,6 +8,7 @@ var a=[].slice.call(arguments,2);return f(function(){c instanceof Function?c.app
 </script><![endif]-->
 <script>
 (function($, _) {
+
     // set up underscore template
     var sidebar_template = _.template($("#details_template").html());
 
@@ -248,11 +249,12 @@ var a=[].slice.call(arguments,2);return f(function(){c instanceof Function?c.app
         var timer;
 
         var cycle_through_data = function(current_year) {
-            clearTimeout(timer);
+            current_year = +current_year;
+            populate_map(current_year);
             timer = window.setTimeout(function() {
                 populate_map(current_year);
                 if (current_year < max_year) {
-                    current_year++;
+                    current_year += 1;
                     cycle_through_data(current_year);
                 } else {
                     cycle_through_data(min_year);
@@ -308,6 +310,7 @@ var a=[].slice.call(arguments,2);return f(function(){c instanceof Function?c.app
                 // start playing
                 cycle_through_data(starting_year);
             } else {
+                // clear the timer
                 clear_timer();
             }
         });

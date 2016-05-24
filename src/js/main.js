@@ -9,3 +9,6 @@ var pluralize = function(num) {
         return ["s", "each"];
     }
 };
+
+// trigger tooltips
+$('[data-toggle="tooltip"]').tooltip();
