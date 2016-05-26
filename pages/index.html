@@ -39,7 +39,7 @@
         "img": "wilson-mug.jpg",
         "graphic": "wilson-graphic.jpg",
         "video-excerpt": {
-          "ytsrc": "https://www.youtube.com/embed/NA9DIIsPk5c"
+          "ytsrc": "https://www.youtube.com/embed/BkWy6AbO4EY"
         },
         "linkls": {
             "links": [
@@ -70,7 +70,91 @@
                 }
             ]
         }
+    },
+{
+    "name": "Claire Wilson",
+    "video_link": "",
+    "summary": "This is a couple of sentences of summary about Claire Wilson. This is a couple of sentences of summary about Claire Wilson. This is a couple of sentences of summary about Claire Wilson.",
+    "pullquote": {
+        "text": "I think there's got to be a better way than having guns on campus to address the issues we have as a society."
+    },
+    "img": "wilson-mug.jpg",
+    "graphic": "wilson-graphic.jpg",
+    "video-excerpt": {
+      "ytsrc": "https://www.youtube.com/embed/NA9DIIsPk5c"
+    },
+    "linkls": {
+        "links": [
+            {
+                "name": "Texas Monthly: The Reckoning",
+                "url": "http://features.texasmonthly.com/editorial/the-reckoning/",
+                "date": "2016-03-01"
+            },
+            {
+                "name": "Whitman survivor warns against more guns in schools",
+                "url": "http://www.mystatesman.com/news/news/whitman-survivor-warns-against-more-guns-in-school/nWqP4/",
+                "date": "2013-03-12"
+            },
+            {
+                "name": "UT remembers 1966 tower shooting victims",
+                "url": "http://www.mystatesman.com/news/news/local/ut-remembers-1966-tower-shooting-victims/ngsgk/",
+                "date": "2014-08-01"
+            },
+            {
+                "name": "Washington museum to display UT Tower sniper Charles Whitman's rifle",
+                "url": "http://www.mystatesman.com/news/news/washington-museum-to-display-ut-tower-sniper-charl/njRzC/",
+                "date": "2014-12-13"
+            },
+            {
+                "name": "Open carry, campus carry bills advance to Texas Senate",
+                "url": "http://www.mystatesman.com/news/news/open-carry-campus-carry-bills-advance-to-texas-sen/nj9nd/",
+                "date": "2015-02-12"
+            }
+        ]
     }
+},
+{
+    "name": "Claire Wilson",
+    "video_link": "",
+    "summary": "This is a couple of sentences of summary about Claire Wilson. This is a couple of sentences of summary about Claire Wilson. This is a couple of sentences of summary about Claire Wilson.",
+    "pullquote": {
+        "text": "I think there's got to be a better way than having guns on campus to address the issues we have as a society."
+    },
+    "img": "wilson-mug.jpg",
+    "graphic": "wilson-graphic.jpg",
+    "video-excerpt": {
+      "ytsrc": "https://www.youtube.com/embed/EgNgvCLRqWc?list=PL1x1z5LTzxlX9Uyqz1j5B7AkgNdU-47V2"
+    },
+    "linkls": {
+        "links": [
+            {
+                "name": "Texas Monthly: The Reckoning",
+                "url": "http://features.texasmonthly.com/editorial/the-reckoning/",
+                "date": "2016-03-01"
+            },
+            {
+                "name": "Whitman survivor warns against more guns in schools",
+                "url": "http://www.mystatesman.com/news/news/whitman-survivor-warns-against-more-guns-in-school/nWqP4/",
+                "date": "2013-03-12"
+            },
+            {
+                "name": "UT remembers 1966 tower shooting victims",
+                "url": "http://www.mystatesman.com/news/news/local/ut-remembers-1966-tower-shooting-victims/ngsgk/",
+                "date": "2014-08-01"
+            },
+            {
+                "name": "Washington museum to display UT Tower sniper Charles Whitman's rifle",
+                "url": "http://www.mystatesman.com/news/news/washington-museum-to-display-ut-tower-sniper-charl/njRzC/",
+                "date": "2014-12-13"
+            },
+            {
+                "name": "Open carry, campus carry bills advance to Texas Senate",
+                "url": "http://www.mystatesman.com/news/news/open-carry-campus-carry-bills-advance-to-texas-sen/nj9nd/",
+                "date": "2015-02-12"
+            }
+        ]
+    }
+}
   ],
   "editorial": {
     "title": "Follow-up stories",
@@ -90,7 +174,7 @@
 }
 ---
 
-<div class="container">
+<div class="container front">
     <div class="dollar">
         <h1>A new kind of madness</h1>
         <h2>The UT Tower mass shooting, 50 years later</h2>
@@ -119,41 +203,45 @@
         </div>
 
         <div class="row">
-          <div class="col-sm-12">
+          <div class="col-xs-12">
             {{> related-list page.editorial}}
           </div>
         </div>
 
+        <div class="row">
+            <div class="col-xs-12">
+                <h1>The people</h1>
+                <p class="lead">
+                    Some sort of intro here to explain why we have baseball cards of Whitman victims here.
+                </p>
+            </div>
+        </div>
+
+            <div class="row">
             {{#each page.people}}
-            <div class="row person-card">
               <div class="col-sm-4">
-                <img src="assets/img/{{img}}" style="border: 1px solid #ccc;" />
+                  <div class="person-card">
+                      <h3 class="bold">{{ name }}</h3>
+                <img src="assets/img/{{img}}" />
                 {{#if pullquote}}
                     {{> blockquote pullquote}}
                 {{/if}}
-              </div>
-            <div class="col-sm-8">
-            <h2 style="font-size:2.5em; margin-top:0;">{{ name }}</h2>
-                <p class="lead">{{summary}}</p>
+                <p>{{summary}}</p>
+                {{#if video-excerpt}}
                 <hr>
-                <div class="row">
-                    <div class="col-sm-6">
-                        {{#if video-excerpt}}
-                        {{> video-block-youtube video-excerpt }}
-                        {{/if}}
-                    </div>
-                    <div class="col-sm-6">
+                {{> video-block-youtube video-excerpt }}
+                {{/if}}
+
                     {{#if linkls}}
+                <hr>
                         {{> linklist linkls }}
                     {{/if}}
                     {{#if graphic}}
                     <img src="assets/img/{{graphic}}" style="margin-top:20px;" />
                     {{/if}}
-                    </div>
                 </div>
             </div>
-            {{#unless @last}}<hr>{{/unless}}
-            </div>
             {{/each}}
+        </div> <!-- row -->
   </div>
 </div>
