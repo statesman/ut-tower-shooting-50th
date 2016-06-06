@@ -76,6 +76,10 @@ module.exports = function(grunt) {
             'bower_components/d3-queue/d3-queue.js',
             'bower_components/topojson/topojson.js',
             'bower_components/bootstrap/js/tooltip.js',
+            'bower_components/imagesloaded/imagesloaded.pkgd.js',
+            'bower_components/masonry/dist/masonry.pkgd.js',
+            'bower_components/Slides/source/jquery.slides.js',
+            'src/js/slider.js',
             'src/js/main.js'
           ]
         }
@@ -141,7 +145,7 @@ module.exports = function(grunt) {
             {
               title: "Introduction",
               subtitle: "A new kind of madness",
-              file: "index",
+              file: "index"
             },
             {
               title: "Mass shootings",
@@ -151,7 +155,7 @@ module.exports = function(grunt) {
             {
               title: "Coverage and documents",
               subtitle: "Browse the archives",
-              file: "page2"
+              file: "archives"
             }
           ]
         }

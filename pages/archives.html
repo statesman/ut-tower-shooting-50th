@@ -1,0 +1,90 @@
+{
+  "template" : "story",
+  "title": "Archival documents and Statesman coverage",
+  "description": "Description here ...",
+  "thumbnail": "assets/thumbnail.jpg",
+    "slider": {
+      "images": [{
+        "url": "http://projects.statesman.com/news/va-center-of-excellence/images/gallery03.jpg",
+        "caption": "newspapers that you'll never read Frontline copyright dingbat CPC, media bias The Weekender WordPress SEO mathewi the notion of the.",
+        "credit": "Photographer / Statesman"
+      }, {
+        "url": "http://projects.statesman.com/news/va-center-of-excellence/images/gallery02.jpg",
+        "caption": "newspapers that you'll never read Frontline copyright dingbat CPC, media bias The Weekender WordPress SEO mathewi the notion of the.",
+        "credit": "Photographer / Statesman"
+      }, {
+        "url": "http://projects.statesman.com/news/va-center-of-excellence/images/gallery04.jpg",
+        "caption": "newspapers that you'll never read Frontline copyright dingbat CPC, media bias The Weekender WordPress SEO mathewi the notion of the.",
+        "credit": "Photographer / Statesman"
+      }]
+    },
+  "documents": [
+    {
+        "date": "Aug. 1, 1966",
+        "id1": "2841372",
+        "id2": "Statesman-tower-coverage-Aug-1-1966"
+    },
+    {
+        "date": "Aug. 2, 1966",
+        "id1": "2841373",
+        "id2": "Statesman-tower-coverage-Aug-2-1966"
+    },
+    {
+        "date": "Aug. 3, 1966",
+        "id1": "2841374",
+        "id2": "Statesman-tower-coverage-Aug-3-1966"
+    },
+    {
+        "date": "Aug. 4, 1966",
+        "id1": "2841375",
+        "id2": "Statesman-tower-coverage-Aug-4-1966"
+    },
+    {
+        "date": "Aug. 5, 1966",
+        "id1": "2841376",
+        "id2": "Statesman-tower-coverage-Aug-5-1966"
+    },
+    {
+        "date": "Aug. 6, 1966",
+        "id1": "2841377",
+        "id2": "Statesman-tower-coverage-Aug-6-1966"
+    },
+    {
+        "date": "Aug. 7, 1966",
+        "id1": "2841378",
+        "id2": "Statesman-tower-coverage-Aug-7-1966"
+    }
+  ]
+
+}
+---
+
+<div class="container">
+  <div class="row">
+    <article id="main" class="col-xs-12">
+      <h6>Project overline</h6>
+      <h1>Archives and coverage</h1>
+      <h2>And a related subhed that's a little chatty and almost a little summary-like ... it could even be the length of a long sentence.</h2>
+
+      {{> slider page.slider}}
+
+      <hr>
+
+      <h3>Statesman coverage: The first week</h3>
+
+      <div style="margin-left:10%;">
+      {{#each page.documents}}
+      <div class="page-thumbs gray-text">
+      <a href="https://www.documentcloud.org/documents/{{id1}}-{{id2}}.html" target="_blank">
+        <img src="https://assets.documentcloud.org/documents/{{id1}}/pages/{{id2}}-p1-thumbnail.gif" style="border: 1px solid #ccc;" />
+      </a>
+        <p>
+          {{date}}
+      </p>
+      </div>
+      {{/each}}
+    </div>
+
+    </article>
+  </div>
+</div>

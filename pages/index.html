@@ -30,6 +30,7 @@
   },
   "people": [
     {
+        "id": 0,
         "name": "Claire Wilson",
         "video_link": "",
         "summary": "This is a couple of sentences of summary about Claire Wilson. This is a couple of sentences of summary about Claire Wilson. This is a couple of sentences of summary about Claire Wilson.",
@@ -72,6 +73,7 @@
         }
     },
 {
+    "id": 1,
     "name": "Claire Wilson",
     "video_link": "",
     "summary": "This is a couple of sentences of summary about Claire Wilson. This is a couple of sentences of summary about Claire Wilson. This is a couple of sentences of summary about Claire Wilson.",
@@ -114,6 +116,7 @@
     }
 },
 {
+    "id": 2,
     "name": "Claire Wilson",
     "video_link": "",
     "summary": "This is a couple of sentences of summary about Claire Wilson. This is a couple of sentences of summary about Claire Wilson. This is a couple of sentences of summary about Claire Wilson.",
@@ -121,7 +124,6 @@
         "text": "I think there's got to be a better way than having guns on campus to address the issues we have as a society."
     },
     "img": "wilson-mug.jpg",
-    "graphic": "wilson-graphic.jpg",
     "video-excerpt": {
       "ytsrc": "https://www.youtube.com/embed/EgNgvCLRqWc?list=PL1x1z5LTzxlX9Uyqz1j5B7AkgNdU-47V2"
     },
@@ -181,12 +183,39 @@
         <img src="/assets/img/whitman-dollar-top.jpg" class="dollar-strip" /><br>
         <img src="/assets/img/whitman-dollar-side.jpg" class="dollar-strip" style="height:25px;" /><br>
         <img src="/assets/img/whitman-dollar-bottom.jpg" class="dollar-strip" />
-        <p class="lead">A couple of sentences here about this whole shebang</p>
     </div>
+        <h2 style="font-style:normal;">On Aug. XX, 1966, former Marine sniper Charles Whitman climbed to the top of the University of Texas clock tower XXXXXXXXXXXXX.</h2>
 
   <div class="row">
     <div id="main" class="col-xs-12" style="padding:0; margin-bottom:30px;">
-      {{> video-full-youtube page.videoOverview}}
+
+
+<!--
+<div class="photo-full">
+  <div class="embed-responsive embed-responsive-16by9">
+        <script language="JavaScript" type="text/javascript" src="http://admin.brightcove.com/js/BrightcoveExperiences.js"></script>
+    <object id="myExperience{{bctid}}" class="BrightcoveExperience embed-responsive-item">
+      <param name="bgcolor" value="#FFFFFF" />
+      <param name="width" value="750" />
+      <param name="height" value="422" />
+      <param name="playerID" value="1067654413001" />
+      <param name="playerKey" value="AQ~~,AAAAp3TkzFE~,BASnqz4S5QTR3PAfsJpMtO0ha9pg4IjB" />
+      <param name="isVid" value="true" />
+      <param name="isUI" value="true" />
+      <param name="dynamicStreaming" value="true" />
+      <param name="@videoPlayer" value="4928606196001" />
+      <param name="includeAPI" value="true" />
+      <param name="templateLoadHandler" value="analytics.bcoveAddPlayer" />
+      <param name="templateReadyHandler" value="analytics.bcovePlayerReady" />
+    </object>
+    <script type="text/javascript">brightcove.createExperiences();</script>
+  </div>
+</div>-->
+
+
+
+
+
     </div>
     </div>
 
@@ -217,27 +246,23 @@
             </div>
         </div>
 
-            <div class="row">
+            <div class="row grid">
             {{#each page.people}}
-              <div class="col-sm-4">
+            <div class="col-xs-12 col-sm-6 col-md-4 grid-item" id="card-{{id}}">
                   <div class="person-card">
-                      <h3 class="bold">{{ name }}</h3>
+                      <h2 class="bold" style="margin-top:0;">{{ name }}</h2>
                 <img src="assets/img/{{img}}" />
                 {{#if pullquote}}
                     {{> blockquote pullquote}}
                 {{/if}}
                 <p>{{summary}}</p>
                 {{#if video-excerpt}}
-                <hr>
                 {{> video-block-youtube video-excerpt }}
                 {{/if}}
 
                     {{#if linkls}}
-                <hr>
+                    <br>
                         {{> linklist linkls }}
-                    {{/if}}
-                    {{#if graphic}}
-                    <img src="assets/img/{{graphic}}" style="margin-top:20px;" />
                     {{/if}}
                 </div>
             </div>

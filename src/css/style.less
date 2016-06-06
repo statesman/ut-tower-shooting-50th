@@ -57,8 +57,8 @@ div.dollar {
 }
 
 .timeline-bar-active {
-    background: red;
-    border-bottom:1px solid red;
+    background: @brand-primary;
+    border-bottom:1px solid @brand-primary;
 }
 
 .player-button {
@@ -93,7 +93,7 @@ div.dollar {
 }
 
 .dot {
-    fill: red;
+    fill: @brand-primary;
     cursor: pointer;
     stroke: #bbb;
 }
@@ -127,9 +127,10 @@ div.dollar {
     font-size: 0.9em;
 }
 
-.thumbs {
+.page-thumbs {
+    width: auto;
     display: inline-block;
-    margin: 30px;
+    margin: auto 40px 30px auto;
 }
 
 .tooltip {
@@ -146,7 +147,12 @@ div.dollar {
     }
 }
 
+.grid-item {
+    padding:0;
+}
+
 .person-card {
     padding: 20px;
-    background: #f7f7f7;
+    border: 1px solid #ccc;
+    margin:10px;
 }
