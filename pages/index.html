@@ -25,8 +25,8 @@
     "headline": "3rd headline",
     "text": "Third readout."
   },
-  "videoOverview": {
-    "ytsrc": "https://www.youtube.com/embed/MKtP57U0nnM"
+  "videoPlaylist": {
+    "brightcove_playlist_id": "4928606196001"
   },
   "people": [
     {
@@ -180,42 +180,17 @@
     <div class="dollar">
         <h1>A new kind of madness</h1>
         <h2>The UT Tower mass shooting, 50 years later</h2>
-        <img src="/assets/img/whitman-dollar-top.jpg" class="dollar-strip" /><br>
-        <img src="/assets/img/whitman-dollar-side.jpg" class="dollar-strip" style="height:25px;" /><br>
-        <img src="/assets/img/whitman-dollar-bottom.jpg" class="dollar-strip" />
+        <div class="hidden-xs">
+            <img src="/assets/img/whitman-dollar-top.jpg" class="dollar-strip" /><br>
+            <img src="/assets/img/whitman-dollar-side.jpg" class="dollar-strip" style="height:25px;" /><br>
+            <img src="/assets/img/whitman-dollar-bottom.jpg" class="dollar-strip" />
+        </div>
     </div>
         <h2 style="font-style:normal;">On Aug. XX, 1966, former Marine sniper Charles Whitman climbed to the top of the University of Texas clock tower XXXXXXXXXXXXX.</h2>
 
   <div class="row">
     <div id="main" class="col-xs-12" style="padding:0; margin-bottom:30px;">
-
-
-<!--
-<div class="photo-full">
-  <div class="embed-responsive embed-responsive-16by9">
-        <script language="JavaScript" type="text/javascript" src="http://admin.brightcove.com/js/BrightcoveExperiences.js"></script>
-    <object id="myExperience{{bctid}}" class="BrightcoveExperience embed-responsive-item">
-      <param name="bgcolor" value="#FFFFFF" />
-      <param name="width" value="750" />
-      <param name="height" value="422" />
-      <param name="playerID" value="1067654413001" />
-      <param name="playerKey" value="AQ~~,AAAAp3TkzFE~,BASnqz4S5QTR3PAfsJpMtO0ha9pg4IjB" />
-      <param name="isVid" value="true" />
-      <param name="isUI" value="true" />
-      <param name="dynamicStreaming" value="true" />
-      <param name="@videoPlayer" value="4928606196001" />
-      <param name="includeAPI" value="true" />
-      <param name="templateLoadHandler" value="analytics.bcoveAddPlayer" />
-      <param name="templateReadyHandler" value="analytics.bcovePlayerReady" />
-    </object>
-    <script type="text/javascript">brightcove.createExperiences();</script>
-  </div>
-</div>-->
-
-
-
-
-
+        {{> video-full-brightcove-html5 page.videoPlaylist}}
     </div>
     </div>
 
