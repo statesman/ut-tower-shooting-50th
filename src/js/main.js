@@ -21,6 +21,11 @@ $('.slider').each(function(i, el) {
     });
 });
 
+// set up videos
+$('.video-player').each(function(i, el) {
+    new VideoPlayer(el);
+});
+
 try {
     // do up masonry
     var $grid = $('.grid').masonry({

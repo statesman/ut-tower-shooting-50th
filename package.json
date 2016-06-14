@@ -23,5 +23,7 @@
     "marked": "^0.3.2",
     "underscore": "^1.7.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "jplayer": "^2.9.2"
+  }
 }

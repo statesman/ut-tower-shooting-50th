@@ -124,8 +124,8 @@
         "text": "I think there's got to be a better way than having guns on campus to address the issues we have as a society."
     },
     "img": "wilson-mug.jpg",
-    "video-excerpt": {
-      "ytsrc": "https://www.youtube.com/embed/EgNgvCLRqWc?list=PL1x1z5LTzxlX9Uyqz1j5B7AkgNdU-47V2"
+    "video": {
+        "id": 2
     },
     "linkls": {
         "links": [
@@ -196,14 +196,15 @@
 
         <div class="row">
           <div class="col-sm-4">
-            {{> indextease page.indexteaseMain}}
-          </div>
-          <div class="col-sm-4">
-            {{> indextease page.indexteaseProsecutor}}
+            {{> indextease page.indexteaseHistory}}
           </div>
           <div class="col-sm-4">
             {{> indextease page.indexteaseHistory}}
           </div>
+          <div class="col-sm-4">
+            {{> indextease page.indexteaseHistory}}
+          </div>
+
         </div>
 
         <div class="row">
@@ -231,8 +232,8 @@
                     {{> blockquote pullquote}}
                 {{/if}}
                 <p>{{summary}}</p>
-                {{#if video-excerpt}}
-                {{> video-block-youtube video-excerpt }}
+                {{#if video}}
+                {{> bespoke-video-player video }}
                 {{/if}}
 
                     {{#if linkls}}

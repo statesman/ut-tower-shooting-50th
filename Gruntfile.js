@@ -24,6 +24,14 @@ module.exports = function(grunt) {
         dest: 'public/fonts/',
         flatten: true,
         expand: true
+      },
+        jplayer: {
+        src: [
+          'node_modules/jplayer/dist/jplayer/jquery.jplayer.swf',
+        ],
+        dest: 'public/dist/',
+        flatten: true,
+        expand: true
       }
     },
 
@@ -76,10 +84,13 @@ module.exports = function(grunt) {
             'bower_components/d3-queue/d3-queue.js',
             'bower_components/topojson/topojson.js',
             'bower_components/bootstrap/js/tooltip.js',
+            'bower_components/bootstrap/js/modal.js',
             'bower_components/imagesloaded/imagesloaded.pkgd.js',
             'bower_components/masonry/dist/masonry.pkgd.js',
             'bower_components/Slides/source/jquery.slides.js',
+            'node_modules/jplayer/dist/jplayer/jquery.jplayer.js',
             'src/js/slider.js',
+            'src/js/video.js',
             'src/js/main.js'
           ]
         }
