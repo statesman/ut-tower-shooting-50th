@@ -125,7 +125,8 @@
     },
     "img": "wilson-mug.jpg",
     "video": {
-        "id": 2
+        "id": 2,
+        "modal-title": "Claire Wilson"
     },
     "linkls": {
         "links": [
@@ -180,11 +181,6 @@
     <div class="dollar">
         <h1>A new kind of madness</h1>
         <h2>The UT Tower mass shooting, 50 years later</h2>
-        <div class="hidden-xs">
-            <img src="/assets/img/whitman-dollar-top.jpg" class="dollar-strip" /><br>
-            <img src="/assets/img/whitman-dollar-side.jpg" class="dollar-strip" style="height:25px;" /><br>
-            <img src="/assets/img/whitman-dollar-bottom.jpg" class="dollar-strip" />
-        </div>
     </div>
         <h2 style="font-style:normal;">On Aug. XX, 1966, former Marine sniper Charles Whitman climbed to the top of the University of Texas clock tower XXXXXXXXXXXXX.</h2>
 
@@ -233,13 +229,13 @@
                 {{/if}}
                 <p>{{summary}}</p>
                 {{#if video}}
-                {{> bespoke-video-player video }}
+                    {{> bespoke-video-player video }}
                 {{/if}}
-
-                    {{#if linkls}}
-                    <br>
-                        {{> linklist linkls }}
-                    {{/if}}
+                {{#if linkls}}
+                    <div style="margin-top:10px;">
+                    {{> linklist linkls }}
+                    </div>
+                {{/if}}
                 </div>
             </div>
             {{/each}}
