@@ -23,7 +23,7 @@ var VideoPlayer = (function($, _) {
                         "http://www.jplayer.org/video/webm/Big_Buck_Bunny_Trailer.webm"
                     ],
                     poster: "http://www.jplayer.org/video/poster/Big_Buck_Bunny_Trailer_480x270.png",
-                    title: "Blarp blarp blarp blarp?"
+                    title: "Did it *really* hurt?"
                 }
             ],
 
@@ -238,28 +238,39 @@ var get_player_obj = function(rec) {
 
         // set player size
         size: {
-            height: "250px",
+            height: "450px",
             width: "100%"
         }
     });
 
+/*
+function goFullScreen() {
+    var width = $(window).width();
+    var height = $(window).height();
+    self.$player.find("video").appendTo("body").css({
+            position: 'absolute',
+            top: '0',
+            bottom: '0',
+            right: '0',
+            left: '0',
+            width: width,
+            height: height,
+            zIndex: 1000
+    });
+    //self.$player.find("video").addClass('video-fullscreen');
+  var el = document.documentElement;
+  var rfs = el.requestFullScreen || el.webkitRequestFullscreen || el.mozRequestFullScreen || el.msRequestFullscreen;
+  rfs.call(el);
+}
+
     // set up fullscreen function
     VideoPlayer.prototype.fullscreen = function() {
-        if (self.requestFullscreen) {
-            self.requestFullscreen();
-        }
-        else if (self.mozRequestFullScreen) {
-            self.mozRequestFullScreen();
-        }
-        else if (self.webkitRequestFullScreen) {
-            self.webkitRequestFullScreen();
-        }
-        else if (self.msRequestFullscreen) {
-            self.msRequestFullscreen();
-        }
+        //
     };
 
-    self.$fullscreen.on("click", self.fullscreen());
+    self.$fullscreen.on("click", goFullScreen);
+*/
+
 
 }; // end VideoPlayer function
 

@@ -20,14 +20,9 @@ img {
     max-width:100%;
 }
 
-div.dollar {
-    margin: 50px auto 40px auto;
+div.topmain {
+    margin-top: 50px;
     text-align:center;
-}
-
-.dollar-strip {
-    height: 30px;
-    margin-bottom:10px;
 }
 
 .navbar-expand {
@@ -39,7 +34,7 @@ div.dollar {
 }
 
 .timeline {
-    margin-top: 30px;
+    margin-top: 30px auto 50px auto;
     border-bottom: 1px solid #eee;
 }
 
@@ -161,9 +156,13 @@ div.dollar {
 }
 
 .person-card {
+    padding: 10px;
+    margin:0;
+}
+
+.person-card-inner {
     padding: 20px;
     border: 1px solid #ccc;
-    margin:10px;
 }
 
 .player-progress-wrapper {
@@ -197,9 +196,52 @@ div.dollar {
 
 .active-link {
     font-weight: bold;
-    background: #f7f7f7;
+    background: @body-bg;
 }
 
 .video-link:hover {
-    background: #f7f7f7;
+    background: @body-bg;
+}
+
+.vert {
+    height: 100px;
+    width: 50%;
+    border-right: 2px solid @body-bg;
+    position: relative;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.circle {
+	border-radius: 50%;
+    background: @body-bg;
+	width: 10px;
+	height: 10px;
+    margin-right: -6px;
+    position: absolute;
+    right:0px;
+}
+
+.circle-top {
+    top:0px;
+}
+
+.circle-bottom {
+    bottom:0px;
+}
+
+.article-hed {
+    margin-bottom:2px;
+}
+
+.article-date {
+    font-family: @font-family-sans-serif;
+}
+
+.front-section {
+    padding:50px;
+}
+
+.stripe {
+    background: #ddd;
 }
