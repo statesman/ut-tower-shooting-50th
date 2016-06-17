@@ -122,9 +122,18 @@ div.topmain {
     font-size: 0.9em;
 }
 
+.document-wrapper {
+    margin: 35px auto 0 auto;
+}
+
+.tint-wrapper {
+    background: black;
+}
+
 .page-thumbs {
     width: auto;
     display: inline-block;
+    text-align:center;
     margin: auto 40px 30px auto;
 }
 
@@ -204,30 +213,21 @@ div.topmain {
 }
 
 .vert {
-    height: 100px;
+    height: 120px;
     width: 50%;
-    border-right: 2px solid @body-bg;
-    position: relative;
-    margin-top: 40px;
-    margin-bottom: 40px;
+    border-right: 1px solid #ddd;
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
-.circle {
-	border-radius: 50%;
+.article-wrapper {
+    margin-top: 25px;
+}
+
+.article-box {
+    text-align:center;
+    padding: 20px;
     background: @body-bg;
-	width: 10px;
-	height: 10px;
-    margin-right: -6px;
-    position: absolute;
-    right:0px;
-}
-
-.circle-top {
-    top:0px;
-}
-
-.circle-bottom {
-    bottom:0px;
 }
 
 .article-hed {
@@ -240,8 +240,4 @@ div.topmain {
 
 .front-section {
     padding:50px;
-}
-
-.stripe {
-    background: #ddd;
 }

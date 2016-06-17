@@ -3,6 +3,32 @@ var VideoPlayer = (function($, _) {
     // list of videos
     var videos = [
         {
+            person_id: 1,
+            videos: [
+                {
+                    video_id: 0,
+                    paths: [
+                        "http://www.jplayer.org/video/m4v/Big_Buck_Bunny_Trailer.m4v",
+                        "http://www.jplayer.org/video/ogv/Big_Buck_Bunny_Trailer.ogv",
+                        "http://www.jplayer.org/video/webm/Big_Buck_Bunny_Trailer.webm"
+                    ],
+                    poster: "http://www.jplayer.org/video/poster/Big_Buck_Bunny_Trailer_480x270.png",
+                    title: "Did it hurt when you got shot?"
+                },
+                {
+                    video_id: 1,
+                    paths: [
+                        "http://www.jplayer.org/video/m4v/Big_Buck_Bunny_Trailer.m4v",
+                        "http://www.jplayer.org/video/ogv/Big_Buck_Bunny_Trailer.ogv",
+                        "http://www.jplayer.org/video/webm/Big_Buck_Bunny_Trailer.webm"
+                    ],
+                    poster: "http://www.jplayer.org/video/poster/Big_Buck_Bunny_Trailer_480x270.png",
+                    title: "Did it *really* hurt?"
+                }
+            ],
+
+        },
+        {
             person_id: 2,
             videos: [
                 {
@@ -70,14 +96,15 @@ var get_player_obj = function(rec) {
     // cache the $ version of the video element
     self.$el = $(el);
 
-    // get videos for this person
-    var vids = _.findWhere(videos, {"person_id": self.$el.data("id")});
-
     // cache $ versions of the video div, progress bar, fullscreen icon, links
     self.$player = self.$el.find('.player');
+    self.$person_id = self.$el.data('id');
     self.$progress = self.$el.find('.player-progress');
     self.$fullscreen = self.$el.find('.player-go-fullscreen');
     self.$list = self.$el.find('.player-list-of-videos');
+
+    // get videos for this person
+    var vids = _.findWhere(videos, {"person_id": self.$person_id});
 
     // build an HTML string for the modal playlist
     var active, table_data = "";
