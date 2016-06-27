@@ -40,3 +40,8 @@ try {
 catch (e) {
     console.log(e);
 }
+
+$(".video-tease-front").on('click', function() {
+    $('.video-tease-front').removeClass('video-tease-active');
+    $(this).addClass('video-tease-active');
+});

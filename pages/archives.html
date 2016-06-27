@@ -4,18 +4,21 @@
   "description": "Description here ...",
   "thumbnail": "assets/thumbnail.jpg",
     "slider": {
-      "images": [{
-        "url": "http://projects.statesman.com/news/va-center-of-excellence/images/gallery03.jpg",
-        "caption": "newspapers that you'll never read Frontline copyright dingbat CPC, media bias The Weekender WordPress SEO mathewi the notion of the.",
-        "credit": "Photographer / Statesman"
-      }, {
-        "url": "http://projects.statesman.com/news/va-center-of-excellence/images/gallery02.jpg",
-        "caption": "newspapers that you'll never read Frontline copyright dingbat CPC, media bias The Weekender WordPress SEO mathewi the notion of the.",
-        "credit": "Photographer / Statesman"
-      }, {
-        "url": "http://projects.statesman.com/news/va-center-of-excellence/images/gallery04.jpg",
-        "caption": "newspapers that you'll never read Frontline copyright dingbat CPC, media bias The Weekender WordPress SEO mathewi the notion of the.",
-        "credit": "Photographer / Statesman"
+      "images": [
+      {
+        "url": "assets/img/slides/mcalister.jpg",
+        "caption": "Alfred McAlister, Ph.D. Professor of Behavioral Sciences at The University of Texas Houston. McAlister held a press conference on \"War Fever\" in the wake of the terrorist attacks in the northeast.",
+        "credit": "Staff Photo by Sung Park / American-Statesman"
+      },
+      {
+        "url": "assets/img/slides/speed.jpg",
+        "caption": "Handout photo of Billy Paul Speed, 22, who died August 1, 1966 from a gun shot wound received during the shooting rampage by Charles Whitman on the University of Texas Campus.",
+        "credit": "Courtesy City of Austin"
+      },
+      {
+        "url": "assets/img/slides/carrying-bodies.jpg",
+        "caption": "Men rushed up the steps of the South Mall to carry Tom Eckman, left, and his pregnant girlfriend, Claire Wilson (now Claire James), right, to safety after they were shot at UT by Charles Whitman. Eckman died, as did James' unborn baby son. James survived and is now a teacher in Texarkana.",
+        "credit": "KTBC/FOX 7"
       }]
     },
     "articles": [
@@ -91,9 +94,10 @@
     <div class="row" style="padding-bottom:30px;">
       <div class="col-sm-7">
       {{> slider page.slider}}
-
+  </div>
+    <div class="col-sm-5">
       <div class="document-wrapper">
-          <h2>Statesman clips: The first week</h2>
+          <h2 class="document-hed bold">Statesman clips: The first week</h2>
      {{#each page.documents}}
      <div class="page-thumbs gray-text">
      <a href="https://www.documentcloud.org/documents/{{id1}}-{{id2}}.html" target="_blank">
@@ -106,8 +110,13 @@
      {{/each}}
  </div>
 
+ </div>
+</div>
+
+<div class="row">
+<div class="col-xs-12">
         <div class="article-wrapper">
-            <h2>Continuing coverage</h2>
+            <h2 class="document-hed bold">Continuing coverage</h2>
            {{#each page.articles}}
            <div class="article-box">
              <h3 class="article-hed">
@@ -116,19 +125,11 @@
              <p class="article-date">{{ date }}</p>
          </div>
          {{#unless @last}}
-         <div class="vert">
-             <div class="circle circle-top"></div>
-             <div class="circle circle-bottom"></div>
-         </div>
+         <div class="vert"></div>
          {{/unless}}
            {{/each}}
        </div>
-  </div>
-    <div class="col-sm-5">
-
-AUDIO PLAYER GOES HERE? or pair with slides ...
-
- </div>
+</div>
 </div>
 
   </div>

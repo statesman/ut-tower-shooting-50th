@@ -3,7 +3,7 @@ var VideoPlayer = (function($, _) {
     // list of videos
     var videos = [
         {
-            person_id: 1,
+            person_id: 0,
             videos: [
                 {
                     video_id: 0,
@@ -29,7 +29,7 @@ var VideoPlayer = (function($, _) {
 
         },
         {
-            person_id: 2,
+            person_id: 1,
             videos: [
                 {
                     video_id: 0,
@@ -90,9 +90,6 @@ var get_player_obj = function(rec) {
     // save "this" ref
     var self = this;
 
-    // set aspect ratio
-    var aspect_ratio = 16 / 9;
-
     // cache the $ version of the video element
     self.$el = $(el);
 
@@ -111,7 +108,7 @@ var get_player_obj = function(rec) {
     _.each(vids.videos, function(d) {
         table_data += [
             "<div class='video-link pointer' data-video-id='" + d.video_id + "'>",
-            "<ul class='fa-ul'><li class='video-icon-li'><i class='video-icon fa-li fa fa-video-camera' data-video-icon='" + d.video_id + "'></i>",
+            "<ul class='fa-ul' style='margin-bottom:0;'><li class='video-icon-li'><i class='video-icon fa-li fa fa-video-camera' data-video-icon='" + d.video_id + "'></i>",
             d.title,
             "</li></ul>",
             "</div>"
@@ -231,7 +228,7 @@ var get_player_obj = function(rec) {
     // init player
     self.$player.jPlayer({
         // load up the first video
-    	ready: function () {
+    	ready: function (e) {
     		$(this).jPlayer("setMedia", get_player_obj(vids.videos[0]));
 
             // set active state on first playlist element
@@ -239,6 +236,9 @@ var get_player_obj = function(rec) {
                               .find(".video-icon")
                               .removeClass("fa-video-camera")
                               .addClass("fa-play");
+
+            redraw();
+
     	},
 
         // set path to fallback flash player
@@ -265,39 +265,31 @@ var get_player_obj = function(rec) {
 
         // set player size
         size: {
-            height: "450px",
-            width: "100%"
+            width: "100%",
+            height: "500px"
         }
     });
 
-/*
-function goFullScreen() {
-    var width = $(window).width();
-    var height = $(window).height();
-    self.$player.find("video").appendTo("body").css({
-            position: 'absolute',
-            top: '0',
-            bottom: '0',
-            right: '0',
-            left: '0',
-            width: width,
-            height: height,
-            zIndex: 1000
-    });
-    //self.$player.find("video").addClass('video-fullscreen');
-  var el = document.documentElement;
-  var rfs = el.requestFullScreen || el.webkitRequestFullscreen || el.mozRequestFullScreen || el.msRequestFullscreen;
-  rfs.call(el);
-}
+    // bind redraw function to window on resize
+    $(window).resize(_.debounce(redraw, 300));
 
-    // set up fullscreen function
-    VideoPlayer.prototype.fullscreen = function() {
-        //
-    };
-
-    self.$fullscreen.on("click", goFullScreen);
-*/
-
+    function redraw() {
+        var video_width = self.$player.data('jPlayer').status.videoWidth;
+        var video_height = self.$player.data('jPlayer').status.videoHeight;
+        if (video_width > 0) {
+            var aspect_ratio = video_width / video_height;
+            var el_width = self.$player.width();
+            var target_height = el_width / aspect_ratio;
+            self.$player.css("height", target_height);
+            if (self.$player.data('jPlayer').status.currentTime > 0) {
+                self.$player.find("video").css("height", target_height);
+                self.$player.find("img").css("height", 0);
+            } else {
+                self.$player.find("img").css("height", target_height);
+                self.$player.find("video").css("height", 0);
+            }
+        }
+    }
 
 }; // end VideoPlayer function
 

@@ -25,19 +25,19 @@
     "headline": "3rd headline",
     "text": "Third readout."
   },
-  "videoPlaylist": {
-    "brightcove_playlist_id": "4928606196001"
+  "videoPlayer": {
+    "video-id": "4575523341001",
+    "account-id": "719220690001",
+    "player-id": "rkWguaqS"
   },
   "people": [
     {
         "id": 0,
         "name": "Claire Wilson",
-        "video_link": "",
         "summary": "This is a couple of sentences of summary about Claire Wilson. This is a couple of sentences of summary about Claire Wilson. This is a couple of sentences of summary about Claire Wilson.",
-        "img": "wilson-mug.jpg",
-        "graphic": "wilson-graphic.jpg",
-        "video-excerpt": {
-          "ytsrc": "https://www.youtube.com/embed/BkWy6AbO4EY"
+        "img": "steve.jpeg",
+        "video": {
+            "id": 0
         },
         "linkls": {
             "links": [
@@ -72,13 +72,10 @@
 {
     "id": 1,
     "name": "Claire Wilson",
-    "video_link": "",
     "summary": "This is a couple of sentences of summary about Claire Wilson. This is a couple of sentences of summary about Claire Wilson. This is a couple of sentences of summary about Claire Wilson.",
-    "img": "wilson-mug.jpg",
-    "graphic": "wilson-graphic.jpg",
+    "img": "steve.jpeg",
     "video": {
-        "id": 1,
-        "modal-title": "Claire Wilson?!"
+        "id": 1
     },
     "linkls": {
         "links": [
@@ -113,13 +110,8 @@
 {
     "id": 2,
     "name": "Claire Wilson",
-    "video_link": "",
     "summary": "This is a couple of sentences of summary about Claire Wilson. This is a couple of sentences of summary about Claire Wilson. This is a couple of sentences of summary about Claire Wilson.",
-    "img": "wilson-mug.jpg",
-    "video": {
-        "id": 2,
-        "modal-title": "Claire Wilson"
-    },
+    "img": "steve.jpeg",
     "linkls": {
         "links": [
             {
@@ -153,9 +145,8 @@
 {
     "id": 3,
     "name": "Claire Wilson",
-    "video_link": "",
     "summary": "This is a couple of sentences of summary about Claire Wilson. This is a couple of sentences of summary about Claire Wilson. This is a couple of sentences of summary about Claire Wilson.",
-    "img": "wilson-mug.jpg",
+    "img": "steve.jpeg",
     "linkls": {
         "links": [
             {
@@ -205,32 +196,48 @@
 }
 ---
 
-<div class="container front">
-    <div class="topmain front-section">
+<div class="hero" style="background: linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ),
+    url('assets/img/front-hero.jpg');
+ background-size: 100%; background-size: cover; background-position: center;">
+    <div class="topmain front-section" style="padding-top: 100px; padding-bottom: 100px;">
         <h1>A new kind of madness</h1>
-        <h2>The University of Texas tower shooting, 50 years later</h2>
     </div>
-    <p style="text-align:center">icon or something here</p>
+</div>
 
+<div class="container front">
     <div class="front-section">
-        <h2 style="font-style:normal;">On Aug. XX, 1966, former Marine sniper Charles Whitman climbed to the top of the University of Texas clock tower XXXXXXXXXXXXX.</h2>
+        <h2>The University of Texas tower shooting, 50 years later</h2>
+        <h2 style="font-style:normal;">On Aug. 1, 1966, Charles Whitman, a former Marine sniper, climbed to the top of the University of Texas clock tower .........</h2>
     </div>
 
   <div class="row front-section">
     <div class="col-md-5 col-md-push-7">
-        <h1 style="margin-top:0;">The tower</h1>
+        <h1 style="margin-top:0;">Inside the tower</h1>
         <p class="lead">
             Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
         </p>
     </div>
       <div class="col-sm-7 col-md-pull-5">
-        <div style="width:100%; height: 400px; background: black; color:white;">pic tk</div>
+        <a href="https://my.matterport.com/show/?m=3hwxpFEaTfn" target="_blank"><img src="assets/img/tt.gif" /></a>
     </div>
     </div>
 
   <div class="row" style="margin-top: 60px; margin-bottom:30px;">
     <div class="col-xs-12" style="padding:0;">
-        {{> video-full-brightcove-html5 page.videoPlaylist}}
+        {{> video-full-brightcove page.videoPlayer}}
+        <div class="brightcove-controls">
+            <div class="video-tease-front video-tease-active">
+                <h3>Video 1</h3>
+                    <p>some description</p>
+            </div>
+            <div class="video-tease-front">
+                <h3>Video 2</h3>
+                    <p>some description</p>
+            </div>
+        </div>
     </div>
     </div>
 
@@ -259,17 +266,19 @@
         </p>
             <div class="row grid">
             {{#each page.people}}
-            <div class="col-xs-12 col-sm-6 col-md-3 grid-item" id="card-{{id}}">
+            <div class="col-xs-12 col-sm-6 col-md-4 grid-item" id="card-{{id}}">
                   <div class="person-card">
                       <div class="person-card-inner">
                       <h2 class="bold" style="margin-top:0;">{{ name }}</h2>
-                <img src="assets/img/{{img}}" />
+                <img src="assets/img/cardstack/{{img}}" />
                 {{#if pullquote}}
                     {{> blockquote pullquote}}
                 {{/if}}
                 <p>{{summary}}</p>
                 {{#if video}}
-                    {{> bespoke-video-player video }}
+                    <a role="button" class="btn btn-primary btn-sm video-launcher" href="/interviews.html#video-div-{{ id }}">
+                      <i class="fa fa-video-camera"></i>&ensp;Watch video
+                  </a>
                 {{/if}}
                 {{#if linkls}}
                     <div style="margin-top:10px;">

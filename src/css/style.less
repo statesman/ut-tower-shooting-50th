@@ -21,7 +21,6 @@ img {
 }
 
 div.topmain {
-    margin-top: 50px;
     text-align:center;
 }
 
@@ -56,18 +55,13 @@ div.topmain {
     border-bottom:1px solid @brand-primary;
 }
 
-.player-button {
+a.show-all {
     cursor: pointer;
-    color: #aaa;
 }
 
-.player-button:hover {
-    color: #000;
-}
-
-.player-controls {
-    background: #eee;
-    padding:7px;
+.controls {
+    font-family: @font-family-sans-serif;
+    margin-top: 5px;
 }
 
 .bold {
@@ -91,12 +85,13 @@ div.topmain {
     fill: @brand-primary;
     cursor: pointer;
     stroke: #bbb;
+    opacity: 0.6;
 }
 
 .dot:hover,
 .highlighted {
     stroke: #000;
-    stroke-width: 2px;
+    opacity: 0.8;
 }
 
 .state-boundary {
@@ -122,8 +117,10 @@ div.topmain {
     font-size: 0.9em;
 }
 
-.document-wrapper {
-    margin: 35px auto 0 auto;
+.document-hed {
+    margin-top:0;
+    font-size:30px;
+    margin-bottom:20px;
 }
 
 .tint-wrapper {
@@ -174,11 +171,19 @@ div.topmain {
     border: 1px solid #ccc;
 }
 
+.video-player {
+    margin: 50px auto 120px auto;
+}
+
+.player {
+    background: black;
+    /*border: 1px solid @body-bg;*/
+}
+
 .player-progress-wrapper {
-    height: 4px;
+    height: 7px;
     background: #f7f7f7;
     width: 100%;
-    margin-top:7px;
 }
 
 .player-progress {
@@ -215,13 +220,13 @@ div.topmain {
 .vert {
     height: 120px;
     width: 50%;
-    border-right: 1px solid #ddd;
+    border-right: 1px dotted #ccc;
     margin-top: 0;
     margin-bottom: 0;
 }
 
 .article-wrapper {
-    margin-top: 25px;
+    margin: 50px auto 70px auto;
 }
 
 .article-box {
@@ -240,4 +245,36 @@ div.topmain {
 
 .front-section {
     padding:50px;
+}
+
+.brightcove-full-player {
+    display: block;
+    position: relative;
+    max-width: 1600px;
+}
+
+.video-tease-front {
+    font-family: @font-family-sans-serif;
+    cursor: pointer;
+    padding: 15px;
+    margin: 0;
+    display: inline-block;
+    border-bottom: 4px solid white;
+    &:hover {
+        .video-tease-active
+    }
+    > h3 {
+        font-family: @font-family-sans-serif;
+        margin-bottom:4px;
+    }
+}
+
+.video-tease-active {
+    border-bottom: 4px solid @brand-primary;
+}
+
+.video-title {
+    font-size: 32px;
+    font-style:normal;
+    margin: 15px;
 }

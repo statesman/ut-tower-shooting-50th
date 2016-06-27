@@ -164,6 +164,11 @@ module.exports = function(grunt) {
               file: "shooting-data"
             },
             {
+              title: "Interviews",
+              subtitle: "Watch the videos",
+              file: "interviews"
+          },
+            {
               title: "Coverage and documents",
               subtitle: "Browse the archives",
               file: "archives"

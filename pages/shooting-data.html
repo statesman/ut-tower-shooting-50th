@@ -3,7 +3,7 @@
   "title": "Data: Mass shootings in the United States",
   "description": "SOME DESCRIPTION HERE",
   "thumbnail": "assets/thumbnail.jpg",
-  "publish-date": "June 16, 2016",
+  "publish-date": "July 3, 2016",
   "d3map": true
 }
 ---
@@ -13,35 +13,32 @@
           <div class="col-xs-12" style="margin: 40px auto 20px auto;">
       <h1>Data: 50 years of mass shootings in America</h1>
       <h2>And a related subhed that's a little chatty and almost a little summary-like ... it could even be the length of a long sentence.</h2>
-      <p class="author">By Cody Winchester / Published {{ page.publish-date }}</p>
+      <p class="author">By <a href="https://twitter.com/cody_winchester" target="_blank">Cody Winchester</a> and <a href="https://twitter.com/rweckhart" target="_blank">Robert Eckhart</a> / Published {{ page.publish-date }}</p>
 
-      <p class="lead">Intro text here. The data, <a href="http://www.motherjones.com/politics/2012/12/mass-shootings-mother-jones-full-data" target="_blank">from Mother Jones</a>, include public shootings from 1982-2016 in which four or more victims were killed &mdash; <span id="incident_count" style="font-family: inherit; font-weight: inherit;"></span> incidents in all, <span id="fatality_count" style="font-family: inherit; font-weight: inherit;"></span> victims. We also added five earlier incidents that fit these criteria, including the UT Tower shooting, using <a href="https://library.stanford.edu/projects/mass-shootings-america" target="_blank">data from Stanford University</a>.</p>
-      <p class="lead">Click on the play button to cycle through the years, or click the arrows (or use your &larr; and &rarr; keys) to toggle between years, or also click on a bar to jump to a specific year.</p>
+      <p class="lead">Intro text here. The data, <a href="http://www.motherjones.com/politics/2012/12/mass-shootings-mother-jones-full-data" target="_blank">from Mother Jones</a>, include public shootings from 1982-2016 in which four or more victims were killed &mdash; <span id="incident_count" style="font-family: inherit; font-weight: inherit;"></span> incidents in all, with <span id="fatality_count" style="font-family: inherit; font-weight: inherit;"></span> victims killed or wounded. We also added five earlier incidents that fit these criteria, including the UT Tower shooting, using <a href="https://library.stanford.edu/projects/mass-shootings-america" target="_blank">data from Stanford University</a>.</p>
+      <p class="lead">Click on the play button to cycle through the years, or click the arrows (or use your &larr; and &rarr; keys) to toggle between years. You can also click on a bar to jump to a specific year.</p>
   </div>
   </div>
 
   <div class="map-wrap">
-      <div id="timeline" class="timeline"></div>
-      <div class="clearfix"></div>
       <div class="row">
-          <div class="col-sm-9">
+          <div class="col-sm-8">
               <h2 id="victim_total" class="victim_hed text-center"></h2>
               <div id="map"></div>
+              <p class="small text-center"><a class="show-all">Show all</a></p>
           </div>
-          <div class="col-sm-3">
-              <div id="player" class="text-center">
-                  <h3 class="player-controls">
-                      <span id="player-previous-button" class="pull-left">
-                          <i class="fa fa-arrow-left player-button" data-toggle="tooltip" title="Previous"></i>
-                      </span>
-                      <span id="player-play-pause-button">
-                          <i class="fa fa-play player-button" data-toggle="tooltip" title="Play"></i>
-                      </span>
-                      <span id="player-next-button" class="pull-right">
-                          <i class="fa fa-arrow-right player-button" data-toggle="tooltip" title="Next"></i>
-                      </span>
-                  </h3>
-              </div>
+          <div class="col-sm-4">
+      <div id="timeline" class="timeline"></div>
+      <div class="clearfix"></div>
+      <div class="controls">
+        <button class="btn btn-sm btn-primary pull-left" id="player-previous-button">
+            <i class="fa fa-chevron-left player-button"></i>&ensp;Previous
+        </button>
+        <button class="btn btn-sm btn-primary pull-right" id="player-next-button">
+            Next&ensp;<i class="fa fa-chevron-right player-button"></i>
+        </button>
+      </div>
+              <div class="clearfix"></div>
               <div id="details"></div>
           </div>
       </div>
