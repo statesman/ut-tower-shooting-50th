@@ -1,5 +1,6 @@
 var ENV_STAGE = process.env.ENV_STAGE || 's:/projects/';
 var fs = require("fs");
+var request = require("request");
 
 module.exports = function(grunt) {
   'use strict';
@@ -84,7 +85,6 @@ module.exports = function(grunt) {
             'bower_components/d3-queue/d3-queue.js',
             'bower_components/topojson/topojson.js',
             'bower_components/bootstrap/js/tooltip.js',
-            'bower_components/bootstrap/js/modal.js',
             'bower_components/imagesloaded/imagesloaded.pkgd.js',
             'bower_components/masonry/dist/masonry.pkgd.js',
             'bower_components/Slides/source/jquery.slides.js',
@@ -161,7 +161,7 @@ module.exports = function(grunt) {
             {
               title: "Mass shootings",
               subtitle: "Explore U.S. data",
-              file: "shooting-data"
+              file: "shootingdata"
             },
             {
               title: "Interviews",

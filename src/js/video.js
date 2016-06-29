@@ -1,5 +1,56 @@
 var VideoPlayer = (function($, _) {
 
+
+
+    var video_set = [
+        {
+            "id": 0,
+            "name": "Person 1",
+            "videos": [
+                {
+                    "question": "Itaque earum rerum hic tenetur a sapiente delectus?",
+                    "video_id": "5008821259001"
+                },
+                {
+                    "question": "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum?",
+                    "video_id": "5007795368001"
+                }
+            ]
+        },
+        {
+            "id": 1,
+            "name": "Person 2",
+            "videos": [
+                {
+                    "question": "Itaque earum rerum hic tenetur a sapiente delectus",
+                    "video_id": "5007702187001"
+                },
+                {
+                    "question": "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum?",
+                    "video_id": "5007742161001"
+                }
+            ]
+        }
+    ];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     // list of videos
     var videos = [
         {

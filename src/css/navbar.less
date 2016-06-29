@@ -148,6 +148,7 @@
 
 @media (max-width: @grid-float-breakpoint-max) {
   .navbar-expand {
+    cursor: pointer;
     display:block;
     background-color: #f9f9f9;
     .text-center();
@@ -159,6 +160,9 @@
     font-size: 12px;
     font-family: @font-family-sans-serif;
     text-transform: uppercase;
+    > a {
+        text-decoration: none;
+    }
   }
   .navbar-expand:hover {
     background-color: #eee;
