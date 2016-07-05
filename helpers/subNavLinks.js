@@ -1,6 +1,6 @@
 var Handlebars = require('handlebars'),
     _ = require('underscore');
- 
+
 /*
  * Generate <li> nav links, intelligently adding the active class, URLs, etc.
  *

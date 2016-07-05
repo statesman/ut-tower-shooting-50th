@@ -1,23 +1,3 @@
-div.topmain {
-    padding: 50px auto 50px auto;
-    > h1 {
-        font-family: @font-family-sans-serif;
-        text-transform: uppercase;
-        font-weight: 800;
-        font-size: 70px;
-        letter-spacing:-2px;
-        color: white;
-        }
-    > h2 {
-        font-style: italic;
-        font-size:25px;
-        color: white;
-    }
-    > p {
-        font-size: 16px;
-    }
-}
-
 h1 {
   @media (max-width: @screen-md) {
     font-size: 32px;
@@ -95,6 +75,7 @@ hr {
   border-color: @gray-lighter;
   margin-top: @line-height-computed * 1.5;
   margin-bottom: @line-height-computed * 1.5;
+  max-width: 3em;
 }
 
 .panel {
@@ -107,16 +88,3 @@ hr {
     font-size: 12px;
   }
 }
-
-.photo-block {
-  margin-bottom: @line-height-computed;
-
-  > img {
-    .img-responsive();
-  }
-  p.caption {
-    color: @gray;
-    font-size: 12px;
-    margin: 5px 0 0 0;
-  }
- }

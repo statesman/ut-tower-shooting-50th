@@ -1,11 +1,15 @@
 {
-  "name": "ut-tower-shooting-package",
+  "name": "immersive-template",
   "version": "0.0.0",
   "description": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/statesman/immersive-template"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Cody Winchester <cjwinchester@gmail.com>",
+  "author": "Andrew Chavez <adchavez@gmail.com>",
   "devDependencies": {
     "grunt-bootlint": "^0.7.0",
     "grunt-concurrent": "^1.0.0",
@@ -14,16 +18,24 @@
     "grunt-contrib-copy": "^0.7.0",
     "grunt-contrib-jshint": "^0.10.0",
     "grunt-contrib-less": "^0.12.0",
-    "grunt-contrib-uglify": "^0.6.0",
+    "grunt-contrib-uglify": "^1.0.0",
     "grunt-contrib-watch": "^0.6.1",
     "grunt-ftpush": "^0.3.3",
     "grunt-generator": "^0.4.0",
-    "grunt-slack-hook": "0.0.4",
     "handlebars": "^2.0.0",
     "marked": "^0.3.2",
-    "underscore": "^1.7.0"
+    "request": "^2.72.0"
   },
   "dependencies": {
-    "jplayer": "^2.9.2"
+    "bootstrap": "^3.3.6",
+    "d3": "^3.5.17",
+    "d3-queue": "^3.0.1",
+    "font-awesome": "^4.6.3",
+    "imagesloaded": "^4.1.0",
+    "masonry-layout": "^4.1.0",
+    "scrollmagic": "^2.0.5",
+    "slick-carousel": "^1.6.0",
+    "topojson": "^1.6.26",
+    "underscore": "^1.8.3"
   }
 }

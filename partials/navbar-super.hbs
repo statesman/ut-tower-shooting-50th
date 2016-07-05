@@ -1,15 +1,18 @@
 <nav class="navbar navbar-default" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <a class="navbar-brand" href="http://www.statesman.com/" target="_blank">
-        <img width="273" height="26" src="assets/img/logo-black.png" />
+      <a class="navbar-brand hidden-md" href="http://www.statesman.com/" target="_blank">
+        <img width="273" height="26" src="assets/logo-black.png" />
+      </a>
+      <a class="navbar-brand visible-md" href="http://www.statesman.com/" target="_blank">
+        <img width="103" height="26" src="assets/logo-short-black.png" />
       </a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse">
-      <div class="navbar-expand no-touch" data-target="#navbar-chapters">
-        <i class="fa fa-angle-double-down"></i> <a>Chapters</a>
+      <div class="navbar-expand" data-target="#navbar-chapters">
+        <i class="fa fa-angle-double-down"></i> <a href="#">Chapters</a>
       </div>
       <ul id="navbar-chapters" class="nav navbar-nav hidden-navbar-collapsed">
         {{{navLinks 'super'}}}

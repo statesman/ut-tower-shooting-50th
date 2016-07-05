@@ -10,23 +10,34 @@ var pluralize = function(num) {
     }
 };
 
-// trigger tooltips
-$('[data-toggle="tooltip"]').tooltip();
+(function($, Slick) {
 
-// set up sliders
-$('.slider').each(function(i, el) {
-  $(el).imagesLoaded()
-    .always(function() {
-      new Slider(el);
+  "use strict";
+
+  $(function() {
+
+    // Open Twitter links in a new window
+    $('.sider-twitter').on('click', 'a', function(e) {
+      e.preventDefault();
+      var url = $(this).attr('href');
+      window.open(url, "_blank", "width=555, height=520");
     });
-});
 
-// set up videos
-$('.video-player').each(function(i, el) {
-    new VideoPlayer(el);
-});
+    // Show the chapters when they're expanded on mobile
+    $('.navbar-expand').on('click', function(e) {
+      e.preventDefault();
+      var elId = $(this).data('target');
+      $(elId).toggleClass('hidden-navbar-collapsed');
+    });
 
-try {
+    // Set up sliders
+    $('.slider').each(function(i, el) {
+      $(el).imagesLoaded()
+        .always(function() {
+          new Slick(el);
+        });
+    });
+
     // do up masonry
     var $grid = $('.grid').masonry({
         itemSelector: '.grid-item'
@@ -36,23 +47,7 @@ try {
       $grid.masonry('reloadItems')
            .masonry('layout');
     });
-}
-catch (e) {
-    console.log(e);
-}
 
-videojs("video-player-front").on("loadedmetadata", function() {
-    var self = this;
-    $(".video-tease-front").show()
-        .on('click', function() {
-            var new_video_id = $(this).data('video-id');
-            $('.video-tease-front').removeClass('video-tease-active');
-            $(this).addClass('video-tease-active');
-            self.catalog.getVideo(String(new_video_id), function (error, video) {
-                if (error) {
-                    console.log("error: ", error);
-                }
-                self.catalog.load(video);
-            });
-        });
-});
+  });
+
+}(jQuery, Slick));

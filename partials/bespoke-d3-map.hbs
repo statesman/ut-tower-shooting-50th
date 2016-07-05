@@ -51,7 +51,7 @@
         .attr("height", height);
 
     // load the data (async)
-    d3_queue.queue()
+    d3.queue()
         .defer(d3.json, '/data/us.json')
         .defer(d3.tsv, '/data/shooting-data.tsv')
     .await(ready);
