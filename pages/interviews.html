@@ -2,25 +2,142 @@
   "template" : "story",
   "title": "Interviews with XXXXXXXXXXXXXX",
   "description": "Description here ...",
+  "script": "interviews.js",
   "brightcove": {
     "account-id": "1418563061",
-    "player-id": "BygcJDlI"
+    "player-id": "S15Aq3t8"
   },
   "thumbnail": "assets/thumbnail.jpg",
-  "videos": [
+  "videosets": [
     {
-      "video": {
-          "id": 0,
-          "video-hed": "Claire Wilson"
-      }
+        "name": "Ramiro Martinez",
+        "title": "Former Austin police officer",
+        "slug": "ramiro-martinez",
+        "videos": [
+            {
+              "id": "5021848671001",
+              "question": "What was going through your mind as you approached the tower?"
+            },
+            {
+              "id": "5021855135001",
+              "question": "What were you expecting when you got in the tower?"
+             },
+            {
+              "id": "5021855137001",
+              "question": "What happened when you and Officer McCoy saw the sniper?"
+            },
+            {
+              "id": "5021848670001",
+              "question": "What happened after Whitman was killed?"
+            },
+            {
+              "id": "5021848669001",
+              "question": "Were you the one who took down Whitman?"
+            },
+            {
+              "id": "5021862993001",
+              "question": "Were guns allowed on campus when this took place?"
+            },
+            {
+              "id": "5021877783001",
+              "question": "Do you still think about the tower shooting?"
+            }
+        ]
     },
     {
-      "video": {
-          "id": 1,
-          "video-hed": "Claire Wilson"
-      }
+        "name": "Alfred McAlister",
+        "title": "Former UT student",
+        "slug": "alfred-mcalister",
+        "videos": [
+            {
+              "id": "5021848672001",
+              "question": "What did you do when you realized people were being shot?"
+            },
+            {
+              "id": "5021879901001",
+              "question": "How do you process an event like that?"
+             },
+            {
+              "id": "5021877785001",
+              "question": "Did you ever have an emotional reaction to the shooting?"
+            },
+            {
+              "id": "5021887058001",
+              "question": "Do you still talk about what happened with other survivors?"
+            },
+            {
+              "id": "5021887056001",
+              "question": "Should we still be talking about this event 50 years later?"
+            },
+            {
+              "id": "5021879905001",
+              "question": "How do you feel about allowing guns on campus?"
+            },
+            {
+              "id": "5021887059001",
+              "question": "How did things change after the shootings?"
+            }
+        ]
+    },
+    {
+        "name": "Artly Snuff (John Fox)",
+        "title": "Former UT student",
+        "slug": "artly-snuff",
+        "videos": [
+            {
+              "id": "5022118946001",
+              "question": "What made you decide to rescue Claire Wilson and Thomas Eckman?"
+            },
+            {
+              "id": "5022141700001",
+              "question": "What happened after you carried Claire off the South Mall?"
+            },
+            {
+              "id": "5022120958001",
+              "question": "What happened after people heard that Whitman was dead?"
+             },
+            {
+              "id": "5022141702001",
+              "question": "Do you ever watch the footage of yourself from the day of the shootings?"
+             },
+            {
+              "id": "5022141703001",
+              "question": "Do you every think about what you did that day as heroic?"
+            }
+        ]
+    },
+    {
+        "name": "Neal Spelce",
+        "title": "TV newsman",
+        "slug": "neal-spelce",
+        "videos": [
+            {
+              "id": "5021877789001",
+              "question": "What context did you have for an event like this at the time?"
+            },
+            {
+              "id": "5021887061001",
+              "question": "What changed after the shooting?"
+            },
+            {
+              "id": "5021862997001",
+              "question": "Why has this mass murder stayed in public consciousness for so long?"
+             },
+            {
+              "id": "5021862998001",
+              "question": "How did you react when you found out Whitman had been listening to your broadcast?"
+             },
+            {
+              "id": "5021887079001",
+              "question": "What happened when you announced on the radio that the sniper was dead?"
+          },
+            {
+              "id": "5021853811001",
+              "question": "Could the police have done something differently?"
+            }
+        ]
     }
-]
+  ]
 }
 ---
 
@@ -28,66 +145,53 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12" style="margin: 40px auto 20px auto;">
-      <h1>Interviews</h1>
+      <h1>In their own words</h1>
       <h2>And a related subhed that's a little chatty and almost a little summary-like ... it could even be the length of a long sentence.</h2>
    </div>
   </div>
-
-<div class="row">
-    <div class="col-md-8">
-        <div class="photo-full">
-            <div class="embed-responsive embed-responsive-16by9">
-                <div class="brightcove-full-player">
-                    <div style="padding-top: 56.25%;">
-                        <video data-video-id="5008952284001"
-                            data-account="{{ page.brightcove.account-id }}"
-                            data-player="{{ page.brightcove.player-id }}"
-                            data-embed="default"
-                            class="video-js"
-                            id="video-player-front"
-                            controls
-                            style="width: 100%; height: 100%; position: absolute; top: 0px; bottom: 0px; right: 0px; left: 0px;">
-                        </video>
+  {{#each page.videosets}}
+<div class="videoset" id="{{ slug }}">
+    <div class="row">
+        <div class="col-xs-12">
+            <h3 style="margin-bottom:-10px;">{{ name }}</h3>
+            <h3 style="margin-top:0; margin-bottom:5px;"><small>{{ title }}</small></h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="photo-full">
+                <div class="embed-responsive embed-responsive-16by9">
+                    <div class="brightcove-full-player">
+                        <div style="padding-top: 56.25%;">
+                            <video data-video-id="{{ videos.[0].id }}"
+                                data-account="{{ @root.page.brightcove.account-id }}"
+                                data-player="{{ @root.page.brightcove.player-id }}"
+                                data-embed="default"
+                                class="video-js"
+                                controls
+                                id="video-player-{{ slug }}"
+                                style="width: 100%; height: 100%; position: absolute; top: 0px; bottom: 0px; right: 0px; left: 0px;">
+                            </video>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="col-md-4">
+            <table class="table">
+                {{#each videos}}
+                <tr>
+                    <td class="video-link{{#if @first }} video-link-active{{/if}} notouchy" data-video-id="{{ id }}">
+                        {{ question }}&ensp;<span class="spinner"></span>
+                    </td>
+                </tr>
+                {{/each}}
+            </table>
+        </div>
     </div>
-    <div class="col-md-4">
-        <table class="table">
-            <tr>
-                <td class="video-link video-link-active">
-                    Itaque earum rerum hic tenetur a sapiente delectus?
-                </td>
-            </tr>
-            <tr>
-                <td class="video-link">
-                    Itaque earum rerum hic tenetur a sapiente delectus?
-                </td>
-            </tr>
-            <tr>
-                <td class="video-link">
-                    Itaque earum rerum hic tenetur a sapiente delectus?
-                </td>
-            </tr>
-            <tr>
-                <td class="video-link">
-                    Itaque earum rerum hic tenetur a sapiente delectus?
-                </td>
-            </tr>
-            <tr>
-                <td class="video-link">
-                    Itaque earum rerum hic tenetur a sapiente delectus?
-                </td>
-            </tr>
-        </table>
-
-    </div>
+</div>
+  {{/each}}
 
 </div>
-
-
-
-  </div>
 
 <script src="//players.brightcove.net/{{ page.brightcove.account-id }}/{{ page.brightcove.player-id }}_default/index.min.js"></script>
