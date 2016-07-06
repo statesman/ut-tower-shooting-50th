@@ -38,16 +38,6 @@ var pluralize = function(num) {
         });
     });
 
-    // do up masonry
-    var $grid = $('.grid').masonry({
-        itemSelector: '.grid-item'
-    });
-
-    $grid.imagesLoaded().progress(function() {
-      $grid.masonry('reloadItems')
-           .masonry('layout');
-    });
-
   });
 
 }(jQuery, Slick));

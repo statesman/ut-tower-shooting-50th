@@ -1,4 +1,3 @@
-<script>
 (function($, _) {
 
     // set up underscore template
@@ -366,4 +365,3 @@
 
     } // end ready function
 })(jQuery, _);
-</script>

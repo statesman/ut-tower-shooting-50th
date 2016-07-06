@@ -1,30 +1,66 @@
 {
   "template" : "story",
-  "title": "UT tower shooting: A new kind of madness",
-  "description": "On Aug. 1, 1966, former Marine sniper Charles Whitman climbed to the top of the clock tower at the University of Texas ...",
+  "title": "The UT Tower shooting: A new kind of madness",
+  "description": "On Aug. 1, 1966, former Marine sniper Charles Whitman climbed to the top of the clock tower at the University of Texas and ",
   "keywords": "Austin, Austin news,",
   "thumbnail": "assets/share.png",
-  "indexteaseMain": {
-    "title": "",
-    "storyUrl": "shootingdata.html",
-    "imageUrl": "assets/call-center.jpg",
-    "headline": "Tease headline",
-    "text": "Description."
-  },
-  "indexteaseProsecutor": {
-    "title": "",
-    "storyUrl": "page2.html",
-    "imageUrl": "assets/call-center.jpg",
-    "headline": "2nd headline",
-    "text": "2nd readout."
-  },
-  "indexteaseHistory": {
-    "title": "",
-    "storyUrl": "page3.html",
-    "imageUrl": "assets/call-center.jpg",
-    "headline": "3rd headline",
-    "text": "Third readout."
-  },
+  "script": "front.js",
+  "newCoverage": [
+      {
+        "story_data": {
+            "title": "A new kind of madness",
+            "storyUrl": "http://specials.mystatesman.com/tower-mass-shooting/?mc_cid=bb74ab6835&mc_eid=98508f60d5",
+            "imageUrl": "assets/img/whitman-gear.png",
+            "headline": "A new kind of madness",
+            "text": "Whitman's sniper attack helped define \"mass shooting\" for the American public."
+        }
+    },
+    {
+        "story_data": {
+            "title": "",
+            "storyUrl": "http://www.mystatesman.com/news/news/how-ut-sniper-charles-whitmans-hatred-inspired-an-/nrrWt/",
+            "imageUrl": "assets/img/whitman-snip.png",
+            "headline": "How Whitman’s hatred inspired an Institute for Play",
+            "text": "One psychiatrist sees the roots of Whitman's problems in a lack of unstructured play."
+        }
+    },
+    {
+        "story_data": {
+            "title": "",
+            "storyUrl": "shootingdata.html",
+            "imageUrl": "assets/call-center.jpg",
+            "headline": "Tease headline 3",
+            "text": "Description."
+        }
+    },
+    {
+        "story_data": {
+            "title": "",
+            "storyUrl": "shootingdata.html",
+            "imageUrl": "assets/call-center.jpg",
+            "headline": "Tease headline 4",
+            "text": "Description."
+        }
+    },
+    {
+        "story_data": {
+            "title": "",
+            "storyUrl": "shootingdata.html",
+            "imageUrl": "assets/call-center.jpg",
+            "headline": "Tease headline 5",
+            "text": "Description."
+        }
+    },
+    {
+        "story_data": {
+            "title": "",
+            "storyUrl": "shootingdata.html",
+            "imageUrl": "assets/call-center.jpg",
+            "headline": "Tease headline 6",
+            "text": "Description."
+        }
+    }
+  ],
   "videoPlayer": {
       "account-id": "1418563061",
       "player-id": "BygcJDlI",
@@ -109,8 +145,8 @@
       "video": true
   },
   {
-      "id": "alfred-mccalister",
-      "name": "Alfred McCalister",
+      "id": "alfred-mcalister",
+      "name": "Alfred McAlister",
       "summary": "An incoming UT freshman who risked his life to try to save a wounded person.",
       "img": "mccalister.png",
       "video": true
@@ -125,26 +161,22 @@
 }
 ---
 
-<div style="background: linear-gradient(
-      rgba(0, 0, 0, 0.6),
-      rgba(0, 0, 0, 0.6)
-    ),
-    url('assets/img/tower.jpg');
- background-size: 100%; background-size: cover; background-position: center;">
-    <div class="topmain front-section" style="padding-top: 100px; padding-bottom: 100px;">
-        <h1>A new kind of madness</h1>
-        <h2>The University of Texas tower shooting, 50 years later</h2>
+<div class="topmain-wrapper">
+    <div class="topmain">
+        <h1 id="mainhed"></h1>
+        <h2 id="mainsub">The University of Texas tower shooting, 50 years later</h2>
     </div>
 </div>
 
 <div class="container">
   <div class="row">
     <div id="main" class="col-xs-12">
-        <h3 class="top-readout">On Aug. 1, 1966, former Marine sniper Charles Whitman climbed to the top of the University of Texas clock tower ...</h3>
+        <h3 class="top-readout">On Aug. 1, 1966, engineering student Charles Whitman ascended the University of Texas Tower with a trunk full of guns and showed America how one ruthless person can inflict fear and grief on an entire city.</h3>
+        <h3 class="top-readout">Even 50 years after Whitman’s sniper attack, ripple effects reach into Austin's present &mdash; from anxiety over the new campus carry law to changes in modern police response to mass shootings.</h3>
 
-        <h1 class="intro-hed">Go inside the tower</h1>
+        <h1 class="intro-hed">Go inside the Tower</h1>
         <h2>
-            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam,
+            Retrace the steps of XXXX 3D rendering of the UT Tower. Click on the <img src="/assets/img/matterport-icon.png" style="display:inline; width:19px; vertical-align: baseline; margin-bottom:-3px;" /> icons to see waypoints.
         </h2>
         <div class="no-bleed">
             <iframe class="matterport-iframe" style="padding:0; margin:0; width:100%; height:500px;" src="https://my.matterport.com/show/?m=nQTJxVPdjXK&help=1" frameborder=0 scrolling="no" allowfullscreen></iframe>
@@ -168,34 +200,12 @@
             {{/each}}
         </div>
 
-        <script>
-        videojs("video-player-front").ready(function() {
-            var self = this;
-            $(".video-tease-front").show()
-                .on('click', function() {
-                    var new_video_id = $(this).data('video-id');
-                    $('.video-tease-front').removeClass('video-tease-active');
-                    $(this).addClass('video-tease-active');
-                    self.catalog.getVideo(String(new_video_id), function (error, video) {
-                        if (error) {
-                            console.log("error: ", error);
-                        }
-                        self.catalog.load(video);
-                    });
-                });
-        });
-        </script>
-
-        <div class="row">
-          <div class="col-sm-4">
-            {{> indextease page.indexteaseMain}}
-          </div>
-          <div class="col-sm-4">
-            {{> indextease page.indexteaseProsecutor}}
-          </div>
-          <div class="col-sm-4">
-            {{> indextease page.indexteaseHistory}}
-          </div>
+        <div class="row grid">
+            {{#each page.newCoverage}}
+              <div class="col-sm-4 grid-item">
+                {{> indextease story_data}}
+              </div>
+            {{/each}}
         </div>
 
         <h1 class="intro-hed">Meet the people</h1>
@@ -210,23 +220,20 @@
                     <img src="assets/img/cardstack/{{img}}" />
                       <div class="person-card-inner">
                       <h2>{{ name }}</h2>
-                {{#if pullquote}}
-                    {{> blockquote pullquote}}
-                {{/if}}
-                <p>{{summary}}</p>
-                {{#if video}}
-                    <a class="sm-muted-button video-launcher" href="/interviews.html#video-div-{{ id }}">
-                      <i class="fa fa-video-camera"></i>&ensp;Watch interview
-                  </a>
-                {{/if}}
-                {{#if linkls}}
-                    <div style="margin-top:20px;">
-                    {{> linklist linkls }}
-                    </div>
-                {{/if}}
+                      <p>{{summary}}</p>
+                    {{#if video}}
+                        <a class="sm-muted-button video-launcher" href="/interviews.html#{{ id }}">
+                          <i class="fa fa-video-camera"></i>&ensp;Watch interview
+                      </a>
+                    {{/if}}
+                    {{#if linkls}}
+                        <div style="margin-top:20px;">
+                        {{> linklist linkls }}
+                        </div>
+                    {{/if}}
                 <div class="row">
                     <div class="col-xs-12">
-                        <div class="share pull-right">
+                        <div class="share">
                             <a href="https://twitter.com/intent/tweet?text={{name}}%20-%20The%20UT%20 Tower%20shooting,%2050%20years%20later%3A%20http://projects.statesman.com/news/ut-tower-shooting-50th-anniversary/index.html%23{{id}}-card&related=@aasinteractive" target="_blank"><i class="fa fa-twitter"></i></a>
                             &ensp;
                             <a href="https://www.facebook.com/sharer.php?u=http://projects.statesman.com/news/ut-tower-shooting-50th-anniversary/index.html%23{{id}}-card">

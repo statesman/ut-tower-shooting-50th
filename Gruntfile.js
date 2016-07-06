@@ -29,7 +29,17 @@ module.exports = function(grunt) {
         dest: 'public/fonts/',
         flatten: true,
         expand: true
-      }
+    },
+    scripts: {
+     src: [
+       'src/js/front.js',
+       'src/js/shootingdata.js',
+       'src/js/interviews.js'
+     ],
+     dest: 'public/dist/js/',
+     flatten: true,
+     expand: true
+   }
     },
 
     // Transpile LESS
@@ -105,7 +115,7 @@ module.exports = function(grunt) {
       },
       scripts: {
         files: ['src/js/**.js'],
-        tasks: ['build:js']
+        tasks: ['copy:scripts', 'build:js']
       },
       styles: {
         files: ['src/css/**.less', 'src/css/**/**.less'],
@@ -263,7 +273,7 @@ grunt.registerTask('slack', function(where_dis_go) {
   grunt.registerTask('build:html', ['clean:pages', 'generator', 'bootlint']);
   grunt.registerTask('build:css', ['clean:css', 'clean:fonts', 'copy', 'less']);
   grunt.registerTask('build:js', ['clean:js', 'jshint', 'uglify']);
-  grunt.registerTask('build', ['build:html', 'build:css', 'build:js']);
+  grunt.registerTask('build', ['build:html', 'build:js', 'build:css']);
 
   // Publishing tasks
   grunt.registerTask('stage', ['build', 'ftpush:stage','slack:stage']);

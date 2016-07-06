@@ -19,6 +19,14 @@
 @import 'archives.less';
 @import 'highlights.less';
 
+.vendor(@property, @value) {
+    -webkit-@{property}: @value;
+     -khtml-@{property}: @value;
+       -moz-@{property}: @value;
+         -o-@{property}: @value;
+            @{property}: @value;
+}
+
 img {
     max-width: 100%;
 }
