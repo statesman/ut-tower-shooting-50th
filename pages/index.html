@@ -77,6 +77,40 @@
   },
 "people": [
   {
+      "id": "ramiro-martinez",
+      "name": "Ramiro Martinez",
+      "summary": "One of two Austin police officers who engaged sniper Charles Whitman in a gun battle and killed him.",
+      "img": "martinez.png",
+      "video": true
+  },
+  {
+      "id": "neal-spelce",
+      "name": "Neal Spelce",
+      "summary": "Austin TV newsman who rushed to the scene and broadcast the sniper attack as it happened.",
+      "img": "spelce.png",
+      "video": true
+  },
+  {
+      "id": "artly-snuff",
+      "name": "Artly Snuff (John Fox)",
+      "summary": "As a 17-year-old UT freshman, Snuff risked his life to pull shooting victim Claire Wilson to safety.",
+      "img": "snuff.png",
+      "video": true
+  },
+  {
+      "id": "alfred-mcalister",
+      "name": "Alfred McAlister",
+      "summary": "An incoming UT freshman who risked his life to try to save a wounded person.",
+      "img": "mccalister.png",
+      "video": true
+  },
+  {
+      "id": "charles-whitman",
+      "name": "Charles Whitman",
+      "summary": "Former Marine and engineering student whose sniper attack from atop the UT Tower injured more than 40 people, killing 14.",
+      "img": "whitman.png"
+  },
+  {
       "id": "claire-wilson",
       "name": "Claire Wilson",
       "summary": "Whitman's first target, her unborn child was killed when she was shot. Her boyfriend Tom Eckman was fatally shot.",
@@ -112,44 +146,10 @@
       }
   },
   {
-      "id": "ramiro-martinez",
-      "name": "Ramiro Martinez",
-      "summary": "One of two Austin police officers who engaged sniper Charles Whitman in a gun battle and killed him.",
-      "img": "martinez.png",
-      "video": true
-  },
-  {
-      "id": "neal-spelce",
-      "name": "Neal Spelce",
-      "summary": "Austin TV newsman who rushed to the scene and broadcast the sniper attack as it happened.",
-      "img": "spelce.png",
-      "video": true
-  },
-  {
-      "id": "charles-whitman",
-      "name": "Charles Whitman",
-      "summary": "Former Marine and engineering student whose sniper attack from atop the UT Tower injured more than 40 people, killing 14.",
-      "img": "whitman.png"
-  },
-  {
       "id": "houston-mccoy",
       "name": "Houston McCoy",
       "summary": "One of two Austin police officers who engaged sniper Charles Whitman in a gun battle and killed him.",
       "img": "mccoy.png"
-  },
-  {
-      "id": "artly-snuff",
-      "name": "Artly Snuff (John Fox)",
-      "summary": "As a 17-year-old UT freshman, Snuff risked his life to pull shooting victim Claire Wilson to safety.",
-      "img": "snuff.png",
-      "video": true
-  },
-  {
-      "id": "alfred-mcalister",
-      "name": "Alfred McAlister",
-      "summary": "An incoming UT freshman who risked his life to try to save a wounded person.",
-      "img": "mccalister.png",
-      "video": true
   },
   {
       "id": "allen-crum",
@@ -195,7 +195,7 @@
         <div class="brightcove-controls">
             {{#each page.videoPlayer.videos}}
             <div class="video-tease-front{{#if @first}} video-tease-active{{/if}}" data-video-id="{{ id }}">
-                <h3><i class="fa fa-video-camera"></i>&ensp;{{ hed }}</h3>
+                <h3><i class="fa fa-circle-o-notch fa-spin video-icon"></i>&ensp;{{ hed }}</h3>
             </div>
             {{/each}}
         </div>
@@ -210,7 +210,7 @@
 
         <h1 class="intro-hed">Meet the people</h1>
         <h2>
-            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam,
+            Sed XXXX some of the people connected to the XXXXXXXX
         </h2>
 
             <div class="row grid">
@@ -233,7 +233,7 @@
                     {{/if}}
                 <div class="row">
                     <div class="col-xs-12">
-                        <div class="share">
+                        <div class="share pull-right">
                             <a href="https://twitter.com/intent/tweet?text={{name}}%20-%20The%20UT%20 Tower%20shooting,%2050%20years%20later%3A%20http://projects.statesman.com/news/ut-tower-shooting-50th-anniversary/index.html%23{{id}}-card&related=@aasinteractive" target="_blank"><i class="fa fa-twitter"></i></a>
                             &ensp;
                             <a href="https://www.facebook.com/sharer.php?u=http://projects.statesman.com/news/ut-tower-shooting-50th-anniversary/index.html%23{{id}}-card">
