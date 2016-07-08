@@ -3,12 +3,20 @@
   "title": "Archival documents, photos and Statesman coverage",
   "description": "Description here ...",
   "thumbnail": "assets/thumbnail.jpg",
-  "soundcloud_911": {
-    "track_number": "266131486"
-  },
-  "soundcloud_broadcast": {
-    "track_number": "237603952"
-  },
+  "soundclouds": [
+    {
+      "name": "Track 1",
+      "title": "First track",
+      "slug": "sound-1",
+      "track_number": "266131486"
+    },
+    {
+      "name": "Track 2",
+      "title": "Second track",
+      "slug": "sound-2",
+      "track_number": "237603952"
+    }
+  ],
   "sliders": [
     {
       "name": "Austin Police Department photos",
@@ -615,45 +623,50 @@
    </div>
   </div>
 </div>
+
 <div class="container">
   {{#each page.sliders}}
     {{> slider }}
   {{/each}}
-</div>
-<div class="container">
-    <div class="row" style="padding-bottom:30px;">
-      <div class="col-sm-7">
-      {{> soundcloud page.soundcloud_broadcast }}
-      {{> soundcloud page.soundcloud_911 }}
 
-        <div class="document-wrapper">
-            {{#each page.documents}}
-            <div class="page-thumbs gray-text">
-                <a href="http://projects.statesman.com/documents/?doc={{id1}}-{{id2}}" target="_blank">
-                    <div class="tint-wrapper">
-                        <img src="https://assets.documentcloud.org/documents/{{id1}}/pages/{{id2}}-p1-thumbnail.gif" style="border: 1px solid #ccc; width: 100px; opacity: 0.6;"/>
-                    </div>
-                </a>
-                <p>{{date}}</p>
-            </div>
-            {{/each}}
-        </div>
+  {{#each page.soundclouds}}
+    {{> soundcloud }}
+  {{/each}}
 
-        <div class="article-wrapper">
-            <h2 class="document-hed bold">Previous coverage</h2>
-           {{#each page.articles}}
-           <div class="article-box">
-             <h3 class="article-hed">
-                 <a href="{{ url }}" target="_blank">{{ headline }}</a>
-             </h3>
-             <p class="article-date">{{ date }}&ensp;&bull;&ensp;{{ byline }}</p>
-         </div>
-         {{#unless @last}}
-         <div class="vert"></div>
-         {{/unless}}
-           {{/each}}
-       </div>
-</div>
-</div>
+  <div class="row content-list" style="padding-bottom:30px;">
+    <h3 class="name-head document-hed">Statesman front pages, August 1966</h3>
+    <div class="col-xs-12">
 
+      <div class="document-wrapper">
+          {{#each page.documents}}
+          <div class="page-thumbs gray-text">
+              <a href="http://projects.statesman.com/documents/?doc={{id1}}-{{id2}}" target="_blank">
+                  <div class="tint-wrapper">
+                      <img src="https://assets.documentcloud.org/documents/{{id1}}/pages/{{id2}}-p1-thumbnail.gif" style="border: 1px solid #ccc; width: 100px; opacity: 0.6;"/>
+                  </div>
+              </a>
+              <p>{{date}}</p>
+          </div>
+          {{/each}}
+      </div>
+    </div>
   </div>
+
+  <div class="row content-list">
+    <h3 class="name-head document-hed">Previous Statesman coverage</h3>
+    <div class="col-xs-6 col-xs-offset-3">
+      {{#each page.articles}}
+        <div class="article-box">
+          <h3 class="article-hed">
+             <a href="{{ url }}" target="_blank">{{ headline }}</a>
+          </h3>
+          <p class="article-date">{{ date }}&ensp;&bull;&ensp;{{ byline }}</p>
+        </div>
+       {{#unless @last}}
+       <div class="vert"></div>
+       {{/unless}}
+      {{/each}}
+    </div>
+  </div>
+
+</div>
