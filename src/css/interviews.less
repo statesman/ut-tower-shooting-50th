@@ -1,3 +1,4 @@
+@import 'content-list.less';
 
 .table > tbody > tr > td.video-link {
     padding: 10px;
@@ -13,46 +14,10 @@
     background: @body-bg;
 }
 
-.videoset {
-    margin-bottom: 60px;
-    h3 {
-        font-size: 32px;
-    }
-    /* hack to offset anchor jump */
-    &:before {
-      display: block;
-      content: " ";
-      margin-top: -60px;
-      height: 60px;
-      visibility: hidden;
-    }
-}
-
 .vjs-dock-text {
     display:none;
 }
 
 .vjs-dock-shelf {
     display:none;
-}
-
-.name-head {
-    margin-bottom:-10px;
-    > .slug-link a {
-        font-size: inherit;
-        color: #ccc;
-        opacity: 0;
-    }
-}
-
-.name-subhead {
-    margin-top: 15px;
-    margin-bottom: 15px;
-    line-height: 0;
-}
-
-.video-interview-hed:hover {
-    > h3 > .slug-link a {
-        opacity: 1;
-    }
 }
