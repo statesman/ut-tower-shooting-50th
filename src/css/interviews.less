@@ -1,6 +1,8 @@
-.video-link {
+
+.table > tbody > tr > td.video-link {
     padding: 10px;
     cursor: pointer;
+    line-height: 1.4;
     &:hover {
         background: @body-bg;
     }
@@ -16,6 +18,14 @@
     h3 {
         font-size: 32px;
     }
+    /* hack to offset anchor jump */
+    &:before {
+      display: block;
+      content: " ";
+      margin-top: -60px;
+      height: 60px;
+      visibility: hidden;
+    }
 }
 
 .vjs-dock-text {
@@ -28,8 +38,21 @@
 
 .name-head {
     margin-bottom:-10px;
-    > .slug-link {
+    > .slug-link a {
+        font-size: inherit;
         color: #ccc;
-        display: none;
+        opacity: 0;
+    }
+}
+
+.name-subhead {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    line-height: 0;
+}
+
+.video-interview-hed:hover {
+    > h3 > .slug-link a {
+        opacity: 1;
     }
 }
