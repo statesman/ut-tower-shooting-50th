@@ -11,7 +11,7 @@
   "videosets": [
     {
         "name": "Ramiro Martinez",
-        "title": "Former Austin police officer",
+        "title": "One of the police officers who shot Whitman",
         "slug": "ramiro-martinez",
         "videos": [
             {
@@ -45,8 +45,66 @@
         ]
     },
     {
+        "name": "Artly Snuff (John Fox)",
+        "title": "Former UT student who pulled shooting victim Claire Wilson to safety",
+        "slug": "artly-snuff",
+        "videos": [
+            {
+              "id": "5022118946001",
+              "question": "What made you decide to rescue Claire Wilson and Thomas Eckman?"
+            },
+            {
+              "id": "5022141700001",
+              "question": "What happened after you carried Claire off the South Mall?"
+            },
+            {
+              "id": "5022120958001",
+              "question": "What happened after people heard that Whitman was dead?"
+             },
+            {
+              "id": "5022141702001",
+              "question": "Do you ever watch the footage of yourself from the day of the shootings?"
+             },
+            {
+              "id": "5022141703001",
+              "question": "Do you every think about what you did that day as heroic?"
+            }
+        ]
+    },
+    {
+        "name": "Neal Spelce",
+        "title": "TV newsman who broadcast the sniper attack as it happened",
+        "slug": "neal-spelce",
+        "videos": [
+            {
+              "id": "5021877789001",
+              "question": "What context did you have for an event like this at the time?"
+            },
+            {
+              "id": "5021887061001",
+              "question": "What changed after the shooting?"
+            },
+            {
+              "id": "5021862997001",
+              "question": "Why has this mass murder stayed in public consciousness for so long?"
+             },
+            {
+              "id": "5021862998001",
+              "question": "How did you react when you found out Whitman had been listening to your broadcast?"
+             },
+            {
+              "id": "5021887079001",
+              "question": "What happened when you announced on the radio that the sniper was dead?"
+          },
+            {
+              "id": "5021853811001",
+              "question": "Could the police have done something differently?"
+            }
+        ]
+    },
+    {
         "name": "Alfred McAlister",
-        "title": "Former UT student",
+        "title": "Former UT student who risked his life to try to save a wounded person",
         "slug": "alfred-mcalister",
         "videos": [
             {
@@ -78,64 +136,6 @@
               "question": "How did things change after the shootings?"
             }
         ]
-    },
-    {
-        "name": "Artly Snuff (John Fox)",
-        "title": "Former UT student",
-        "slug": "artly-snuff",
-        "videos": [
-            {
-              "id": "5022118946001",
-              "question": "What made you decide to rescue Claire Wilson and Thomas Eckman?"
-            },
-            {
-              "id": "5022141700001",
-              "question": "What happened after you carried Claire off the South Mall?"
-            },
-            {
-              "id": "5022120958001",
-              "question": "What happened after people heard that Whitman was dead?"
-             },
-            {
-              "id": "5022141702001",
-              "question": "Do you ever watch the footage of yourself from the day of the shootings?"
-             },
-            {
-              "id": "5022141703001",
-              "question": "Do you every think about what you did that day as heroic?"
-            }
-        ]
-    },
-    {
-        "name": "Neal Spelce",
-        "title": "TV newsman",
-        "slug": "neal-spelce",
-        "videos": [
-            {
-              "id": "5021877789001",
-              "question": "What context did you have for an event like this at the time?"
-            },
-            {
-              "id": "5021887061001",
-              "question": "What changed after the shooting?"
-            },
-            {
-              "id": "5021862997001",
-              "question": "Why has this mass murder stayed in public consciousness for so long?"
-             },
-            {
-              "id": "5021862998001",
-              "question": "How did you react when you found out Whitman had been listening to your broadcast?"
-             },
-            {
-              "id": "5021887079001",
-              "question": "What happened when you announced on the radio that the sniper was dead?"
-          },
-            {
-              "id": "5021853811001",
-              "question": "Could the police have done something differently?"
-            }
-        ]
     }
   ]
 }
@@ -146,15 +146,15 @@
   <div class="row">
     <div class="col-xs-12" style="margin: 40px auto 20px auto;">
       <h1>In their own words</h1>
-      <h2>And a related subhed that's a little chatty and almost a little summary-like ... it could even be the length of a long sentence.</h2>
+      <h2>A cop, a newsman and two students recount their experiences that day</h2>
    </div>
   </div>
   {{#each page.videosets}}
 <div class="videoset" id="{{ slug }}">
     <div class="row">
-        <div class="col-xs-12">
-            <h3 class="name-head">{{ name }}<span class="slug-link">&ensp;<i class="fa fa-link"></i></span></h3>
-            <h3 style="margin-top:0; margin-bottom:5px;"><small>{{ title }}</small></h3>
+        <div class="col-xs-12 video-interview-hed">
+            <h3 class="name-head">{{ name }}<span class="slug-link">&ensp;<a href="#{{ slug }}"><i class="fa fa-link"></i></a></span></h3>
+            <h3 class="name-subhead"><small>{{ title }}</small></h3>
         </div>
     </div>
     <div class="row">
