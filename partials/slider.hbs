@@ -1,4 +1,10 @@
-<div class="photo-block">
+<div class="photo-block" id="{{ slug }}">
+    <div class="row">
+        <div class="col-xs-12 video-interview-hed">
+            <h3 class="name-head">{{ name }}<span class="slug-link">&ensp;<a href="#{{ slug }}"><i class="fa fa-link"></i></a></span></h3>
+            <h3 class="name-subhead"><small>{{ title }}</small></h3>
+        </div>
+    </div>
     <div class="slider">
         <div class="slider-controls clearfix">
             <p>Image <span class="slider-pos">1</span> of {{images.length}}</p>
