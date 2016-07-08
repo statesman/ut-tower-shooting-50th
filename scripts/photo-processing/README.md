@@ -8,4 +8,4 @@ Horizontal photos should be 800px wide @72dpi; vertical photos should be 600px t
 We also need to extract the "caption" metadata from each image and write to a CSV.
 
 ### Solution
-A [`bash script`](process_photos) that loops over each JPG in each directory, using imagemagick to resize the images and extract the metadata.
+A [`bash script`](process_photos.sh) that loops over each JPG in each directory, using imagemagick to resize the images and extract the metadata.
