@@ -634,9 +634,8 @@
   {{/each}}
 
   <div class="row content-list" style="padding-bottom:30px;">
-    <h3 class="name-head document-hed">Statesman front pages, August 1966</h3>
     <div class="col-xs-12">
-
+      <h3 class="name-head document-hed">Statesman front pages, August 1966</h3>
       <div class="document-wrapper">
           {{#each page.documents}}
           <div class="page-thumbs gray-text">
@@ -653,7 +652,11 @@
   </div>
 
   <div class="row content-list">
-    <h3 class="name-head document-hed">Previous Statesman coverage</h3>
+    <div class="col-xs-12">
+      <h3 class="name-head">Previous Statesman coverage</h3>
+    </div>
+  </div>
+  <div class="row">
     <div class="col-xs-6 col-xs-offset-3">
       {{#each page.articles}}
         <div class="article-box">
