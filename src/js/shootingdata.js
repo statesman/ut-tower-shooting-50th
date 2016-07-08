@@ -84,6 +84,8 @@
             intComma(get_victim_total(csv))
         );
 
+        $("#interactive-subhead").fadeTo(1500, 1);
+
         // draw the U.S. shape
         svg.insert('path', '.graticule')
             .datum(topojson.feature(us, us.objects.land))

@@ -9,7 +9,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Andrew Chavez <adchavez@gmail.com>",
+  "author": "Statesman Interactives <interactives@statesman.com>",
   "devDependencies": {
     "grunt-bootlint": "^0.7.0",
     "grunt-concurrent": "^1.0.0",
