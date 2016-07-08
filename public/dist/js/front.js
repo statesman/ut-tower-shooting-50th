@@ -1,23 +1,10 @@
 /*jshint -W030 */
 
 $(document).ready(function() {
-    var hed = "A new kind of madness";
-    var i=0;
 
-    function typewriterHed() {
-        $('#mainhed').append(hed[i]);
-        i++;
-        if( i < hed.length ){
-            var timeout = _.random(0, 800);
-            setTimeout(typewriterHed, timeout);
-        } else {
-            $("#mainsub").fadeTo(1500, 1);
-        }
-    }
-    typewriterHed();
+    $('#mainsub').fadeTo(1000, 1);
 
     /* load brightcove script in a way that doesn't block page rendering as obviously */
-
     var script = document.createElement("script");
     script.src = "//players.brightcove.net/1418563061/BygcJDlI_default/index.min.js";
     $("body").append(script);
