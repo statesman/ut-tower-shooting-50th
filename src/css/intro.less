@@ -1,50 +1,5 @@
-.slashed .top,
-.slashed .bot {
-  font-family: inherit;
-  overflow: hidden;
-}
-.slashed .top:before,
-.slashed .bot:before {
-  content: "madness";
-  -webkit-transform: rotate(5deg);
-  -moz-transform: rotate(5deg);
-  -o-transform: rotate(5deg);
-  -ms-transform: rotate(5deg);
-  transform: rotate(5deg);
-}
-.slashed .top {
-  position: absolute;
-  top: 0;
-  left: 5px;
-  right: 0;
-  bottom: 50%;
-}
-.slashed .top:before {
-  position: absolute;
-  bottom: -50px;
-  left: 0;
-  right: 0;
-}
-.slashed .bot {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  right: 5px;
-  bottom: 0;
-}
-.slashed .bot:before {
-  position: absolute;
-  top: -50px;
-  left: 0;
-  right: 0;
-}
-
 div.topmain-wrapper {
-    background: linear-gradient(
-      rgba(30, 0, 0, 0.6),
-      rgba(30, 0, 0, 0.6)
-    ),
-    url('/assets/img/tower.jpg');
+    background: url('/assets/img/tower.jpg');
     background-size: 100%;
     background-size: cover;
     background-position: center;
@@ -54,16 +9,17 @@ div.topmain-wrapper {
         text-align:center;
         > h1 {
             font-family: @font-family-sans-serif;
-            text-transform: uppercase;
             letter-spacing:-3px;
             font-size: 80px;
             color: white;
+            text-shadow: 3px 3px 3px rgba(0,0,0,0.5);
         }
         > h2 {
             font-style: italic;
             font-size:25px;
             color: white;
             opacity: 0;
+            text-shadow: 3px 3px 3px rgba(0,0,0,0.5);
         }
         > p {
             font-size: 16px;
