@@ -247,7 +247,19 @@
                 .attr("r",  function(d) {
                     var fatalities = +d.fatalities;
                     var wounded = +d.wounded;
-                    return (fatalities + wounded) * scale;
+                    // store the total
+                    d.total = fatalities + wounded;
+                    return d.total * scale;
+                })
+                .sort(function(a, b) {
+                    // sort based on total so smaller bubbles are placed on top
+                    if (a.total > b.total) {
+                        return -1;
+                    } else if (a.total < b.total) {
+                        return 1;
+                    } else {
+                        return 0;
+                    }
                 })
 
                 // set up click event for bubbles
