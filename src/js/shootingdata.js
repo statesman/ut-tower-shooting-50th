@@ -51,8 +51,8 @@
 
     // load the data (async)
     d3.queue()
-        .defer(d3.json, '/data/us.json')
-        .defer(d3.tsv, '/data/shooting-data.tsv')
+        .defer(d3.json, 'data/us.json')
+        .defer(d3.tsv, 'data/shooting-data.tsv')
     .await(ready);
 
     // main function to draw the map
