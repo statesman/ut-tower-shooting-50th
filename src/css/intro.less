@@ -40,31 +40,44 @@ h1.intro-hed {
 }
 
 .brightcove-controls {
-    margin: 5px -5px 50px -5px;
+    margin: 15px -5px 50px -5px;
+}
+
+.video-tease-wrapper {
+    display: inline-block;
+    margin: 5px;
+    border: 1px solid #eee;
+    &:hover {
+        .video-tease-active
+    }
+}
+
+.video-tease-content {
+    font-family: @font-family-sans-serif;
+    padding:10px;
+    cursor: pointer;
 }
 
 .video-tease-front {
     font-family: @font-family-sans-serif;
-    cursor: pointer;
     padding: 10px;
-    margin: 5px;
-    display: inline-block;
+    cursor: pointer;
     background: @body-bg;
-    &:hover {
-        .video-tease-active
-    }
     > h3 {
         font-family: @font-family-sans-serif;
-        font-size: 14px;
+        font-size: 18px;
         margin:0;
         padding:0;
     }
 }
 
 .video-tease-active {
-    background: @brand-primary;
-    color: white;
-    font-weight:bold;
+    border: 1px solid @brand-primary;
+    > .video-tease-front {
+        background: @brand-primary;
+        color: white;
+        font-weight:bold;
+    }
 }
 
 .person-card {
