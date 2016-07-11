@@ -23,6 +23,7 @@
     var $victim_total = $('#victim_total');
     var $timeline = $('#timeline');
     var $table = $('#table-shootings');
+    var dataTable = null;
     var $details = $('.details');
     var $previous = $("#player-previous-button");
     var $next = $("#player-next-button");
@@ -280,9 +281,40 @@
          * @param {Array} incidents - list of incidents filtered to the active year(s)
          */
         function update_table(incidents) {
-            $table.html(
-                table_template({"shootings": incidents})
-            );
+            tableValues = _.map(incidents, function(d) {
+                return _.pick(d, "city", "state", "fatalities", "wounded", "date");
+            });
+            if (dataTable) {
+                var tableApi = dataTable.api();
+                tableApi.clear();
+                tableApi.rows.add(tableValues);
+                tableApi.draw();
+            } else {
+                jQuery.extend(jQuery.fn.dataTableExt.oSort, {
+                  "moment-sort-pre": function(a) {return moment(a, "MMMM D, YYYY");},
+                  "moment-sort-asc": function ( a, b ) {return ((a < b) ? -1 : ((a > b) ? 1 : 0));},
+                  "moment-sort-desc": function ( a, b ) {return ((a < b) ? 1 : ((a > b) ? -1 : 0));}
+                });
+
+                dataTable = $table.dataTable({
+                    data: incidents,
+                    columns: [
+                        {data: "city"},
+                        {data: "state"},
+                        {data: "fatalities"},
+                        {data: "wounded"},
+                        {data: "date"},
+                    ],
+                    "order": [[4, "asc"]],
+                    "language": {
+                        "infoEmpty": "No mass shootings this year.",
+                        "emptyTable":  "No mass shootings this year."
+                    },
+                    "paging": false,
+                    "info": false,
+                    "searching": false
+                });
+            }
         }
 
         // handle resize
