@@ -15,13 +15,13 @@ $(document).ready(function() {
                 var self = this;
                 $('.video-icon').removeClass('fa-circle-o-notch fa-spin')
                                 .addClass('fa-video-camera');
-                $('.video-tease-front').on('click', function() {
+                $('.video-tease-wrapper').on('click', function() {
                         var new_video_id = $(this).data('video-id');
                         var $video_icon = $(this).find('.video-icon');
                         $video_icon.removeClass('fa-video-camera')
                                    .addClass('fa-circle-o-notch fa-spin');
 
-                        $('.video-tease-front').removeClass('video-tease-active');
+                        $('.video-tease-wrapper').removeClass('video-tease-active');
                         $(this).addClass('video-tease-active');
                         self.catalog.getVideo(String(new_video_id), function (error, video) {
                             if (error) {

@@ -67,11 +67,13 @@
       "videos": [
         {
             "id": "5028358537001",
-            "hed": "The hero’s daughter"
+            "hed": "The hero’s daughter",
+            "description": "Monika McCoy's father who was famous for helping stop Whitman's massacre, but she remembers Houston McCoy for much more than that. As an Austin police officer, she now patrols the same beat her father did in 1966."
         },
         {
             "id": "5007795368001",
-            "hed": "Domestic violence survivors"
+            "hed": "Domestic violence survivors",
+            "description": "lorem ipsum etc"
         }
       ]
   },
@@ -364,10 +366,18 @@
             {{> video-full-brightcove page.videoPlayer }}
         </div>
 
-        <div class="brightcove-controls">
+        <div class="row brightcove-controls">
             {{#each page.videoPlayer.videos}}
-            <div class="video-tease-front{{#if @first}} video-tease-active{{/if}}" data-video-id="{{ id }}">
-                <h3><i class="fa fa-circle-o-notch fa-spin video-icon"></i>&ensp;{{ hed }}</h3>
+            <div class="col-md-4">
+                <div class="video-tease-wrapper{{#if @first}} video-tease-active{{/if}}" data-video-id="{{ id }}">
+                    <div class="video-tease-front">
+                        <h3><i class="fa fa-circle-o-notch fa-spin video-icon"></i>&ensp;{{ hed }}</h3>
+                    </div>
+                    <div class="video-tease-content">
+                        {{ description }}
+
+                    </div>
+                </div>
             </div>
             {{/each}}
         </div>
