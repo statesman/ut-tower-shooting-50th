@@ -1,10 +1,37 @@
 div.topmain-wrapper {
-    background: url('../assets/img/tower.jpg');
-    background-size: 100%;
-    background-size: cover;
-    background-position: center;
-    padding-top: 100px;
-    padding-bottom: 100px;
+    video {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        z-index: -100;
+        transform: translateX(-50%) translateY(-50%);
+        background: url('../assets/img/tower-bg.png') no-repeat;
+        background-size: cover;
+        transition: opacity .8s linear;
+    }
+
+    /* a dot pattern to hide some of the video artifacts */
+    .video-overlay {
+        background: url("../assets/img/pattern.png");
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        opacity: 0.8;
+        z-index: -99;
+        background-repeat: repeat;
+    }
+
+    @media screen and (max-device-width: @screen-sm-min) {
+      background: url('../assets/img/tower.jpg') @body-bg no-repeat center center fixed;
+      video { display: none; }
+    }
+
     > div.topmain {
         text-align:center;
         > h1 {
