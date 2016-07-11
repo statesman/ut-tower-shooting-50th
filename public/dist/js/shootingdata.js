@@ -2,6 +2,7 @@
 
     // set up underscore template
     var sidebar_template = _.template($("#details_template").html());
+    var table_template = _.template($("#table_template").html());
 
     /* helper function to sum an array of numbers
      * @param {Array} ls - array of numbers to sum
@@ -21,6 +22,7 @@
     // cache DOM elements
     var $victim_total = $('#victim_total');
     var $timeline = $('#timeline');
+    var $table = $('#table-shootings');
     var $details = $('.details');
     var $previous = $("#player-previous-button");
     var $next = $("#player-next-button");
@@ -212,6 +214,8 @@
                 year_hed = year;
             }
 
+            update_table(incidents);
+
             // get victim total for the selected year
             var victim_total = get_victim_total(incidents);
 
@@ -270,6 +274,15 @@
                        .classed("highlighted", false);
                     d3.select(this).classed("highlighted", true);
                 });
+        }
+
+        /* function to update cases listed in the table
+         * @param {Array} incidents - list of incidents filtered to the active year(s)
+         */
+        function update_table(incidents) {
+            $table.html(
+                table_template({"shootings": incidents})
+            );
         }
 
         // handle resize

@@ -48,6 +48,15 @@
             </div>
       </div>
   </div>
+
+  <div class="table-wrap">
+      <div class="row">
+          <div class="col-xs-12">
+              <table id="table-shootings" class="display responsive nowrap table-striped" cellspacing="0" width="100%">
+              </table>
+          </div>
+      </div>
+  </div>
 </div>
 
 <script type="text/html" id="details_template">
@@ -56,4 +65,27 @@
                 <%= template_data.date %>
         </p>
         <p class="detail-summary"><%= template_data.description %></p>
+</script>
+
+<script type="text/html" id="table_template">
+    <thead>
+        <tr>
+            <th>City</th>
+            <th>State</th>
+            <th>Fatalities</th>
+            <th>Wounded</th>
+            <th>Date</th>
+        </tr>
+    </thead>
+    <tbody>
+    <% _.each(template_data.shootings, function(s) { %>
+        <tr>
+            <td><%= s.city %></td>
+            <td><%= s.state %></td>
+            <td><%= s.fatalities %></td>
+            <td><%= s.wounded %></td>
+            <td><%= s.date %></td>
+        </tr>
+    <% }); %>
+    </tbody>
 </script>
