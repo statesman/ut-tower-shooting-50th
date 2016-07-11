@@ -36,6 +36,11 @@
     "scrollmagic": "^2.0.5",
     "slick-carousel": "^1.6.0",
     "topojson": "^1.6.26",
-    "underscore": "^1.8.3"
+    "underscore": "^1.8.3",
+    "datatables.net": "^1.10.12",
+    "datatables.net-bs": "^1.10.12",
+    "datatables.net-responsive": "^2.1.0",
+    "datatables.net-responsive-bs": "^2.1.0",
+    "moment": "^2.14.1"
   }
 }

@@ -21,6 +21,8 @@
     // cache DOM elements
     var $victim_total = $('#victim_total');
     var $timeline = $('#timeline');
+    var $table = $('#table-shootings');
+    var dataTable = null;
     var $details = $('.details');
     var $previous = $("#player-previous-button");
     var $next = $("#player-next-button");
@@ -212,6 +214,8 @@
                 year_hed = year;
             }
 
+            update_table(incidents);
+
             // get victim total for the selected year
             var victim_total = get_victim_total(incidents);
 
@@ -261,7 +265,6 @@
                         return 0;
                     }
                 })
-
                 // set up click event for bubbles
                 .on("click", function(d) {
                     $details.html(sidebar_template(d));
@@ -270,6 +273,50 @@
                        .classed("highlighted", false);
                     d3.select(this).classed("highlighted", true);
                 });
+        }
+
+        /* function to update cases listed in the table
+         * @param {Array} incidents - list of incidents filtered to the active year(s)
+         */
+        function update_table(incidents) {
+            tableValues = _.map(incidents, function(d) {
+                return _.pick(d, "city", "state", "fatalities", "wounded", "date");
+            });
+            if (dataTable) {
+                // table already initalized, update its data
+                var tableApi = dataTable.api();
+                tableApi.clear();
+                tableApi.rows.add(tableValues);
+                tableApi.draw();
+            } else {
+                // init date sorting
+                jQuery.extend(jQuery.fn.dataTableExt.oSort, {
+                  "moment-sort-pre": function(a) {return moment(a, "MMMM D, YYYY");},
+                  "moment-sort-asc": function ( a, b ) {return ((a < b) ? -1 : ((a > b) ? 1 : 0));},
+                  "moment-sort-desc": function ( a, b ) {return ((a < b) ? 1 : ((a > b) ? -1 : 0));}
+                });
+
+                // init sortable table
+                dataTable = $table.dataTable({
+                    responsive: true,
+                    data: incidents,
+                    columns: [
+                        {data: "city"},
+                        {data: "state"},
+                        {data: "date"},
+                        {data: "fatalities"},
+                        {data: "wounded"}
+                    ],
+                    "order": [[2, "asc"]],
+                    "language": {
+                        "infoEmpty": "No mass shootings this year.",
+                        "emptyTable":  "No mass shootings this year."
+                    },
+                    "paging": false,
+                    "info": false,
+                    "searching": false
+                });
+            }
         }
 
         // handle resize
