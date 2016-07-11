@@ -157,7 +157,7 @@ module.exports = function(grunt) {
           templates: 'layouts',
           templateExt: 'hbs',
           helpers: require('./helpers'),
-          base: 'http://projects.statesman.com/news/' + site_path,
+          base: 'http://projects.statesman.com/news/' + site_path + "/",
           nav: [
             {
               title: "Introduction",

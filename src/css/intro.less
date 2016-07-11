@@ -1,14 +1,5 @@
-@keyframes colorfade {
-	from { color: #fff; }
-	to { color: #f00; }
-}
-
 div.topmain-wrapper {
-    background: linear-gradient(
-      rgba(30, 0, 0, 0.6),
-      rgba(30, 0, 0, 0.6)
-    ),
-    url('/assets/img/tower.jpg');
+    background: url('../assets/img/tower.jpg');
     background-size: 100%;
     background-size: cover;
     background-position: center;
@@ -17,15 +8,18 @@ div.topmain-wrapper {
     > div.topmain {
         text-align:center;
         > h1 {
-            font-family: @font-family-special;
+            font-family: @font-family-sans-serif;
+            letter-spacing:-3px;
             font-size: 80px;
             color: white;
+            text-shadow: 3px 3px 3px rgba(0,0,0,0.5);
         }
         > h2 {
             font-style: italic;
             font-size:25px;
             color: white;
             opacity: 0;
+            text-shadow: 3px 3px 3px rgba(0,0,0,0.5);
         }
         > p {
             font-size: 16px;

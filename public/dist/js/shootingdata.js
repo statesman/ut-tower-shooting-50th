@@ -51,8 +51,8 @@
 
     // load the data (async)
     d3.queue()
-        .defer(d3.json, '/data/us.json')
-        .defer(d3.tsv, '/data/shooting-data.tsv')
+        .defer(d3.json, 'data/us.json')
+        .defer(d3.tsv, 'data/shooting-data.tsv')
     .await(ready);
 
     // main function to draw the map
@@ -247,7 +247,19 @@
                 .attr("r",  function(d) {
                     var fatalities = +d.fatalities;
                     var wounded = +d.wounded;
-                    return (fatalities + wounded) * scale;
+                    // store the total
+                    d.total = fatalities + wounded;
+                    return d.total * scale;
+                })
+                .sort(function(a, b) {
+                    // sort based on total so smaller bubbles are placed on top
+                    if (a.total > b.total) {
+                        return -1;
+                    } else if (a.total < b.total) {
+                        return 1;
+                    } else {
+                        return 0;
+                    }
                 })
 
                 // set up click event for bubbles

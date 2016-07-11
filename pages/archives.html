@@ -3,13 +3,25 @@
   "title": "Archival documents, photos and Statesman coverage",
   "description": "Description here ...",
   "thumbnail": "assets/thumbnail.jpg",
-  "soundcloud_911": {
-    "track_number": "266131486"
-  },
-  "soundcloud_broadcast": {
-    "track_number": "237603952"
-  },
-    "slider_apd": {
+  "soundclouds": [
+    {
+      "name": "Track 1",
+      "title": "First track",
+      "slug": "sound-1",
+      "track_number": "266131486"
+    },
+    {
+      "name": "Track 2",
+      "title": "Second track",
+      "slug": "sound-2",
+      "track_number": "237603952"
+    }
+  ],
+  "sliders": [
+    {
+      "name": "Austin Police Department photos",
+      "title": "Crime scene images from the Austin History Center",
+      "slug": "slider-apd",
       "images": [
       {
         "url": "assets/img/slides/apd/apd01.png",
@@ -18,7 +30,7 @@
       },
       {
         "url": "assets/img/slides/apd/apd02.png",
-        "caption": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+        "caption": "Whitman's .357 magnum revolver found near his body.",
         "credit": "Austin History Center AR.2000.002(078)"
       },
       {
@@ -117,8 +129,10 @@
         "credit": "Austin History Center AR.2000.002(074)"
       }]
     },
-
-    "slider_statesman": {
+    {
+      "name": "Austin American-Statesman photos",
+      "title": "Pictures taken by Statesman staff",
+      "slug": "slider-statesman",
       "images": [
       {
         "url": "assets/img/slides/st/UT-Tower-newsprint-photos01.png",
@@ -226,7 +240,10 @@
         "credit": ""
       }]
     },
-    "slider_anschutz": {
+    {
+      "name": "Robert Anschutz photos",
+      "title": "Hobbyist captured key moments of the shooting",
+      "slug": "slider-anschutz",
       "images": [
       {
         "url": "assets/img/slides/ra/UT-Tower-anschutz01.png",
@@ -294,7 +311,10 @@
         "credit": "Photo by Robert Anschutz"
       }]
     },
-    "slider_heros_villains": {
+    {
+      "name": "Heroes and villains",
+      "title": "Individuals who played key roles on August 1, 1966",
+      "slug": "slider-heroes-villains",
       "images": [
       {
         "url": "assets/img/slides/hav/01UT-Tower-historical-images.png",
@@ -381,7 +401,8 @@
         "caption": "Charles Joseph Whitman-- On August 1, 1966 a University of Texas student named Charles Whitman, 25, went on a rampage. Heavily armed, he barricated himself high on the University's 307 foot tower. For 90 minutes, the sniper aimed rifle shots and terror at the streets below. When it ended, Whitman had killed 16 people and wounded 31. He died in a hail of police gunfire",
         "credit": "AP LASERPHOTO"
       }]
-    },
+    }
+  ],
     "articles": [
         {
             "date": "Dec. 28, 2012",
@@ -601,44 +622,54 @@
       <h2>Explore archival photos, audio and Statesman coverage of the Tower shooting over the years</h2>
    </div>
   </div>
-    <div class="row" style="padding-bottom:30px;">
-      <div class="col-sm-7">
-      {{> slider page.slider_apd }}
-      {{> slider page.slider_heros_villains }}
-      {{> slider page.slider_statesman }}
-      {{> slider page.slider_anschutz }}
-
-      {{> soundcloud page.soundcloud_broadcast }}
-      {{> soundcloud page.soundcloud_911 }}
-
-        <div class="document-wrapper">
-            {{#each page.documents}}
-            <div class="page-thumbs gray-text">
-                <a href="http://projects.statesman.com/documents/?doc={{id1}}-{{id2}}" target="_blank">
-                    <div class="tint-wrapper">
-                        <img src="https://assets.documentcloud.org/documents/{{id1}}/pages/{{id2}}-p1-thumbnail.gif" style="border: 1px solid #ccc; width: 100px; opacity: 0.6;"/>
-                    </div>
-                </a>
-                <p>{{date}}</p>
-            </div>
-            {{/each}}
-        </div>
-
-        <div class="article-wrapper">
-            <h2 class="document-hed bold">Previous coverage</h2>
-           {{#each page.articles}}
-           <div class="article-box">
-             <h3 class="article-hed">
-                 <a href="{{ url }}" target="_blank">{{ headline }}</a>
-             </h3>
-             <p class="article-date">{{ date }}&ensp;&bull;&ensp;{{ byline }}</p>
-         </div>
-         {{#unless @last}}
-         <div class="vert"></div>
-         {{/unless}}
-           {{/each}}
-       </div>
-</div>
 </div>
 
+<div class="container">
+  {{#each page.sliders}}
+    {{> slider }}
+  {{/each}}
+
+  {{#each page.soundclouds}}
+    {{> soundcloud }}
+  {{/each}}
+
+  <div class="row content-list" style="padding-bottom:30px;">
+    <div class="col-xs-12">
+      <h3 class="name-head document-hed">Statesman front pages, August 1966</h3>
+      <div class="document-wrapper">
+          {{#each page.documents}}
+          <div class="page-thumbs gray-text">
+              <a href="http://projects.statesman.com/documents/?doc={{id1}}-{{id2}}" target="_blank">
+                  <div class="tint-wrapper">
+                      <img src="https://assets.documentcloud.org/documents/{{id1}}/pages/{{id2}}-p1-thumbnail.gif" style="border: 1px solid #ccc; width: 100px; opacity: 0.6;"/>
+                  </div>
+              </a>
+              <p>{{date}}</p>
+          </div>
+          {{/each}}
+      </div>
+    </div>
   </div>
+
+  <div class="row content-list">
+    <div class="col-xs-12">
+      <h3 class="name-head">Previous Statesman coverage</h3>
+    </div>
+  </div>
+  <div class="row articles-container">
+    <div class="col-xs-6 col-xs-offset-3">
+      {{#each page.articles}}
+        <div class="article-box">
+          <h3 class="article-hed">
+             <a href="{{ url }}" target="_blank">{{ headline }}</a>
+          </h3>
+          <p class="article-date">{{ date }}&ensp;&bull;&ensp;{{ byline }}</p>
+        </div>
+       {{#unless @last}}
+       <div class="vert"></div>
+       {{/unless}}
+      {{/each}}
+    </div>
+  </div>
+
+</div>
