@@ -578,37 +578,44 @@
     {
         "date": "Aug. 1, 1966",
         "id1": "2841372",
-        "id2": "Statesman-tower-coverage-Aug-1-1966"
+        "id2": "Statesman-tower-coverage-Aug-1-1966",
+        "img": "1966-08-01-cropped.png"
     },
     {
         "date": "Aug. 2, 1966",
         "id1": "2841373",
-        "id2": "Statesman-tower-coverage-Aug-2-1966"
+        "id2": "Statesman-tower-coverage-Aug-2-1966",
+        "img": "1966-08-02-cropped.png"
     },
     {
         "date": "Aug. 3, 1966",
         "id1": "2841374",
-        "id2": "Statesman-tower-coverage-Aug-3-1966"
+        "id2": "Statesman-tower-coverage-Aug-3-1966",
+        "img": "1966-08-03-cropped.png"
     },
     {
         "date": "Aug. 4, 1966",
         "id1": "2841375",
-        "id2": "Statesman-tower-coverage-Aug-4-1966"
+        "id2": "Statesman-tower-coverage-Aug-4-1966",
+        "img": "1966-08-04-cropped.png"
     },
     {
         "date": "Aug. 5, 1966",
         "id1": "2841376",
-        "id2": "Statesman-tower-coverage-Aug-5-1966"
+        "id2": "Statesman-tower-coverage-Aug-5-1966",
+        "img": "1966-08-05-cropped.png"
     },
     {
         "date": "Aug. 6, 1966",
         "id1": "2841377",
-        "id2": "Statesman-tower-coverage-Aug-6-1966"
+        "id2": "Statesman-tower-coverage-Aug-6-1966",
+        "img": "1966-08-06-cropped.png"
     },
     {
         "date": "Aug. 7, 1966",
         "id1": "2841378",
-        "id2": "Statesman-tower-coverage-Aug-7-1966"
+        "id2": "Statesman-tower-coverage-Aug-7-1966",
+        "img": "1966-08-07-cropped.png"
     }
   ]
 
@@ -636,18 +643,14 @@
   <div class="row content-list" style="padding-bottom:30px;">
     <div class="col-xs-12">
       <h3 class="name-head document-hed">Statesman front pages, August 1966</h3>
-      <div class="document-wrapper">
-          {{#each page.documents}}
-          <div class="page-thumbs gray-text">
-              <a href="http://projects.statesman.com/documents/?doc={{id1}}-{{id2}}" target="_blank">
-                  <div class="tint-wrapper">
-                      <img src="https://assets.documentcloud.org/documents/{{id1}}/pages/{{id2}}-p1-thumbnail.gif" style="border: 1px solid #ccc; width: 100px; opacity: 0.6;"/>
-                  </div>
-              </a>
-              <p>{{date}}</p>
-          </div>
-          {{/each}}
+      {{#each page.documents}}
+      <div class="page-thumbs gray-text">
+          <a href="http://projects.statesman.com/documents/?doc={{id1}}-{{id2}}" target="_blank">
+             <img src="assets/img/statesman-front-pages/{{img}}" class="document-img" />
+          </a>
+          <p>{{date}}</p>
       </div>
+      {{/each}}
     </div>
   </div>
 
