@@ -28,7 +28,7 @@
 
     // if you click on the video player div, pause other videos
     $('.brightcove-full-player').on('click', function() {
-        var $videoset = $(this).closest('.videoset');
+        var $videoset = $(this).closest('.content-list');
         var videoset_id = $videoset.attr('id');
         pause_other_video_players(videoset_id);
 
@@ -41,7 +41,7 @@
     $('.video-link').on('click', function() {
         // cache ref to elements
         var $t = $(this);
-        var $videoset = $(this).closest('.videoset');
+        var $videoset = $(this).closest('.content-list');
         var $spinner = $t.find('.spinner');
 
         // set the spinner going
