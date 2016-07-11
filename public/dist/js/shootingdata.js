@@ -265,7 +265,6 @@
                         return 0;
                     }
                 })
-
                 // set up click event for bubbles
                 .on("click", function(d) {
                     $details.html(sidebar_template(d));
@@ -284,17 +283,20 @@
                 return _.pick(d, "city", "state", "fatalities", "wounded", "date");
             });
             if (dataTable) {
+                // table already initalized, update its data
                 var tableApi = dataTable.api();
                 tableApi.clear();
                 tableApi.rows.add(tableValues);
                 tableApi.draw();
             } else {
+                // init date sorting
                 jQuery.extend(jQuery.fn.dataTableExt.oSort, {
                   "moment-sort-pre": function(a) {return moment(a, "MMMM D, YYYY");},
                   "moment-sort-asc": function ( a, b ) {return ((a < b) ? -1 : ((a > b) ? 1 : 0));},
                   "moment-sort-desc": function ( a, b ) {return ((a < b) ? 1 : ((a > b) ? -1 : 0));}
                 });
 
+                // init sortable table
                 dataTable = $table.dataTable({
                     responsive: true,
                     data: incidents,

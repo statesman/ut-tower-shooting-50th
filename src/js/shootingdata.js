@@ -264,8 +264,7 @@
                     } else {
                         return 0;
                     }
-                });
-
+                })
                 // set up click event for bubbles
                 .on("click", function(d) {
                     $details.html(sidebar_template(d));
