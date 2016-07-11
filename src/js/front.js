@@ -29,9 +29,9 @@ $(document).ready(function() {
                             }
                             self.catalog.load(video);
                             self.play();
+                            $video_icon.removeClass('fa-circle-o-notch fa-spin')
+                                       .addClass('fa-video-camera');
                         });
-                        $video_icon.removeClass('fa-circle-o-notch fa-spin')
-                                   .addClass('fa-video-camera');
                     });
             });
         }
