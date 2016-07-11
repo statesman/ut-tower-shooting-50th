@@ -3,8 +3,7 @@
 var projectSite = "statesman";
 var projectChannel = "news";
 var projectCategory = "local";
-var projectSubCategory = "project";
-var projectByline = "firstname lastname"; // lowercase comma separated
+var projectSubCategory = "ut-tower-shooting-50th-anniversary";
 </script>
 
 <!-- statesman sitecatalyst to test blanks -->
@@ -16,7 +15,7 @@ else if (projectSubCategory == "" && projectCategory != "") {
   projectHier3 = projectChannel + "|" + projectCategory
 }
 else {
-  projectHier3 = projectChannel + "|" + projectCategory + "|" + projectSubCategory
+  projectHier3 = [projectChannel, projectCategory, projectSubCategory].join("|");
 }
 --></script>
 
@@ -43,7 +42,6 @@ s.prop19=""
 s.prop20=""
 s.prop21=projectSite
 s.prop22="flat pages"
-s.prop23=projectByline
 s.prop42=projectSite
 s.prop43="newspaper"
 s.prop57=document.referrer
@@ -69,7 +67,6 @@ s.eVar19=""
 s.eVar20=""
 s.eVar21=s.prop21
 s.eVar22="flat pages"
-s.eVar23=projectByline
 s.eVar42=s.prop42
 s.eVar43="newspaper"
 s.eVar55=s.pageName
