@@ -98,6 +98,8 @@ module.exports = function(grunt) {
             'node_modules/masonry-layout/dist/masonry.pkgd.js',
             'node_modules/datatables.net/js/jquery.dataTables.js',
             'node_modules/datatables.net-bs/js/dataTables.bootstrap.js',
+            'node_modules/datatables.net-responsive/js/dataTables.responsive.js',
+            'node_modules/datatables.net-responsive-bs/js/responsive.bootstrap.js',
             'node_modules/moment/min/moment.min.js',
             'src/js/slider.js',
             'src/js/main.js'

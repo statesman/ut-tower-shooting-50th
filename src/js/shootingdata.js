@@ -2,7 +2,6 @@
 
     // set up underscore template
     var sidebar_template = _.template($("#details_template").html());
-    var table_template = _.template($("#table_template").html());
 
     /* helper function to sum an array of numbers
      * @param {Array} ls - array of numbers to sum
@@ -297,15 +296,16 @@
                 });
 
                 dataTable = $table.dataTable({
+                    responsive: true,
                     data: incidents,
                     columns: [
                         {data: "city"},
                         {data: "state"},
-                        {data: "fatalities"},
-                        {data: "wounded"},
                         {data: "date"},
+                        {data: "fatalities"},
+                        {data: "wounded"}
                     ],
-                    "order": [[4, "asc"]],
+                    "order": [[2, "asc"]],
                     "language": {
                         "infoEmpty": "No mass shootings this year.",
                         "emptyTable":  "No mass shootings this year."

@@ -57,9 +57,9 @@
                       <tr>
                           <th>City</th>
                           <th>State</th>
+                          <th>Date</th>
                           <th>Fatalities</th>
                           <th>Wounded</th>
-                          <th>Date</th>
                       </tr>
                   </thead>
                   <tbody></tbody>
@@ -75,18 +75,4 @@
                 <%= template_data.date %>
         </p>
         <p class="detail-summary"><%= template_data.description %></p>
-</script>
-
-<script type="text/html" id="table_template">
-    <tbody>
-    <% _.each(template_data.shootings, function(s) { %>
-        <tr>
-            <td><%= s.city %></td>
-            <td><%= s.state %></td>
-            <td><%= s.fatalities %></td>
-            <td><%= s.wounded %></td>
-            <td><%= s.date %></td>
-        </tr>
-    <% }); %>
-    </tbody>
 </script>
