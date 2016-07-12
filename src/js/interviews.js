@@ -70,18 +70,18 @@
 
         // get the brightcove instance
         var brightcove_instance = videojs(video_player_id);
-        console.log(brightcove_instance);
 
         // load and play the video
         brightcove_instance.catalog.getVideo(String(new_video_id), function (error, video) {
             if (error) {
                 console.log("error: ", error);
-            }
-            brightcove_instance.catalog.load(video);
-            brightcove_instance.play();
+            } else {
+                brightcove_instance.catalog.load(video);
+                brightcove_instance.play();
 
-            // kill the spinner
-            $spinner.html("");
+                // kill the spinner
+                $spinner.html("");
+            }
         });
     });
 })(jQuery, _);
