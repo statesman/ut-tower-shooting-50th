@@ -27,15 +27,6 @@ $(document).ready(function() {
                         // get the ID of the new video
                         var new_video_id = $(this).data('video-id');
 
-                        // fire omniture event
-                        if (s) {
-                            var omniture_param = 'video-tease-' + new_video_id;
-                            s.linkTrackVars = 'prop1';
-                            s.prop1=s.pageName;
-                            console.log(s.prop1, omniture_param);
-                            s.tl(true, 'o', omniture_param);
-                        }
-
                         // add spinner class while it loads
                         var $video_icon = $(this).find('.video-icon');
                         $video_icon.removeClass('fa-video-camera')
