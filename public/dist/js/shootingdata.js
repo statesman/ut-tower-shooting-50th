@@ -316,8 +316,30 @@
                     "info": false,
                     "searching": false
                 });
+
+                $table.on("click", "tr", function() {
+                    $("tr").removeClass("active");
+                    $(this).addClass("active");
+                    show_row_details(this);
+                });
             }
-        }
+        };
+
+        function show_row_details(row) {
+            var rowData = dataTable.api()
+                                .row(row)
+                                .data();
+
+            $details.html(sidebar_template(rowData));
+
+            d3.selectAll("circle")
+              .classed("highlighted", false)
+              .filter(function(d) {
+                return d.city == rowData.city &&
+                       d.date == rowData.date;
+               })
+              .classed("highlighted", true);
+        };
 
         // handle resize
         d3.select(window)
