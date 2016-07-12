@@ -267,11 +267,7 @@
                 })
                 // set up click event for bubbles
                 .on("click", function(d) {
-                    $details.html(sidebar_template(d));
-                    svg.selectAll("circle")
-                       .classed("dot", true)
-                       .classed("highlighted", false);
-                    d3.select(this).classed("highlighted", true);
+                    display_row(get_row(d));
                 });
         }
 
@@ -280,7 +276,7 @@
          */
         function update_table(incidents) {
             tableValues = _.map(incidents, function(d) {
-                return _.pick(d, "city", "state", "fatalities", "wounded", "date");
+                return _.pick(d, "city", "state", "fatalities", "wounded", "date", "description");
             });
             if (dataTable) {
                 // table already initalized, update its data
@@ -305,27 +301,47 @@
                         {data: "state"},
                         {data: "date"},
                         {data: "fatalities"},
-                        {data: "wounded"}
+                        {data: "wounded"},
+                        {data: "description"}
                     ],
-                    "order": [[2, "asc"]],
-                    "language": {
-                        "infoEmpty": "No mass shootings this year.",
-                        "emptyTable":  "No mass shootings this year."
+                    order: [[2, "asc"]],
+                    language: {
+                        infoEmpty: "No mass shootings this year.",
+                        emptyTable:  "No mass shootings this year."
                     },
-                    "paging": false,
-                    "info": false,
-                    "searching": false
+                    columnDefs: [{visible: false, targets: [5]}],
+                    paging: false,
+                    info: false,
+                    searching: false
                 });
 
-                $table.on("click", "tr", function() {
-                    $("tr").removeClass("active");
-                    $(this).addClass("active");
-                    show_row_details(this);
+                $table.on("click", "tbody tr", function() {
+                    display_row(this);
                 });
             }
         };
 
-        function show_row_details(row) {
+        /* function to find table row that corresponds to a bubble
+         * @param {Object} data - data bound to the bubble
+         */
+        function get_row(data) {
+            var rowNode = null;
+            var tableApi = dataTable.api();
+            var rowIndex = tableApi.rows(function(i, d, node) {
+                if (d.city === data.city && d.date == data.date) {
+                    rowNode = node;
+                }
+            });
+
+            return rowNode;
+        };
+
+        /* function highlight shooting on table and map, display details
+         * @param {Object} row - the <tr> of the selected shooting
+         */
+        function display_row(row) {
+            $("tr").removeClass("active");
+            $(row).addClass("active");
             var rowData = dataTable.api()
                                 .row(row)
                                 .data();
