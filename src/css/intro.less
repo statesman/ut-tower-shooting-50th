@@ -1,33 +1,10 @@
 div.topmain-wrapper {
-    padding: 100px 20px 100px 20px;
-    video {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        min-width: 100%;
-        min-height: 100%;
-        width: auto;
-        height: auto;
-        z-index: -100;
-        transform: translateX(-50%) translateY(-50%);
-        background: url('../assets/img/tower-bg.png') no-repeat;
-        background-size: cover;
-        transition: opacity .8s linear;
-    }
-
-    /* a dot pattern to hide some of the video artifacts */
-    .video-overlay {
-        background: url("../assets/img/pattern.png");
-        position: absolute;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        right: 0;
-        opacity: 0.8;
-        z-index: -99;
-        background-repeat: repeat;
-    }
-
+    background: url('../assets/img/bullet-hole.png');
+    background-size: 100%;
+    background-size: cover;
+    background-position: center;
+    padding-top: 170px;
+    padding-bottom: 30px;
     > div.topmain {
         text-align:center;
         > h1 {
