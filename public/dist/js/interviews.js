@@ -17,11 +17,11 @@
         for (i=0; i < other_video_players.length; i++) {
             var player = videojs([
                 "video-player-",
-                other_video_players[i],
-                "_html5_api"
+                other_video_players[i]
             ].join(""));
             if (!player.paused()) {
                 player.pause();
+                console.log("paused", other_video_players[i]);
             }
         }
     }
@@ -45,6 +45,7 @@
         var $spinner = $t.find('.spinner');
 
         // set the spinner going
+        $('.video-status').html("");
         $spinner.html("<i class='fa fa-circle-o-notch fa-spin'></i>");
 
         // pause other video players, if necessary
@@ -69,6 +70,7 @@
 
         // get the brightcove instance
         var brightcove_instance = videojs(video_player_id);
+        console.log(brightcove_instance);
 
         // load and play the video
         brightcove_instance.catalog.getVideo(String(new_video_id), function (error, video) {
