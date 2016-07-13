@@ -254,6 +254,7 @@
       "name": "Houston McCoy",
       "summary": "One of two Austin police officers who engaged sniper Charles Whitman in a gun battle and killed him. Which one fired the shot that stopped Whitman remains a matter of unresolved debate.",
       "img": "mccoy.jpg",
+      "mccoy": true,
       "linkls": {
           "links": [
               {
@@ -613,6 +614,9 @@
                       <div class="person-card-inner">
                       <h2>{{ name }}</h2>
                       <p>{{summary}}</p>
+                      {{#if mccoy}}
+                      <p><a style="font-family:inherit;" href="#video-and-articles">McCoy's daughter now patrols the same beat he once did back in 1966</a>.</p>
+                      {{/if}}
                     {{#if video}}
                         <a class="sm-muted-button video-launcher" href="interviews.html#{{ id }}">
                           <i class="fa fa-video-camera"></i>&ensp;Watch interview
