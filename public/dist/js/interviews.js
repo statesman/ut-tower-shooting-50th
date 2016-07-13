@@ -55,10 +55,6 @@
         $('.video-status').html("");
         $spinner.html("<i class='fa fa-circle-o-notch fa-spin'></i>");
 
-        // pause other video players, if necessary
-        var videoset_id = $videoset.attr('id');
-        pause_other_video_players(videoset_id);
-
         // remove active class from other links in this set
         var $fellow_video_links = $t.parent().parent().find('.video-link');
         $fellow_video_links.removeClass('video-link-active');
@@ -89,6 +85,10 @@
                 brightcove_instance.catalog.load(video);
 
                 brightcove_instance.on("play", function() {
+                    // pause other video players, if necessary
+                    var videoset_id = $videoset.attr('id');
+                    pause_other_video_players(videoset_id);
+
                     // kill the spinner
                     $spinner.html("");
                 });
