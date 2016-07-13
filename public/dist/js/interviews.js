@@ -87,10 +87,18 @@
                 console.log("error: ", error);
             } else {
                 brightcove_instance.catalog.load(video);
-                brightcove_instance.play();
 
-                // kill the spinner
-                $spinner.html("");
+                brightcove_instance.on("play", function() {
+                    // kill the spinner
+                    $spinner.html("");
+                });
+
+                brightcove_instance.on("progress", function() {
+                    if (brightcove_instance.bufferedPercent() > 0.1) {
+                        brightcove_instance.play();
+                        return;
+                    }
+                });
             }
         });
     });
