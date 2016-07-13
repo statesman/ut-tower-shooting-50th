@@ -201,7 +201,8 @@ module.exports = function(grunt) {
         dest: '/stage_aas/projects/news/' + site_path,
         exclusions: ['dist/tmp','Thumbs.db','.DS_Store'],
         simple: false,
-        useList: false
+        useList: false,
+        keep: ['*']
       },
       // prod path will need to change
       prod: {
@@ -214,7 +215,8 @@ module.exports = function(grunt) {
         dest: '/prod_aas/projects/news/' + site_path,
         exclusions: ['dist/tmp','Thumbs.db','.DS_Store'],
         simple: false,
-        useList: false
+        useList: false,
+        keep: ['*']
       }
     },
 
