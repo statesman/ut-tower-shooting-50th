@@ -23,14 +23,14 @@
      * @param {String} slug - the `videosets` item matching the player in focus
      */
     function pause_other_video_players(slug) {
-        var other_video_players = _.reject(videosets, function(d) {
+        var other_video_players = _.reject(_.keys(videosets), function(d) {
             return d === slug;
         });
+        console.log(other_video_players);
         for (i=0; i < other_video_players.length; i++) {
-            var player = other_video_players[i];
+            var player = videosets[other_video_players[i]];
             if (!player.paused()) {
                 player.pause();
-                console.log("paused", other_video_players[i]);
             }
         }
     }
