@@ -72,12 +72,12 @@
         },
         {
             "video-id": "5028358537001",
-            "hed": "In her father's footsteps",
+            "hed": "In her father’s footsteps",
             "description": "Monika McCoy's father was famous for helping stop Whitman's massacre, but she remembers Houston McCoy for much more than that. Now, as an Austin police officer, she patrols the same beat her father once did."
         },
         {
             "video-id": "5032321033001",
-            "hed": "A hero's wife",
+            "hed": "‘He’s always been my hero’",
             "description": "Theresa Fox saw her husband on television when she was in grade school, but they wouldn't actually meet for another decade."
         }
       ]
@@ -585,7 +585,7 @@
 <div class="row brightcove-controls">
     {{#each page.videoPlayer.videos}}
     <div class="col-md-4">
-        <div class="video-tease-wrapper{{#if @first}} video-tease-active{{/if}}" data-video-id="{{ video-id }}">
+        <div class="video-tease-wrapper{{#if @first}} video-tease-active{{/if}}" data-video-id="{{ video-id }}" id="video-tease-wrapper-{{ video-id }}">
             <div class="video-tease-front">
                 <h4><i class="fa fa-video-camera video-icon" id="icon-{{ video-id }}"></i>&ensp;{{ hed }}</h4>
             </div>
@@ -622,7 +622,7 @@
                       <h2>{{ name }}</h2>
                       <p>{{summary}}</p>
                       {{#if mccoy}}
-                      <p><a style="font-family:inherit;" href="#video-and-articles">McCoy's daughter now patrols the same beat he once did back in 1966</a>.</p>
+                      <p><a id="mccoy">McCoy's daughter now patrols the same beat he once did back in 1966</a>.</p>
                       {{/if}}
                     {{#if video}}
                         <a class="sm-muted-button video-launcher" href="interviews.html#{{ id }}">
