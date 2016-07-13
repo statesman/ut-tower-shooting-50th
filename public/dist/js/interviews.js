@@ -63,7 +63,7 @@
         }, 'fast');
 
         // get the ID of the video element
-        var video_player_id = $t.closest('.row').find('video').attr("id");
+        var video_player_id = $t.closest('.row').find('.vjs-tech').attr("id");
 
         // get the ID of the video to play
         var new_video_id = $t.data('video-id');
