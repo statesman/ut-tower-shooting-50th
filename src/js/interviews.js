@@ -84,7 +84,7 @@
             } else {
                 brightcove_instance.catalog.load(video);
 
-                brightcove_instance.on("play", function() {
+                brightcove_instance.on("loadeddata", function() {
                     // pause other video players, if necessary
                     var videoset_id = $videoset.attr('id');
                     pause_other_video_players(videoset_id);
@@ -93,12 +93,7 @@
                     $spinner.html("");
                 });
 
-                brightcove_instance.on("progress", function() {
-                    if (brightcove_instance.bufferedPercent() > 0.1) {
-                        brightcove_instance.play();
-                        return;
-                    }
-                });
+                brightcove_instance.play();
             }
         });
     });
