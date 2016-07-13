@@ -1,8 +1,20 @@
 (function($, _) {
     'use strict';
 
-    // slugs with IDs of videoset divs
-    var videosets = ["alfred-mcalister", "artly-snuff", "ramiro-martinez", "neal-spelce"];
+    // set up brightcove instance container
+    var videosets = {
+        "alfred-mcalister": null,
+        "artly-snuff": null,
+        "ramiro-martinez": null,
+        "neal-spelce": null
+    };
+
+    _.each(_.keys(videosets), function(key) {
+        // initialize and store brightcove instances
+        videojs("video-player-" + key).ready(function() {
+            videosets[key] = this;
+        });
+    });
 
     /*
      * pause all brightcove player instances except for the one whose
@@ -11,17 +23,14 @@
      * @param {String} slug - the `videosets` item matching the player in focus
      */
     function pause_other_video_players(slug) {
-        var other_video_players = _.reject(videosets, function(d) {
+        var other_video_players = _.reject(_.keys(videosets), function(d) {
             return d === slug;
         });
+
         for (i=0; i < other_video_players.length; i++) {
-            var player = videojs([
-                "video-player-",
-                other_video_players[i]
-            ].join(""));
+            var player = videosets[other_video_players[i]];
             if (!player.paused()) {
                 player.pause();
-                console.log("paused", other_video_players[i]);
             }
         }
     }
@@ -63,13 +72,16 @@
         }, 'fast');
 
         // get the ID of the video element
-        var video_player_id = $t.closest('.row').find('video').attr("id");
+        var video_player_id = $t.closest('.row').find('.vjs-tech')
+                                .attr("id")
+                                .split("player-")[1]
+                                .split("_")[0];
 
         // get the ID of the video to play
         var new_video_id = $t.data('video-id');
 
         // get the brightcove instance
-        var brightcove_instance = videojs(video_player_id);
+        var brightcove_instance = videosets[video_player_id];
 
         // load and play the video
         brightcove_instance.catalog.getVideo(String(new_video_id), function (error, video) {
