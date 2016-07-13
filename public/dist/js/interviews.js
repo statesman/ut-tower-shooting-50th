@@ -27,12 +27,10 @@
             return d === slug;
         });
 
-        for (i=0; i < other_video_players.length; i++) {
-            var player = videosets[other_video_players[i]];
-            if (!player.paused()) {
-                player.pause();
-            }
-        }
+        // pause all other videos
+        _.map(other_video_players, function(d) {
+            return videosets[d].pause();
+        })
     }
 
     // if you click on the video player div, pause other videos
@@ -56,10 +54,6 @@
         // set the spinner going
         $('.video-status').html("");
         $spinner.html("<i class='fa fa-circle-o-notch fa-spin'></i>");
-
-        // pause other video players, if necessary
-        var videoset_id = $videoset.attr('id');
-        pause_other_video_players(videoset_id);
 
         // remove active class from other links in this set
         var $fellow_video_links = $t.parent().parent().find('.video-link');
@@ -89,10 +83,22 @@
                 console.log("error: ", error);
             } else {
                 brightcove_instance.catalog.load(video);
-                brightcove_instance.play();
 
-                // kill the spinner
-                $spinner.html("");
+                brightcove_instance.on("play", function() {
+                    // pause other video players, if necessary
+                    var videoset_id = $videoset.attr('id');
+                    pause_other_video_players(videoset_id);
+
+                    // kill the spinner
+                    $spinner.html("");
+                });
+
+                brightcove_instance.on("progress", function() {
+                    if (brightcove_instance.bufferedPercent() > 0.1) {
+                        brightcove_instance.play();
+                        return;
+                    }
+                });
             }
         });
     });
