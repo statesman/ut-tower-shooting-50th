@@ -30,7 +30,7 @@
         // pause all other videos
         _.map(other_video_players, function(d) {
             return videosets[d].pause();
-        })
+        });
     }
 
     // if you click on the video player div, pause other videos
