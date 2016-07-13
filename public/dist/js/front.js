@@ -2,6 +2,7 @@
 
 $(document).ready(function() {
 
+    /*
     function loadPlayer(player_id) {
         try {
             videojs(player_id).on('loadedmetadata', function() {
@@ -25,7 +26,7 @@ $(document).ready(function() {
                             // play the video
                             self.play();
 
-                        });*/
+                        });
             });
         }
         catch(e) {
@@ -37,6 +38,7 @@ $(document).ready(function() {
     $(".video-js").each(function() {
          loadPlayer(this.id);
     });
+    */
 
     // click event for video tease - load that video
     $('.video-tease-wrapper').on('click', function() {
