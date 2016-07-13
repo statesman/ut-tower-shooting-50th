@@ -2,35 +2,19 @@
 
 $(document).ready(function() {
 
-    // fade in subhead
-    $('#mainsub').fadeTo(1000, 1);
-
-    function loadPlayer() {
+    function loadPlayer(player_id) {
         try {
-            videojs("video-player-front").on('loadedmetadata', function() {
-
-                // cache "this" reference
-                var self = this;
-
+            videojs(player_id).on('loadedmetadata', function() {
                 // kill the spinner
-                $('.video-icon').removeClass('fa-circle-o-notch fa-spin')
-                                .addClass('fa-video-camera');
+                var $video_icons = $('.video-icon');
+                $.each($video_icons, function() {
+                    if (String($(this).data("video-id")) === String(player_id.replace("video-player-front-", ""))) {
+                        $(this).removeClass('fa-circle-o-notch fa-spin')
+                               .addClass('fa-video-camera');
+                    }
+                });
 
-                // click event for video tease - load that video
-                $('.video-tease-wrapper').on('click', function() {
-
-                        // get the ID of the new video
-                        var new_video_id = $(this).data('video-id');
-
-                        // add spinner class while it loads
-                        var $video_icon = $(this).find('.video-icon');
-                        $video_icon.removeClass('fa-video-camera')
-                                   .addClass('fa-circle-o-notch fa-spin');
-
-                        // remove "active" state from teases, add to this one
-                        $('.video-tease-wrapper').removeClass('video-tease-active');
-                        $(this).addClass('video-tease-active');
-
+                        /*
                         // fetch the video from brightcove
                         self.catalog.getVideo(String(new_video_id), function (error, video) {
                             if (error) {
@@ -41,20 +25,31 @@ $(document).ready(function() {
                             // play the video
                             self.play();
 
-                            // kill the spinner
-                            $video_icon.removeClass('fa-circle-o-notch fa-spin')
-                                       .addClass('fa-video-camera');
-                        });
-                    });
+                        });*/
             });
         }
         catch(e) {
-            setTimeout(loadPlayer, 100);
+            setTimeout(loadPlayer(player_id), 100);
             return;
         }
     }
 
-    loadPlayer();
+    $(".video-js").each(function() {
+         loadPlayer(this.id);
+    });
+
+    // click event for video tease - load that video
+    $('.video-tease-wrapper').on('click', function() {
+        // get the ID of the new video
+        var new_video_id = $(this).data('video-id');
+        $(".video-player-front").addClass("offscreen");
+        $("#video-player-wrapper-" + new_video_id).removeClass("offscreen");
+
+        // remove "active" state from teases, add to this one
+        $('.video-tease-wrapper').removeClass('video-tease-active');
+        $(this).addClass('video-tease-active');
+
+    });
 
     // do up masonry
     var $grid = $('.grid').masonry({
