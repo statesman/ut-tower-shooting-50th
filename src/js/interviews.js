@@ -26,7 +26,7 @@
         var other_video_players = _.reject(_.keys(videosets), function(d) {
             return d === slug;
         });
-        console.log(other_video_players);
+
         for (i=0; i < other_video_players.length; i++) {
             var player = videosets[other_video_players[i]];
             if (!player.paused()) {
