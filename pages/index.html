@@ -62,23 +62,33 @@
     }
   ],
   "videoPlayer": {
-      "account-id": "1418563061",
-      "player-id": "BygcJDlI",
       "videos": [
         {
-            "id": "5031257802001",
-            "hed": "A sniper on campus",
-            "description": "Whitman's killing spree left 16 people dead and introduced America to a now-familiar form of mayhem."
+            "video": {
+                "video-id": "5031257802001",
+                "hed": "A sniper on campus",
+                "description": "Whitman's killing spree left 16 people dead and introduced America to a now-familiar form of mayhem.",
+                "account-id": "1418563061",
+                "player-id": "BygcJDlI"
+            }
         },
         {
-            "id": "5028358537001",
-            "hed": "In her father's footsteps",
-            "description": "Monika McCoy's father was famous for helping stop Whitman's massacre, but she remembers Houston McCoy for much more than that. Now, as an Austin police officer, she patrols the same beat her father once did."
+            "video": {
+                "video-id": "5028358537001",
+                "hed": "In her father's footsteps",
+                "description": "Monika McCoy's father was famous for helping stop Whitman's massacre, but she remembers Houston McCoy for much more than that. Now, as an Austin police officer, she patrols the same beat her father once did.",
+                "account-id": "1418563061",
+                "player-id": "BygcJDlI"
+            }
         },
         {
-            "id": "5032321033001",
-            "hed": "A hero's wife",
-            "description": "Theresa Fox saw her husband on television when she was in grade school, but they wouldn’t actually meet for another decade."
+            "video": {
+                "video-id": "5032321033001",
+                "hed": "A hero's wife",
+                "description": "Theresa Fox saw her husband on television when she was in grade school, but they wouldn't actually meet for another decade.",
+                "account-id": "1418563061",
+                "player-id": "BygcJDlI"
+            }
         }
       ]
   },
@@ -535,7 +545,7 @@
     </div>
 </div>
 
-<div class="container">
+<div class="main container">
   <div class="row">
     <div id="main" class="col-xs-12">
         <h3 class="top-readout">On Aug. 1, 1966, engineering student Charles Whitman ascended the University of Texas Tower with a trunk full of guns and showed America how one ruthless person can inflict fear and grief on an entire city.</h3>
@@ -559,19 +569,21 @@
     <div class="row">
         <div class="col-xs-12 content-list-item-hed">
             <h3 class="name-head">Special report<span class="slug-link">&ensp;<a href="#video-and-articles"><i class="fa fa-link"></i></a></span></h3>
-            <h3 class="name-subhead"><small>How a tragic day changed the city</small></h3>
-            <div class="no-bleed">
-                {{> video-full-brightcove page.videoPlayer }}
+            <h3 class="name-subhead"><small>How one tragic day changed Austin</small></h3>
+            {{#each page.videoPlayer.videos}}
+            <div class="video-player-front no-bleed{{#unless @first}} offscreen{{/unless}}" id="video-player-wrapper-{{ video.video-id }}">
+                {{> video-full-brightcove video }}
             </div>
+            {{/each}}
             <div class="row brightcove-controls">
                 {{#each page.videoPlayer.videos}}
                 <div class="col-md-4">
-                    <div class="video-tease-wrapper{{#if @first}} video-tease-active{{/if}}" data-video-id="{{ id }}">
+                    <div class="video-tease-wrapper{{#if @first}} video-tease-active{{/if}}" data-video-id="{{ video.video-id }}">
                         <div class="video-tease-front">
-                            <h4><i class="fa fa-circle-o-notch fa-spin video-icon"></i>&ensp;{{ hed }}</h4>
+                            <h4><i data-video-id="{{ video.video-id }}" class="fa fa-circle-o-notch fa-spin video-icon"></i>&ensp;{{ video.hed }}</h4>
                         </div>
                         <div class="video-tease-content">
-                            {{ description }}
+                            {{ video.description }}
                         </div>
                     </div>
                 </div>
