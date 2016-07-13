@@ -27,12 +27,10 @@
             return d === slug;
         });
 
-        for (i=0; i < other_video_players.length; i++) {
-            var player = videosets[other_video_players[i]];
-            if (!player.paused()) {
-                player.pause();
-            }
-        }
+        // pause all other videos
+        _.map(other_video_players, function(d) {
+            return videosets[d].pause();
+        })
     }
 
     // if you click on the video player div, pause other videos
