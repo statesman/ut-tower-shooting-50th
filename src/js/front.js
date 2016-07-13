@@ -58,4 +58,12 @@ $(document).ready(function() {
 
     });
 
+    // mccoy click event
+    $('#mccoy').on('click', function() {
+        $('html, body').animate({
+            scrollTop: $("#video-and-articles").offset().top
+        }, 'fast');
+        $("#video-tease-wrapper-5028358537001").trigger("click");
+    });
+
 });
