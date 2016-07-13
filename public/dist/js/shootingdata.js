@@ -319,7 +319,7 @@
                     display_row(this);
                 });
             }
-        };
+        }
 
         /* function to find table row that corresponds to a bubble
          * @param {Object} data - data bound to the bubble
@@ -334,7 +334,7 @@
             });
 
             return rowNode;
-        };
+        }
 
         /* function highlight shooting on table and map, display details
          * @param {Object} row - the <tr> of the selected shooting
@@ -355,7 +355,7 @@
                        d.date == rowData.date;
                })
               .classed("highlighted", true);
-        };
+        }
 
         // handle resize
         d3.select(window)

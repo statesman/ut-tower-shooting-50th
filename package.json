@@ -30,17 +30,18 @@
     "bootstrap": "^3.3.6",
     "d3": "^3.5.17",
     "d3-queue": "^3.0.1",
-    "font-awesome": "^4.6.3",
-    "imagesloaded": "^4.1.0",
-    "masonry-layout": "^4.1.0",
-    "scrollmagic": "^2.0.5",
-    "slick-carousel": "^1.6.0",
-    "topojson": "^1.6.26",
-    "underscore": "^1.8.3",
     "datatables.net": "^1.10.12",
     "datatables.net-bs": "^1.10.12",
     "datatables.net-responsive": "^2.1.0",
     "datatables.net-responsive-bs": "^2.1.0",
-    "moment": "^2.14.1"
+    "font-awesome": "^4.6.3",
+    "imagesloaded": "^4.1.0",
+    "jquery": "^3.1.0",
+    "masonry-layout": "^4.1.0",
+    "moment": "^2.14.1",
+    "scrollmagic": "^2.0.5",
+    "slick-carousel": "^1.6.0",
+    "topojson": "^1.6.26",
+    "underscore": "^1.8.3"
   }
 }
