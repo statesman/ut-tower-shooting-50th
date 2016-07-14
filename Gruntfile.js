@@ -284,6 +284,7 @@ grunt.registerTask('slack', function(where_dis_go) {
 
   // Publishing tasks
   grunt.registerTask('stage', ['build', 'ftpush:stage','slack:stage']);
+  grunt.registerTask('prod', ['build', 'ftpush:prod','slack:prod']);
 
   // A dev task that runs a build then launches a dev server w/ livereload
   grunt.registerTask('default', ['build', 'concurrent']);
