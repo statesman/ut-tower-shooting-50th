@@ -56,6 +56,15 @@ div.topmain-wrapper {
     background-position: center;
     padding-top: 170px;
     padding-bottom: 30px;
+    @media (max-width: @screen-xs-min) {
+        background-image: radial-gradient(
+            rgba(255,255,255, 0.3),
+            rgba(50, 0, 0, 0.9)
+          ),
+          url('../assets/img/Tower2.jpg');
+        padding-top: 15%;
+        padding-bottom: 30%;
+    }
     > div.topmain {
         text-align:center;
         > h1 {
