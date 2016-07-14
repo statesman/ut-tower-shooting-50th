@@ -37,7 +37,7 @@ module.exports = function(network) {
     },
     twitter: {
       url: function() {
-        return 'https://twitter.com/intent/tweet?url=' + encodeURIComponent(url) + '&related=@statesman';
+        return 'https://twitter.com/intent/tweet?url=' + encodeURIComponent(url) + '&related=@statesman&via=aasinteractive';
       },
       icon: '<i class="fa fa-twitter"></i>'
     },

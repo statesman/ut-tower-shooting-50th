@@ -12,7 +12,7 @@ module.exports = function(text, context) {
       '?text=' + encodeURIComponent(t) +
       '&url=' + encodeURIComponent(u) +
       '&hashtags=cpsmissedsigns' +
-      '&via=aas_investigates' +
+      '&via=aasinteractive' +
       '&related=statesman';
   }
 
