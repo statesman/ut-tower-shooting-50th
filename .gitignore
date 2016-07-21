@@ -45,3 +45,4 @@ public/dist/*.js.map
 public/dist/*.css
 public/dist/*.css.map
 public/assets/pdf
+public/data/merged_mass_murders.xlsx
