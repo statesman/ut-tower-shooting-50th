@@ -1,7 +1,7 @@
 (function($, _) {
     'use strict';
 
-    // set up brightcove instance container
+    // set up anvato instance container
     var videosets = {
         "alfredmcalister": null,
         "artlysnuff": null,
@@ -12,30 +12,25 @@
     var activeVideo = null;
 
     _.each(_.keys(videosets), function(key) {
-        // initialize and store brightcove instances
-        try {
-            // + 'Anv' because markup breaks if
-            // slug and anvato id are identical
-            window.anvp[key + 'Anv'].onReady = function(playerInstance) {
-                videosets[key] = this;
+        // initialize and store anvato instances
+        // uses `+ 'Anv'` because markup breaks if
+        // slug and anvato id are identical
+        window.anvp[key + 'Anv'].onReady = function(playerInstance) {
+            videosets[key] = this;
 
-                playerInstance.setListener(function(e) {
-                    if (e.name === 'METADATA_LOADED') {
-                        activeVideo = e.args[0].toString();
-                    }
-                    else if (e.name === 'VIDEO_STARTED') {
-                        pause_other_video_players(key);
-                    }
-                });
-            };
-        }
-        catch (TypeError) {
-            console.info(key);
-        }
+            playerInstance.setListener(function(e) {
+                if (e.name === 'METADATA_LOADED') {
+                    activeVideo = e.args[0].toString();
+                }
+                else if (e.name === 'VIDEO_STARTED') {
+                    pause_other_video_players(key);
+                }
+            });
+        };
     });
 
     /*
-     * pause all brightcove player instances except for the one whose
+     * pause all anvato player instances except for the one whose
      * `videoset` div matches the slug passed to it
      *
      * @param {String} slug - the `videosets` item matching the player in focus
@@ -74,7 +69,7 @@
         // get the ID of the video to play
         var new_video_id = $t.attr('data-video-id');
 
-        // get the brightcove instance
+        // get the anvato instance
         var anvatoPlayer = videosets[video_player_id];
 
         // only play video if it's not already playing
