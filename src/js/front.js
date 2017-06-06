@@ -26,22 +26,14 @@ $(document).ready(function() {
         $('.video-icon').removeClass('fa-circle-o-notch fa-spin')
                         .addClass('fa-video-camera');
 
-        $icon.removeClass('fa-video-camera')
-             .addClass('fa-circle-o-notch fa-spin');
-
-        myPlayer.catalog.getVideo(video_id, function(error, video) {
-            myPlayer.catalog.load(video);
-            myPlayer.play();
-            // replace spinner
-            $icon.removeClass('fa-circle-o-notch fa-spin')
-                 .addClass('fa-video-camera');
-        });
+        myPlayer.play(video_id.toString());
     }
 
-    // this is the magic, I guess
-    videojs("video-player-front").ready(function(){
-        myPlayer = this;
-    });
+    // add listener for video player on index page
+    // with hard-coded variable reference
+    window.anvp.p0.onReady = function(playerInstance) {
+        myPlayer = playerInstance;
+    };
 
     // change video on click event
     $('.video-tease-wrapper').on('click', function() {
@@ -51,7 +43,7 @@ $(document).ready(function() {
         $(this).addClass('video-tease-active');
 
         // get video ID
-        var vid_id = $(this).data('video-id');
+        var vid_id = $(this).attr('data-video-id');
 
         // swap the video
         changeVideo(vid_id);

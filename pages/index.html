@@ -84,27 +84,33 @@
       "player-id": "BygcJDlI",
       "videos": [
         {
-            "video-id": "5031257802001",
+            "video-id": "3922382",
             "hed": "A sniper on campus",
             "description": "Whitman’s killing spree left 16 people dead and introduced America to a now-familiar form of mayhem."
         },
         {
-            "video-id": "5028358537001",
+            "video-id": "3922406",
             "hed": "In her father’s footsteps",
             "description": "Monika McCoy’s father was famous for helping stop Whitman’s massacre, but she remembers Houston McCoy for much more than that. Now, as an Austin police officer, she patrols the same beat her father once did."
         },
         {
-            "video-id": "5032321033001",
+            "video-id": "3922379",
             "hed": "‘He’s always been my hero’",
             "description": "Theresa Fox saw her husband on television when she was 10 years old, but they wouldn’t actually meet for over a decade. John Fox rescued a woman from the South Mall during the UT Tower massacre, and Theresa remembers the footage vividly."
         },
         {
-            "video-id": "5067422144001",
+            "video-id": "3922000",
             "hed": "A long-sought memorial",
             "description": "On Aug. 1, 2016, the Tower clock stopped at 11:48 a.m. and stayed there for 24 hours as UT officials dedicated a new monument on campus to memorialize those who died in the sniper attack."
         }
       ]
   },
+"videoPlaylist": {
+  "anvatoInstance": "p0",
+  "anvatoType": "playlist",
+  "anvatoId": "[3922382,3922406,3922379,3922000]",
+  "anvatoAd": "statesman"
+},
 "people": [
   {
       "id": "ramiro-martinez",
@@ -607,40 +613,22 @@
             <h3 class="name-head">Special report<span class="slug-link">&ensp;<a href="#video-and-articles"><i class="fa fa-link"></i></a></span></h3>
             <h3 class="name-subhead"><small>How one tragic day changed Austin</small></h3>
 
+            {{> video-full-anvato page.videoPlaylist}}
 
-
-<div class="video-player-front no-bleed">
-    <div class="photo-full">
-        <div class="embed-responsive embed-responsive-16by9">
-            <div style="padding-top: 56.25%;">
-                <video data-video-id="{{ page.videoPlayer.videos.[0].video-id }}"
-                    data-account="{{ page.videoPlayer.account-id }}"
-                    data-player="{{ page.videoPlayer.player-id }}"
-                    data-embed="default"
-                    class="video-js"
-                    id="video-player-front"
-                    controls
-                    style="width: 100%; height: 100%; position: absolute; top: 0px; bottom: 0px; right: 0px; left: 0px;">
-                </video>
+            <div class="row brightcove-controls">
+                {{#each page.videoPlayer.videos}}
+                <div class="col-md-6">
+                    <div class="video-tease-wrapper{{#if @first}} video-tease-active{{/if}}" data-video-id="{{ video-id }}" id="video-tease-wrapper-{{ video-id }}">
+                        <div class="video-tease-front">
+                            <h4><i class="fa fa-video-camera video-icon" id="icon-{{ video-id }}"></i>&ensp;{{ hed }}</h4>
+                        </div>
+                        <div class="video-tease-content hidden-xs">
+                            {{ description }}
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
             </div>
-        </div>
-    </div>
-</div>
-
-<div class="row brightcove-controls">
-    {{#each page.videoPlayer.videos}}
-    <div class="col-md-6">
-        <div class="video-tease-wrapper{{#if @first}} video-tease-active{{/if}}" data-video-id="{{ video-id }}" id="video-tease-wrapper-{{ video-id }}">
-            <div class="video-tease-front">
-                <h4><i class="fa fa-video-camera video-icon" id="icon-{{ video-id }}"></i>&ensp;{{ hed }}</h4>
-            </div>
-            <div class="video-tease-content hidden-xs">
-                {{ description }}
-            </div>
-        </div>
-    </div>
-    {{/each}}
-</div>
 
             <div class="row grid">
                 {{#each page.newCoverage}}
@@ -740,5 +728,4 @@
             <p>{{#markdown}} *Editor*: [Robert Eckhart](mailto:reckhart@statesman.com). *Videos*: [Kelly West](mailto:kwest@statesman.com) and [Reshma Kirpalani](mailto:rkirpalani@statesman.com). *Multimedia Archive Research*: [Tina Phan](mailto:tphan@statesman.com). *Interactive Tower tour*: [James Gregg](jgregg@statesman.com). *Online presentation*: [Cody Winchester](mailto:cwinchester@statesman.com), [Dan Hill](mailto:dhill@statesman.com), [Adam Humphrey](mailto:ahumphrey@statesman.com) and [Christian McDonald](mailto:cmcdonald@statesman.com) ([follow us on Twitter!](https://twitter.com/aasinteractive)). Other contributions by American-Statesman staff.{{/markdown}}</p>
 
 </div>
-
-<script src="//players.brightcove.net/{{ page.videoPlayer.account-id }}/{{ page.videoPlayer.player-id }}_default/index.min.js"></script>
+</div>
