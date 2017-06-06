@@ -46,11 +46,10 @@
         });
     }
 
-    // click event for links to specific videos
-    $('.video-link').on('click', function() {
+    function clickVideoLink(el) {
         // cache ref to elements
-        var $t = $(this);
-        var $videoset = $(this).closest('.content-list');
+        var $t = $(el);
+        var $videoset = $(el).closest('.content-list');
 
         // remove active class from other links in this set
         var $fellow_video_links = $t.parent().parent().find('.video-link');
@@ -76,5 +75,16 @@
         if (activeVideo !== new_video_id) {
             anvatoPlayer.play(new_video_id);
         }
-    });
+    }
+
+    // click event for links to specific videos
+    $('.video-link').on(
+        'click', function() {
+            clickVideoLink(this);
+        }
+    ).on('keypress', function(e) {
+        if (e.which === 13) {
+            clickVideoLink(this);
+        }}
+    );
 })(jQuery, _);
