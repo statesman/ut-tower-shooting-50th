@@ -20,6 +20,17 @@ $(document).ready(function() {
     window.anvp.p0.onReady = function(playerInstance) {
         myPlayer = playerInstance;
 
+        playerInstance.setListener(function(e) {
+            if (e.name === 'METADATA_LOADED') {
+                // get tease DOM element by video id
+                var el = $('[data-video-id=' + e.args[0] + ']');
+
+                // remove "active" state from teases, add to active
+                $('.video-tease-wrapper').removeClass('video-tease-active');
+                $(el).addClass('video-tease-active');
+            }
+        });
+
         // change video on click event
         $('.video-tease-wrapper').on('click', function() {
             selectVideo(this);
@@ -30,30 +41,16 @@ $(document).ready(function() {
         });
     };
 
-    /* function to change video
-     * @param {String} video_id - ID of video to change to
+    /* function to select video by DOM element
+     * @param {Object} el - button corresponding to active video
      *
      */
-    function changeVideo(video_id){
-        // set spinner icon
-        var $icon = $('#icon-' + video_id);
-
-        $('.video-icon').removeClass('fa-circle-o-notch fa-spin')
-                        .addClass('fa-video-camera');
-
-        myPlayer.play(video_id.toString());
-    }
-
     function selectVideo(el) {
-        // remove "active" state from teases, add to this one
-        $('.video-tease-wrapper').removeClass('video-tease-active');
-        $(el).addClass('video-tease-active');
-
         // get video ID
         var vid_id = $(el).attr('data-video-id');
 
         // swap the video
-        changeVideo(vid_id);
+        myPlayer.play(vid_id);
     }
 
     // mccoy click event

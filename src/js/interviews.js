@@ -21,6 +21,12 @@
             playerInstance.setListener(function(e) {
                 if (e.name === 'METADATA_LOADED') {
                     activeVideo = e.args[0].toString();
+
+                    // update active button styling
+                    var $t = $('[data-video-id=' + activeVideo + ']');
+                    var $fellow_video_links = $t.parent().parent().find('.video-link');
+                    $fellow_video_links.removeClass('video-link-active');
+                    $t.addClass('video-link-active');
                 }
                 else if (e.name === 'VIDEO_STARTED') {
                     pause_other_video_players(key);
@@ -55,11 +61,6 @@
         // cache ref to elements
         var $t = $(el);
         var $videoset = $(el).closest('.content-list');
-
-        // remove active class from other links in this set
-        var $fellow_video_links = $t.parent().parent().find('.video-link');
-        $fellow_video_links.removeClass('video-link-active');
-        $t.addClass('video-link-active');
 
         // scroll to video player
         $('html, body').animate({
