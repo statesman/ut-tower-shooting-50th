@@ -15,6 +15,21 @@ $(document).ready(function() {
     // instantiate brightcove player
     var myPlayer;
 
+    // add listener for video player on index page
+    // with hard-coded variable reference
+    window.anvp.p0.onReady = function(playerInstance) {
+        myPlayer = playerInstance;
+
+        // change video on click event
+        $('.video-tease-wrapper').on('click', function() {
+            selectVideo(this);
+        }).on('keypress', function(e) {
+            if (e.which === 13) {
+                selectVideo(this);
+            }
+        });
+    };
+
     /* function to change video
      * @param {String} video_id - ID of video to change to
      *
@@ -29,26 +44,17 @@ $(document).ready(function() {
         myPlayer.play(video_id.toString());
     }
 
-    // add listener for video player on index page
-    // with hard-coded variable reference
-    window.anvp.p0.onReady = function(playerInstance) {
-        myPlayer = playerInstance;
-    };
-
-    // change video on click event
-    $('.video-tease-wrapper').on('click', function() {
-
+    function selectVideo(el) {
         // remove "active" state from teases, add to this one
         $('.video-tease-wrapper').removeClass('video-tease-active');
-        $(this).addClass('video-tease-active');
+        $(el).addClass('video-tease-active');
 
         // get video ID
-        var vid_id = $(this).attr('data-video-id');
+        var vid_id = $(el).attr('data-video-id');
 
         // swap the video
         changeVideo(vid_id);
-
-    });
+    }
 
     // mccoy click event
     $('#mccoy').on('click', function() {

@@ -46,6 +46,11 @@
         });
     }
 
+    /*
+     * Function fired by clicks to the interview questions
+     *
+     * @param {String} slug - the `videosets` item matching the player in focus
+     */
     function clickVideoLink(el) {
         // cache ref to elements
         var $t = $(el);
