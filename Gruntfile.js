@@ -22,24 +22,14 @@ module.exports = function(grunt) {
     // Copy FontAwesome/slick files to the fonts/ directory
     copy: {
        fonts: {
-        src: [
-          'node_modules/font-awesome/fonts/**',
-          'node_modules/slick-carousel/slick-carousel/fonts/**'
-        ],
-        dest: 'public/fonts/',
-        flatten: true,
-        expand: true
-    },
-    scripts: {
-     src: [
-       'src/js/front.js',
-       'src/js/shootingdata.js',
-       'src/js/interviews.js'
-     ],
-     dest: 'public/dist/js/',
-     flatten: true,
-     expand: true
-   }
+          src: [
+            'node_modules/font-awesome/fonts/**',
+            'node_modules/slick-carousel/slick-carousel/fonts/**'
+          ],
+          dest: 'public/fonts/',
+          flatten: true,
+          expand: true
+      }
     },
 
     // Transpile LESS
