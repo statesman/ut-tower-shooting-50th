@@ -3,17 +3,23 @@
 
     // set up brightcove instance container
     var videosets = {
-        "alfred-mcalister": null,
-        "artly-snuff": null,
-        "ramiro-martinez": null,
-        "neal-spelce": null
+        "alfredmcalister": null,
+        "artlysnuff": null,
+        "ramiromartinez": null,
+        "nealspelce": null
     };
 
     _.each(_.keys(videosets), function(key) {
         // initialize and store brightcove instances
-        videojs("video-player-" + key).ready(function() {
-            videosets[key] = this;
-        });
+        try {
+            window.anvp[key + 'Anv'].onReady = function(playerInstance) {
+                videosets[key] = this;
+            };
+
+        }
+        catch (TypeError) {
+            console.info(key);
+        }
     });
 
     /*
@@ -34,9 +40,10 @@
     }
 
     // if you click on the video player div, pause other videos
-    $('.brightcove-full-player').on('click', function() {
+    $('.video-container').on('click', function() {
         var $videoset = $(this).closest('.content-list');
         var videoset_id = $videoset.attr('id');
+
         pause_other_video_players(videoset_id);
 
         $('html, body').animate({
@@ -49,11 +56,6 @@
         // cache ref to elements
         var $t = $(this);
         var $videoset = $(this).closest('.content-list');
-        var $spinner = $t.find('.spinner');
-
-        // set the spinner going
-        $('.video-status').html("");
-        $spinner.html("<i class='fa fa-circle-o-notch fa-spin'></i>");
 
         // remove active class from other links in this set
         var $fellow_video_links = $t.parent().parent().find('.video-link');
@@ -66,35 +68,15 @@
         }, 'fast');
 
         // get the ID of the video element
-        var video_player_id = $t.closest('.row').find('.vjs-tech')
-                                .attr("id")
-                                .split("player-")[1]
-                                .split("_")[0];
+        var video_player_id = $t.closest('.content-list')
+                                .attr('id');
 
         // get the ID of the video to play
-        var new_video_id = $t.data('video-id');
+        var new_video_id = $t.attr('data-video-id');
 
         // get the brightcove instance
-        var brightcove_instance = videosets[video_player_id];
+        var anvatoPlayer = videosets[video_player_id];
 
-        // load and play the video
-        brightcove_instance.catalog.getVideo(String(new_video_id), function (error, video) {
-            if (error) {
-                console.log("error: ", error);
-            } else {
-                brightcove_instance.catalog.load(video);
-
-                brightcove_instance.on("loadeddata", function() {
-                    // pause other video players, if necessary
-                    var videoset_id = $videoset.attr('id');
-                    pause_other_video_players(videoset_id);
-
-                    // kill the spinner
-                    $spinner.html("");
-                });
-
-                brightcove_instance.play();
-            }
-        });
+        anvatoPlayer.play(new_video_id);
     });
 })(jQuery, _);

@@ -1,8 +1,10 @@
-<div class="photo-full">
+<div class="photo-full video-container">
   <div id="{{anvatoInstance}}"></div>
 
 <script>
-    window.anvp = {};
+    if (window.anvp === undefined) {
+        window.anvp = {};
+    }
     window.anvp.{{anvatoInstance}} = {};
     window.anvp.{{anvatoInstance}}.onReady = function(playerInstance) {
         var _cbv = window._cbv || (window._cbv = []);
@@ -26,6 +28,6 @@
     };
 
 </script>
-<script data-anvp='{"width":"100%", "height": "56.25%" ,"mcp":"ANV", "{{anvatoType}}": {{anvatoId}}, "pInstance":"{{anvatoInstance}}"}' src="//w3.cdn.anvato.net/player/prod/v3/scripts/anvload.js"></script>
+<script data-anvp='{"width":"100%", "height": "56.25%", "mcp":"ANV", "{{anvatoType}}": {{anvatoId}}, "pInstance":"{{anvatoInstance}}"}', src="https://w3.cdn.anvato.net/player/prod/v3/scripts/anvload.js"></script>
 
 </div>
