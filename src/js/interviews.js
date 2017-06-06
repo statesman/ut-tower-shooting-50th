@@ -9,13 +9,25 @@
         "nealspelce": null
     };
 
+    var activeVideo = null;
+
     _.each(_.keys(videosets), function(key) {
         // initialize and store brightcove instances
         try {
+            // + 'Anv' because markup breaks if
+            // slug and anvato id are identical
             window.anvp[key + 'Anv'].onReady = function(playerInstance) {
                 videosets[key] = this;
-            };
 
+                playerInstance.setListener(function(e) {
+                    if (e.name === 'METADATA_LOADED') {
+                        activeVideo = e.args[0].toString();
+                    }
+                    else if (e.name === 'VIDEO_STARTED') {
+                        pause_other_video_players(key);
+                    }
+                });
+            };
         }
         catch (TypeError) {
             console.info(key);
@@ -38,18 +50,6 @@
             return videosets[d].pause();
         });
     }
-
-    // if you click on the video player div, pause other videos
-    $('.video-container').on('click', function() {
-        var $videoset = $(this).closest('.content-list');
-        var videoset_id = $videoset.attr('id');
-
-        pause_other_video_players(videoset_id);
-
-        $('html, body').animate({
-            scrollTop: $videoset.offset().top
-        }, 'fast');
-    });
 
     // click event for links to specific videos
     $('.video-link').on('click', function() {
@@ -77,6 +77,9 @@
         // get the brightcove instance
         var anvatoPlayer = videosets[video_player_id];
 
-        anvatoPlayer.play(new_video_id);
+        // only play video if it's not already playing
+        if (activeVideo !== new_video_id) {
+            anvatoPlayer.play(new_video_id);
+        }
     });
 })(jQuery, _);
