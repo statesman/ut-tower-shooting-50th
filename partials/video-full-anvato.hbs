@@ -1,0 +1,33 @@
+<div class="photo-full video-container">
+  <div id="{{anvatoInstance}}"></div>
+
+<script>
+    if (window.anvp === undefined) {
+        window.anvp = {};
+    }
+    window.anvp.{{anvatoInstance}} = {};
+    window.anvp.{{anvatoInstance}}.onReady = function(playerInstance) {
+        var _cbv = window._cbv || (window._cbv = []);
+        _cbv.push(playerInstance);
+    };
+
+    window.anvp.{{anvatoInstance}}.config = {
+        accessKey: "XvEgwyJR0vj8Kh8JMNTbWhW8mOmy8Mbo",
+        secret: "9rK1W2wdNoxrRfwlvehvpFedDZDYG0Nd",
+        token: " ",
+        autoplay: false,
+        volume: 1,
+        recom: false,
+        plugins: {
+            {{ video-ad anvatoAd }}
+            comscore: {
+                clientId: 6035944
+            }
+        },
+        profile: "cox",
+    };
+
+</script>
+<script data-anvp='{"width":"100%", "height": "56.25%", "mcp":"ANV", "{{anvatoType}}": {{anvatoId}}, "pInstance":"{{anvatoInstance}}"}', src="https://w3.cdn.anvato.net/player/prod/v3/scripts/anvload.js"></script>
+
+</div>

@@ -22,24 +22,14 @@ module.exports = function(grunt) {
     // Copy FontAwesome/slick files to the fonts/ directory
     copy: {
        fonts: {
-        src: [
-          'node_modules/font-awesome/fonts/**',
-          'node_modules/slick-carousel/slick-carousel/fonts/**'
-        ],
-        dest: 'public/fonts/',
-        flatten: true,
-        expand: true
-    },
-    scripts: {
-     src: [
-       'src/js/front.js',
-       'src/js/shootingdata.js',
-       'src/js/interviews.js'
-     ],
-     dest: 'public/dist/js/',
-     flatten: true,
-     expand: true
-   }
+          src: [
+            'node_modules/font-awesome/fonts/**',
+            'node_modules/slick-carousel/slick-carousel/fonts/**'
+          ],
+          dest: 'public/fonts/',
+          flatten: true,
+          expand: true
+      }
     },
 
     // Transpile LESS
@@ -87,20 +77,44 @@ module.exports = function(grunt) {
       },
       prod: {
         files: {
-          'public/dist/scripts.js': [
+          'public/dist/js/front.js': [
             'node_modules/jquery/dist/jquery.js',
             'node_modules/underscore/underscore.js',
             'node_modules/imagesloaded/imagesloaded.pkgd.js',
             'node_modules/slick-carousel/slick/slick.js',
+            'node_modules/masonry-layout/dist/masonry.pkgd.js',
+            'src/js/slider.js',
+            'src/js/main.js',
+            'src/js/front.js'
+          ],
+          'public/dist/js/shootingdata.js': [
+            'node_modules/jquery/dist/jquery.js',
+            'node_modules/underscore/underscore.js',
+            'src/js/slider.js',
+            'src/js/main.js',
             'node_modules/d3/d3.js',
             'node_modules/d3-queue/build/d3-queue.js',
             'node_modules/topojson/build/topojson.js',
-            'node_modules/masonry-layout/dist/masonry.pkgd.js',
             'node_modules/datatables.net/js/jquery.dataTables.js',
             'node_modules/datatables.net-bs/js/dataTables.bootstrap.js',
             'node_modules/datatables.net-responsive/js/dataTables.responsive.js',
             'node_modules/datatables.net-responsive-bs/js/responsive.bootstrap.js',
             'node_modules/moment/min/moment.min.js',
+            'src/js/shootingdata.js'
+          ],
+          'public/dist/js/interviews.js': [
+            'node_modules/jquery/dist/jquery.js',
+            'node_modules/underscore/underscore.js',
+            'src/js/slider.js',
+            'src/js/main.js',
+            'src/js/interviews.js'
+          ],
+          'public/dist/scripts.js': [
+            'node_modules/jquery/dist/jquery.js',
+            'node_modules/underscore/underscore.js',
+            'node_modules/imagesloaded/imagesloaded.pkgd.js',
+            'node_modules/slick-carousel/slick/slick.js',
+            'node_modules/masonry-layout/dist/masonry.pkgd.js',
             'src/js/slider.js',
             'src/js/main.js'
           ]

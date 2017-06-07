@@ -40,9 +40,9 @@ $RECYCLE.BIN/
 ### Built files ###
 build/**
 public/*.html
-public/dist/*.js
-public/dist/*.js.map
-public/dist/*.css
-public/dist/*.css.map
+public/dist/**/*.js
+public/dist/**/*.js.map
+public/dist/**/*.css
+public/dist/**/*.css.map
 public/assets/pdf
 public/data/merged_mass_murders.xlsx
